@@ -255,54 +255,142 @@
   .pdf-btn:hover { background: var(--gold-light); }
   @media (max-width: 640px) { .pdf-btn { bottom: 20px; right: 20px; padding: 12px 20px; } }
   @media print {
-    @page { margin: 2.4cm 2cm; }
-    :root {
-      --bg: #ffffff; --bg2: #fafaf8; --bg3: #f4f2ec;
-      --text: #1c1c1a; --text-bright: #0a0a08; --text-muted: #555550;
-      --gold: #8a6b1e; --gold-light: #a07f2a; --gold-dim: rgba(138,107,30,.1);
-      --border: rgba(138,107,30,.25);
-    }
+    @page { margin: 3cm 2.5cm; size: A4; }
+    @page :first { margin: 0; }
+
     * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-    body { font-size: 11pt; line-height: 1.75; background: #fff; color: #1c1c1a; }
+
+    body {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 11.5pt;
+      line-height: 1.8;
+      color: #1a1a18;
+      background: #fff;
+      font-weight: 400;
+    }
+
+    /* HIDE WEB ELEMENTS */
     .pdf-btn, nav, footer { display: none !important; }
+
+    /* COVER PAGE — full bleed, dark, centered */
     .hero {
-      min-height: auto; page-break-after: always;
-      padding: 80pt 60pt 60pt;
-      background: #fafaf8 !important;
+      display: flex !important;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 100vh;
+      background: #0a0a0a !important;
+      page-break-after: always;
+      padding: 0;
+      margin: 0;
     }
     .hero::before { display: none; }
-    .hero-img { max-width: 240pt; margin: 0 auto; display: block; }
-    .toc-section { page-break-after: always; }
-    .chapter-section { page-break-before: always; padding: 0 0 32pt; }
-    .special-section { page-break-before: always; }
-    .chapter-img { max-height: 260pt; width: 100%; object-fit: cover; }
-    .chapter-label { color: var(--gold); font-size: 8pt; letter-spacing: .4em; margin-bottom: 8pt; }
-    .chapter-title { font-size: 24pt; margin-bottom: 24pt; color: #0a0a08; }
-    .lead { font-size: 12pt; font-style: italic; color: #555550; margin-bottom: 16pt; }
-    p { orphans: 3; widows: 3; margin-bottom: 10pt; }
+    .hero-eyebrow { color: #c9a84c; font-size: 9pt; letter-spacing: .5em; margin-bottom: 20pt; font-family: 'Inter', sans-serif; }
+    .hero-title { font-size: 42pt; color: #f0ece0 !important; line-height: 1.1; margin-bottom: 12pt; }
+    .hero-title em { color: #c9a84c !important; }
+    .hero-subtitle { font-size: 14pt; color: #888880 !important; margin-bottom: 20pt; }
+    .hero-author { color: #c9a84c !important; font-family: 'Inter', sans-serif; font-size: 10pt; letter-spacing: .35em; margin-bottom: 36pt; }
+    .hero-img { width: 220pt; border: 1pt solid rgba(201,168,76,.4); filter: none; }
+    .gold-line { background: #c9a84c !important; width: 60pt; height: 1pt; margin: 28pt auto; }
+
+    /* TOC */
+    .toc-section {
+      page-break-after: always;
+      padding: 60pt 0 40pt;
+      max-width: 100%;
+    }
+    .toc-section h2 { font-size: 9pt; letter-spacing: .4em; color: #8a6b1e; text-align: center; margin-bottom: 32pt; }
+    .toc-list li { border-bottom: .5pt solid #ddd; padding: 8pt 0; display: flex; gap: 12pt; }
+    .toc-num { color: #8a6b1e; font-size: 9pt; min-width: 28pt; font-family: 'Inter', sans-serif; }
+    .toc-list a { color: #1a1a18; text-decoration: none; font-size: 11pt; }
+
+    /* CHAPTERS */
+    .chapter-section {
+      page-break-before: always;
+      padding: 40pt 0 0;
+      max-width: 100%;
+      border-top: none;
+    }
+    .special-section { page-break-before: always; padding: 40pt 0 0; border-top: none; }
+
+    .chapter-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 7.5pt;
+      letter-spacing: .5em;
+      text-transform: uppercase;
+      color: #8a6b1e;
+      margin-bottom: 8pt;
+      display: block;
+    }
+    .chapter-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 26pt;
+      font-weight: 700;
+      color: #0a0a08;
+      line-height: 1.2;
+      margin-bottom: 20pt;
+      letter-spacing: -.01em;
+    }
+
+    /* IMAGES */
+    .chapter-img {
+      width: 100%;
+      max-height: 220pt;
+      object-fit: cover;
+      margin-bottom: 28pt;
+      display: block;
+      filter: none;
+      border: none;
+    }
+
+    /* BODY TEXT */
+    .chapter-body { max-width: 100%; }
+    p { orphans: 3; widows: 3; margin-bottom: 9pt; color: #1a1a18; }
+    .chapter-body p.lead {
+      font-size: 13pt;
+      font-style: italic;
+      color: #3a3a38;
+      margin-bottom: 18pt;
+      line-height: 1.7;
+    }
     h2, h3 { page-break-after: avoid; color: #0a0a08; }
+
+    /* PULL QUOTES */
+    .inline-quote {
+      border-left: 3pt solid #8a6b1e;
+      padding: 12pt 18pt;
+      background: #f7f5f0 !important;
+      margin: 20pt 0;
+      page-break-inside: avoid;
+    }
+    .inline-quote p {
+      font-family: 'Playfair Display', serif;
+      font-size: 14pt;
+      font-style: italic;
+      color: #1a1a18 !important;
+      margin: 0 !important;
+      line-height: 1.5;
+    }
+
+    /* TAKEAWAY BOXES */
     .takeaway-box {
       page-break-inside: avoid;
-      background: #f4f2ec !important;
-      border: 1pt solid rgba(138,107,30,.3) !important;
-      border-left: 3pt solid #8a6b1e !important;
-      padding: 20pt 24pt;
-      margin-top: 20pt;
+      background: #f7f5f0 !important;
+      border: none !important;
+      border-top: 2pt solid #8a6b1e !important;
+      border-bottom: .5pt solid #d4c99a !important;
+      padding: 18pt 22pt;
+      margin-top: 24pt;
     }
-    .takeaway-header { margin-bottom: 12pt; }
     .takeaway-icon { display: none; }
-    .inline-quote {
-      border-left: 2pt solid #8a6b1e;
-      padding: 10pt 16pt;
-      background: #f4f2ec !important;
-      page-break-inside: avoid;
-    }
-    .inline-quote p { font-size: 13pt; font-style: italic; color: #1c1c1a; }
-    .gold-line { background: #8a6b1e !important; }
-    .toc-list a { color: #1c1c1a; }
-    .toc-num { color: #8a6b1e; }
+    .takeaway-label { font-family: 'Inter', sans-serif; font-size: 7pt; letter-spacing: .4em; color: #8a6b1e; margin-bottom: 8pt; }
+    .takeaway-body p { color: #1a1a18; margin-bottom: 7pt; font-size: 10.5pt; }
+    .takeaway-body li { color: #1a1a18; margin-bottom: 5pt; font-size: 10.5pt; }
+    .takeaway-body strong { color: #5a3e0a; }
+    p.takeaway-title { font-size: 13pt; color: #0a0a08 !important; margin-bottom: 12pt; }
+
     a { color: inherit; text-decoration: none; }
-    .chapter-body { max-width: 100%; }
   }
 </style>
 </head>
