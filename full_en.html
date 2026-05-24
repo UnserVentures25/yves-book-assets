@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>From Model to Entrepreneur — Yves-Len Unser</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0a0a;--bg2:#111;--bg3:#161616;--gold:#c9a84c;--gold-light:#e8c96a;--gold-dim:rgba(201,168,76,.15);--text:#d4d0c8;--text-bright:#f0ece0;--text-muted:#888880;--border:rgba(201,168,76,.25)}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-weight:300;font-size:17px;line-height:1.85;-webkit-font-smoothing:antialiased}
+@media screen{#footer{display:none!important}} @media print{
+  .no-print{display:none!important}
+  nav,footer,.print-btn{display:none!important}
+  body{background:#fff;color:#111;font-size:11pt;line-height:1.7}
+  .chapter-body p,.special-section .chapter-body p{color:#222}
+  .chapter-title,.hero-title,h2{color:#111}
+  .takeaway-box{border-color:#bbb;background:#f5f5f5;break-inside:avoid}
+  .inline-quote{border-color:#999;background:#eee}
+  .inline-quote p{color:#111!important}
+  .chapter-section,.special-section{border-top:1pt solid #ccc;padding:24pt 0}
+  .hero{min-height:auto;padding:20pt 0 10pt;background:none}
+  .hero-img{max-width:300pt}
+  .chapter-img{max-height:300pt}
+  .takeaway-body p,.takeaway-body li{color:#333}
+  .toc-list a{color:#111}
+}
+.print-btn{position:fixed;bottom:32px;right:32px;z-index:999;background:var(--gold);color:#0a0a0a;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;padding:14px 24px}
+.print-btn:hover{background:var(--gold-light)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:18px 40px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Playfair Display',serif;font-size:18px;color:var(--gold);letter-spacing:.1em}
+.nav-sub{font-size:11px;color:var(--text-muted);letter-spacing:.2em;text-transform:uppercase}
+.hero{min-height:100vh;background:linear-gradient(180deg,#0a0a0a 0%,#0f0f0f 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 40px 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(201,168,76,.06) 0%,transparent 70%);pointer-events:none}
+.hero-eyebrow{font-size:11px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:32px}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(52px,8vw,96px);font-weight:700;line-height:1.05;color:var(--text-bright);margin-bottom:20px;letter-spacing:-.02em}
+.hero-title em{font-style:italic;color:var(--gold)}
+.hero-subtitle{font-family:'Playfair Display',serif;font-size:clamp(18px,2.5vw,26px);font-style:italic;color:var(--text-muted);margin-bottom:48px;font-weight:400}
+.hero-author{font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:64px}
+.hero-img{width:min(480px,90vw);border:1px solid var(--border);filter:grayscale(20%) contrast(1.05)}
+.gold-line{width:80px;height:1px;background:var(--gold);margin:40px auto}
+.toc-section{max-width:760px;margin:0 auto;padding:80px 40px}
+.toc-section h2{font-family:'Playfair Display',serif;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:40px;text-align:center}
+.toc-list{list-style:none}
+.toc-list li{border-bottom:1px solid rgba(201,168,76,.1);padding:14px 0;display:flex;align-items:baseline;gap:16px}
+.toc-num{font-size:11px;color:var(--gold);letter-spacing:.1em;min-width:36px}
+.toc-list a{color:var(--text);text-decoration:none;font-size:15px;transition:color .2s}
+.toc-list a:hover{color:var(--gold-light)}
+.chapter-section{max-width:860px;margin:0 auto;padding:80px 40px;border-top:1px solid rgba(201,168,76,.08)}
+.chapter-label{font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.chapter-title{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,52px);font-weight:700;line-height:1.15;color:var(--text-bright);margin-bottom:48px;letter-spacing:-.01em}
+.chapter-img{width:100%;max-height:520px;object-fit:cover;filter:grayscale(30%) contrast(1.08) brightness(.85);border:1px solid var(--border);margin-bottom:56px;display:block}
+.chapter-img.portrait{max-height:680px;object-fit:cover;object-position:top}
+.chapter-body p{margin-bottom:28px;color:var(--text)}
+.chapter-body p.lead{font-family:'Playfair Display',serif;font-size:clamp(20px,2.5vw,26px);font-style:italic;color:var(--text-bright);line-height:1.6;margin-bottom:40px}
+.chapter-body strong{color:var(--text-bright);font-weight:500}
+.chapter-body em{color:var(--gold-light);font-style:italic}
+.inline-quote{border-left:3px solid var(--gold);padding:20px 28px;margin:40px 0;background:var(--gold-dim)}
+.inline-quote p{font-family:'Playfair Display',serif;font-size:22px;font-style:italic;color:var(--text-bright)!important;margin:0!important;line-height:1.5}
+.inline-quote cite{display:block;margin-top:12px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.takeaway-box{background:var(--bg3);border:1px solid var(--border);border-top:3px solid var(--gold);padding:44px 48px;margin-top:64px}
+.takeaway-header{display:flex;align-items:center;gap:16px;margin-bottom:32px}
+.takeaway-icon{width:40px;height:40px;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:18px;flex-shrink:0}
+.takeaway-label{font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold)}
+.takeaway-title{font-family:'Playfair Display',serif;font-size:22px;color:var(--text-bright);margin-bottom:24px}
+.takeaway-body p{color:var(--text);margin-bottom:20px}
+.takeaway-body ul{padding-left:20px}
+.takeaway-body li{margin-bottom:12px;color:var(--text)}
+.takeaway-body li::marker{color:var(--gold)}
+.takeaway-body strong{color:var(--gold-light);font-weight:500}
+.special-section{max-width:760px;margin:0 auto;padding:80px 40px;border-top:1px solid rgba(201,168,76,.08)}
+.special-section .section-label{font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;text-align:center}
+.special-section h2{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,44px);font-weight:700;color:var(--text-bright);margin-bottom:48px;text-align:center}
+footer{text-align:center;padding:80px 40px;border-top:1px solid var(--border);margin-top:80px}
+footer .footer-logo{font-family:'Playfair Display',serif;font-size:28px;color:var(--gold);margin-bottom:16px}
+footer p{font-size:13px;color:var(--text-muted);line-height:2}
+.impressum-section{max-width:600px;margin:0 auto;padding:40px 40px 20px;border-top:1px solid var(--border)}
+.impressum-section h3{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.impressum-section p{font-size:13px;color:var(--text-muted);line-height:1.8}
+.divider{width:60px;height:1px;background:var(--gold);margin:56px auto}
+@media(max-width:640px){nav{padding:16px 20px}.hero{padding:100px 20px 60px}.chapter-section,.special-section,.toc-section{padding:60px 20px}.takeaway-box{padding:32px 24px}}
+.pdf-btn{position:fixed;bottom:32px;right:32px;padding:14px 28px;background:var(--gold);color:#0a0a0a;font-family:'Inter',sans-serif;font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;border:none;z-index:999;box-shadow:0 4px 32px rgba(201,168,76,.45);transition:background .2s}
+.pdf-btn:hover{background:var(--gold-light)}
+@media(max-width:640px){.pdf-btn{bottom:20px;right:20px;padding:12px 20px}}
+@media screen{#footer{display:none!important}} @media print{
+  @page{margin:2.4cm 2cm}
+  :root{--bg:#ffffff;--bg2:#fafaf8;--bg3:#f4f2ec;--text:#1c1c1a;--text-bright:#0a0a08;--text-muted:#555550;--gold:#8a6b1e;--gold-light:#a07f2a;--gold-dim:rgba(138,107,30,.1);--border:rgba(138,107,30,.25)}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  body{font-size:11pt;line-height:1.75;background:#fff;color:#1c1c1a}
+  .pdf-btn,nav,footer{display:none!important}
+  .hero{min-height:auto;page-break-after:always;padding:80pt 60pt 60pt;background:#fafaf8!important}
+  .hero::before{display:none}
+  .hero-img{max-width:240pt;margin:0 auto;display:block}
+  .toc-section{page-break-after:always}
+  .chapter-section{page-break-before:always;padding:0 0 32pt}
+  .special-section{page-break-before:always}
+  .chapter-img{max-height:260pt;width:100%;object-fit:cover}
+  .chapter-label{color:var(--gold);font-size:8pt;letter-spacing:.4em;margin-bottom:8pt}
+  .chapter-title{font-size:24pt;margin-bottom:24pt;color:#0a0a08}
+  .lead{font-size:12pt;font-style:italic;color:#555550;margin-bottom:16pt}
+  p{orphans:3;widows:3;margin-bottom:10pt}
+  h2,h3{page-break-after:avoid;color:#0a0a08}
+  .takeaway-box{page-break-inside:avoid;background:#f4f2ec!important;border:1pt solid rgba(138,107,30,.3)!important;border-left:3pt solid #8a6b1e!important;padding:20pt 24pt;margin-top:20pt}
+  .takeaway-icon{display:none}
+  .inline-quote{border-left:2pt solid #8a6b1e;padding:10pt 16pt;background:#f4f2ec!important;page-break-inside:avoid}
+  .inline-quote p{font-size:13pt;font-style:italic;color:#1c1c1a}
+  .gold-line{background:#8a6b1e!important}
+  .toc-list a{color:#1c1c1a}
+  .toc-num{color:#8a6b1e}
+  a{color:inherit;text-decoration:none}
+}
+</style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">⬇ Save as PDF</button>
+
+<nav class="no-print">
+  <div>
+    <div class="nav-logo">Yves-Len Unser</div>
+    <div class="nav-sub">From Model to Entrepreneur</div>
+  </div>
+  <div style="font-size:12px;color:var(--text-muted)">yvesunser.de</div>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">A true story</div>
+  <h1 class="hero-title">From <em>Model</em><br>to Entrepreneur</h1>
+  <p class="hero-subtitle">The truth behind success, failure and new beginnings</p>
+  <div class="hero-author">Yves-Len Unser</div>
+  <img class="hero-img" src="https://raw.githubusercontent.com/UnserVentures25/yves-book-assets/main/cover_portrait.jpg" alt="Yves-Len Unser">
+  <div class="gold-line"></div>
+</section>
+
+<section class="toc-section">
+  <h2>Contents</h2>
+  <ul class="toc-list">
+    <li><span class="toc-num">—</span><a href="#foreword">Foreword</a></li>
+    <li><span class="toc-num">01</span><a href="#ch1">The Boy Who Was Different</a></li>
+    <li><span class="toc-num">02</span><a href="#ch2">Pushing Limits: The Military</a></li>
+    <li><span class="toc-num">03</span><a href="#ch3">From Mercedes to Model: The First Rise</a></li>
+    <li><span class="toc-num">04</span><a href="#ch4">Istanbul: Alone on Foreign Ground</a></li>
+    <li><span class="toc-num">05</span><a href="#ch5">Parties, Drugs and the Illusion of Control</a></li>
+    <li><span class="toc-num">06</span><a href="#ch6">Women, Love and the Ego</a></li>
+    <li><span class="toc-num">07</span><a href="#ch7">Los Angeles: The Villa, The Fraud, The Pitbull Nights</a></li>
+    <li><span class="toc-num">08</span><a href="#ch8">The Woman Who Changed Everything</a></li>
+    <li><span class="toc-num">09</span><a href="#ch9">The Entrepreneur: 1.1 Million All In</a></li>
+    <li><span class="toc-num">10</span><a href="#ch10">The Crash: Losing Everything</a></li>
+    <li><span class="toc-num">11</span><a href="#ch11">The Mole: When You Think You Know People</a></li>
+    <li><span class="toc-num">12</span><a href="#ch12">Mister Universe: Serbia in Los Angeles</a></li>
+    <li><span class="toc-num">13</span><a href="#ch13">Plant Medicine: The Inner Journey</a></li>
+    <li><span class="toc-num">14</span><a href="#ch14">Be Like Water: The Philosophy</a></li>
+    <li><span class="toc-num">15</span><a href="#ch15">Coaching: What I Really Do</a></li>
+    <li><span class="toc-num">16</span><a href="#ch16">Being a Father: The Only Thing That Truly Matters</a></li>
+    <li><span class="toc-num">17</span><a href="#ch17">Lessons: What I Really Learned</a></li>
+    <li><span class="toc-num">—</span><a href="#afterword">Afterword</a></li>
+  </ul>
+</section>
+
+<!-- FOREWORD -->
+<section class="special-section" id="foreword">
+  <div class="section-label">Foreword</div>
+  <h2>Before You Start Reading</h2>
+  <div class="chapter-body">
+    <p class="lead">Most people today only see the pictures. The travel. The luxury. The fashion weeks. The reach. The muscles. The titles. The success.</p>
+    <p>But hardly anyone knows the story behind it.</p>
+    <p>Hardly anyone knows how often I was completely on the floor. How often I made decisions that could have destroyed my entire life. How often I lay awake at night not knowing where my path was even leading.</p>
+    <p>This book is not a perfect success story. It is the truth.</p>
+    <p>The truth about a boy who never quite fit in. Who always felt different. Who wanted to prove himself. Who fell. And who got back up every single time.</p>
+    <p>I was a paratrooper. I walked runways in Los Angeles and New York. I lost my driver's license for four years. I invested 1.1 million euros in a startup — without a single investor. I was a Mister Universe candidate for Serbia. I filed for insolvency. I lost everything. And I rebuilt everything.</p>
+    <p>I slept in luxury villas — and shortly after in a hotel bed next to three strange pitbulls that pissed on my bed every night.</p>
+    <p>I made stupid mistakes. Some very stupid mistakes.</p>
+    <p>But exactly those mistakes made me the person I am today.</p>
+    <div class="inline-quote">
+      <p>This book isn't meant to show you that I'm perfect. It's meant to show you that change is possible — no matter how often you fail, no matter how lost you feel right now, no matter how many people don't believe in you.</p>
+    </div>
+    <p>Because sometimes your new life begins exactly where your old one completely falls apart.</p>
+    <p>And one person was always by my side — through every crash, through every night, through every version of me she could never have imagined. Without her, this book would not be truth. It would only be a story.</p>
+    <div class="divider"></div>
+    <p style="text-align:right;font-style:italic;color:var(--text-muted)">— Yves-Len Unser</p>
+  </div>
+</section>
+
+<!-- CH1 -->
+<section class="chapter-section" id="ch1">
+  <div class="chapter-label">Chapter 01</div>
+  <h2 class="chapter-title">The Boy Who Was Different</h2>
+  <img class="chapter-img" src="https://raw.githubusercontent.com/UnserVentures25/yves-book-assets/main/child_bike_old.jpg" alt="">
+  <div class="chapter-body">
+    <p class="lead">I was always the kid who never quite fit in. Not because I was introverted or shy — quite the opposite. I was loud, present, always needing stimulation and action.</p>
+    <p>But somehow I was always one step to the side of everyone else. A little too much. A little too different. Too intense for rooms that preferred silence. Too real for a world that rewarded conformity.</p>
+    <p>My parents raised us well. Healthy food, lots of travel, experiences instead of gifts. As a child I had no understanding for this. The others had Gameboys. New sneakers. Cool clothes. I had brown apples from the garden and parents who told me that the memories were worth more. I hated that then. Today I'm grateful for it.</p>
+    <p>I remember the day at carnival. The whole class had agreed to come in costume. My father and I had spent hours preparing a leopard costume — complete with makeup, tail, the whole program. I was proud. More than proud. I was convinced I had the best costume in the history of the world.</p>
+    <p>When I arrived at school, I was the only one. One day too early.</p>
+    <p>I stood there — nine or ten years old — in my leopard costume, with makeup on my face, while everyone stared at me. The laughter. The looks. That strange mix of pity and amusement that children know so well and never forget. I ran to the basement and cried until a classmate came down and got me.</p>
+    <p>The rest of the day I sat in class with my little leopard tail. Makeup cried off. Silence.</p>
+    <div class="inline-quote">
+      <p>What I didn't understand then: this moment had nothing to do with the costume. It was the first real lesson of my life about what it feels like to be the only one. To be visible when everyone else prefers to be invisible.</p>
+    </div>
+    <p>Years later, this exact quality would carry me onto runways in Los Angeles and New York. Into castings, boardrooms and TV studios. Onto stages worldwide. But in that school basement, all of that was still very far away.</p>
+    <p>I came back upstairs. I sat in the front row. In full costume, with cried-off makeup, and a silent decision: I will not hide myself. Not for others. Not for comfort. Not for acceptance.</p>
+    <p>That cost me a lot of courage then. But it was the first time I consciously decided: my difference is not a weakness. It is my capital. That decision has never left me since.</p>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header"><div class="takeaway-icon">✦</div><div class="takeaway-label">What I learned from this</div></div>
+    <div class="takeaway-body">
+      <p class="takeaway-title">Your "being different" is not a flaw — it's your capital</p>
+      <p>The moments when you're most ashamed of who you are often become the moments that carry you furthest. The problem is never being different. The problem is stopping to be it.</p>
+      <ul>
+        <li>Who taught you that you're too much? And why are you still listening to that voice?</li>
+        <li>Visibility has a cost. But invisibility costs more — it costs you your life.</li>
+        <li><strong>You don't need to convince everyone. You just need to stop bending yourself.</strong></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CH2 -->
+<section class="chapter-section" id="ch2">
+  <div class="chapter-label">Chapter 02</div>
+  <h2 class="chapter-title">Pushing Limits: The Military</h2>
+  <img class="chapter-img" src="https://raw.githubusercontent.com/UnserVentures25/yves-book-assets/main/gym_sixpack.jpg" alt="">
+  <div class="chapter-body">
+    <p class="lead">Before the modeling story begins, there's a story I rarely tell in this depth. The German military. More specifically: the paratroopers.</p>
+    <p>I had signed up because I'd always been into extreme sports and wanted to test my limits. Sounds simple. It wasn't. The paratrooper training is the toughest in the German Bundeswehr after the combat swimmers. I knew that. I wanted it anyway.</p>
+    <p>The first day started at 4:50 AM. Not wake-up. Not breakfast. Drill. Every day until 10 PM. Three months straight. No weekend that really felt like a weekend. Marching. Shooting. Sleeping. Repeat.</p>
+    <p>The first time I held a weapon — a G36 — I felt something I hadn't known before. Not power. Responsibility. This object could end lives. That was no longer an abstract idea, but a physical reality in my hands.</p>
+    <p>The hardest part didn't come at the shooting range. It came three months later at the recruit inspection. We were announced for 10:30 PM. At 3:30 AM the alarm went off. No lights. Packing in complete darkness. Disoriented. Thrown into military trucks — nine men, ninety minutes through nowhere, two degrees, pouring rain.</p>
+    <p>What followed were three days I will never forget. We sat in the woods with ponchos. Mud. Cold. The fire wouldn't catch in the constant rain. I was assigned to the alarm post — I had to lie in the mud next to the camp with my buddy and stay awake. If I'd fallen asleep, I would have been in serious trouble.</p>
+    <p>The cold crept slowly through the clothing. At some point it stops hurting — because you're too numb to feel anything. I lay there in the mud thinking about my warm bed at home. About warmth. About everything that didn't exist right now.</p>
+    <p>And then something happened. At some point — I can't remember exactly when — I stopped fighting against it. The cold was there. The mud was there. The rain was there. I was there too.</p>
+    <div class="inline-quote">
+      <p>That was my first conscious moment with the idea that would shape me as a coach years later: You can't fight against everything. Sometimes you just have to be.</p>
+      <cite>— Yves-Len Unser</cite>
+    </div>
+    <p>At the end of those three days, a sergeant led us out — supposedly as punishment for something we'd allegedly done. We jogged off. Exhausted. Empty. At the end. And then: campfire. Beer. Food. The "punishment" was a surprise. We got our licenses.</p>
+    <p>I cried in that moment. Not in front of everyone. But I cried. Because I understood: your body can do more than your mind believes. Always. If your mind gives up, your body can still keep going. And if your body gives up — your will can still keep going. This insight saved my life. More than once.</p>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header"><div class="takeaway-icon">✦</div><div class="takeaway-label">What I learned from this</div></div>
+    <div class="takeaway-body">
+      <p class="takeaway-title">Your body knows more than your mind — listen to it</p>
+      <ul>
+        <li><strong>Stress is not your enemy. It's a signal. The question is whether you can read it.</strong></li>
+        <li>When you want to give up: that's not the end. That's the moment right before the breakthrough.</li>
+        <li>Life tests you regularly. Not to break you — but to show you what you carry.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CH3 -->
+<section class="chapter-section" id="ch3">
+  <div class="chapter-label">Chapter 03</div>
+  <h2 class="chapter-title">From Mercedes to Model: The First Rise</h2>
+  <img class="chapter-img" src="https://raw.githubusercontent.com/UnserVentures25/yves-book-assets/main/transformation.jpg" alt="">
+  <div class="chapter-body">
+    <p class="lead">After the military I landed at Daimler. Good money. Company car. Security. A respected apprenticeship. But the longer I was there, the more I knew: this is not my life.</p>
+    <p>I saw colleagues who had been working in the same halls for twenty years. The same routines. The same lunchtime conversations. The same faces. They didn't look unhappy. But they didn't look alive either.</p>
+    <p>And I thought to myself: I want to look alive in twenty years. So I quit. My parents weren't thrilled. They had every right not to be. Giving up a secure job at Mercedes to become — what exactly? — sounds like a bad decision to most parents. But I had this inner voice that kept getting louder. It didn't tell me what to do. It only said: <em>this isn't it.</em></p>
+    <p>The first steps into modeling were anything but glamorous. First shoot at 17. First agency contract at 19. Maybe one job per year in the beginning. I invested money in photographers I barely had. Didn't get enough jobs. Doubted.</p>
+    <p>Then the bet. I weighed 95 kilograms then. Too much for a model. Too much for me. I didn't feel comfortable in my own body. A friend bet me: if you have a six-pack in three weeks, you get 50 euros. 50 euros. That was my motivation.</p>
+    <p>And I did it. Not a gram of fat. Jogged to work every day. Four hours of sports daily. Three weeks. Minus ten kilos. I won the bet. But I won more than 50 euros. I won the first real trust in my own will.</p>
+    <div class="inline-quote">
+      <p>Discipline is not a personality trait. It's a decision. Every day new. Sometimes hourly.</p>
+    </div>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header"><div class="takeaway-icon">✦</div><div class="takeaway-label">What I learned from this</div></div>
+    <div class="takeaway-body">
+      <p class="takeaway-title">Security is the most expensive lie you tell yourself</p>
+      <ul>
+        <li><strong>The inner voice that says "this isn't it" — it doesn't lie.</strong> It just has bad timing.</li>
+        <li>You don't need big motivation for big change. Sometimes you just need 50 euros and a bet.</li>
+        <li>Discipline comes not from character. It comes from a reason bigger than your discomfort.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CH4 -->
+<section class="chapter-section" id="ch4">
+  <div class="chapter-label">Chapter 04</div>
+  <h2 class="chapter-title">Istanbul: Alone on Foreign Ground</h2>
+  <img class="chapter-img" src="https://raw.githubusercontent.com/UnserVentures25/yves-book-assets/main/istanbul_mall.jpg" alt="">
+  <div class="chapter-body">
+    <p class="lead">Sometime in the early 2010s I sat on a plane to Istanbul. No agency waiting for me. No guarantee. No Plan B. Just me, my suitcase and the naive belief that jobs were somehow waiting for me there.</p>
+    <p>The apartment I got was designed for eight models. When I arrived, just before Christmas, almost nobody was there. Only Victor — a Belgian guy, quiet, likeable, who was busy cleaning a shower nobody had cleaned in months. The apartment looked like a crime scene. Moldy bathroom. Greasy kitchen. Eight mattresses in rooms meant for half as many.</p>
+    <p>My first thought: go straight back home. My second thought: what did you pay the flight for?</p>
+    <p>Victor saw my face and said only: "Come on, let's clean this up. Then it'll be fine."</p>
+    <p>We cleaned for the next two hours.</p>
+    <div class="inline-quote">
+      <p>You rarely get the situation you want. You get the situation that's there. The only question is what you do with it.</p>
+    </div>
+    <p>The five months in Istanbul were tough. Daily castings. Sometimes rejections. Sometimes jobs. The money was okay but not great. The Turkish winter was cold in a way you didn't know. The language was foreign. The city was large and indifferent. But I was there. I was doing it. I was learning what it means to stand on your own feet in a foreign country, without a safety net, without family within reach.</p>
+    <p>Istanbul taught me humility. And it taught me to read people quickly — a skill I would urgently need in LA.</p>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header"><div class="takeaway-icon">✦</div><div class="takeaway-label">What I learned from this</div></div>
+    <div class="takeaway-body">
+      <p class="takeaway-title">Discomfort is not a sign you're in the wrong place</p>
+      <ul>
+        <li><strong>We confuse discomfort with mistake.</strong> Discomfort is often the signal that we're growing.</li>
+        <li>Having a Plan B is not realism. It's often self-sabotage. If you have Plan B, you never truly fight for Plan A.</li>
+        <li>Victor cleaned. I helped. Afterwards it was better. Sometimes growth starts with sweeping the floor.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CH5 -->
+<section class="chapter-section" id="ch5">
+  <div class="chapter-label">Chapter 05</div>
+  <h2 class="chapter-title">Parties, Drugs and the Illusion of Control</h2>
+  <img class="chapter-img" src="https://raw.githubusercontent.com/UnserVentures25/yves-book-assets/main/festival_party.jpg" alt="">
+  <div class="chapter-body">
+    <p class="lead">I was never the type to be in clubs every night. But I loved festivals. The energy. The people. The feeling of freedom when thousands of people celebrate together and all the structures of everyday life fall away for a moment.</p>
+    <p>At some point drugs came along. I say this without excuses and without glorification. Not because I wanted to escape. But because I was curious. Because I'd always had the principle: I don't judge something I haven't experienced myself. That's at least what I told myself. The truth is more complicated.</p>
+    <p>Part of it was curiosity. Part of it was group identity. And a small part was perhaps also an attempt to briefly feel something that replaced real fulfillment.</p>
+    <p>I had everything "under control." The water and healthy shakes I brought, the self-discipline I talked myself into. And then came the night that changed everything.</p>
+    <p>I'd taken nothing for months. It was a special evening. Someone had MDMA. I thought: just this one time. Just a little. Just a few minutes' drive home. I felt clear enough. Or I talked myself into it.</p>
+    <p>When I stood in the parking lot in front of my apartment, a police car appeared behind me. Breathalyzer. Negative. Then they shone a light in my eyes. "Have you taken anything?" No. No. Of course no. Urine sample. I couldn't manage it. Blood test at the station.</p>
+    <p>MDMA in the blood. What followed were not weeks, but years. MPU testing. Court proceedings. Fines. Shame. Stress. And four years without a driver's license. Four years in which every simple car trip became a logistical problem. About 14,000 euros invested in testing procedures, psychologists and court costs — for a decision that had taken less than ten minutes.</p>
+    <div class="inline-quote">
+      <p>When the psychologist told me I'd passed, I hugged her. Not because of the license. But because in that moment I knew: you've kept going through something that almost broke you. And you're still here.</p>
+    </div>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header"><div class="takeaway-icon">✦</div><div class="takeaway-label">What I learned from this</div></div>
+    <div class="takeaway-body">
+      <p class="takeaway-title">Control is often the story you tell yourself — not reality</p>
+      <ul>
+        <li><strong>One bad decision of ten minutes can cost four years.</strong> That's math, not morality.</li>
+        <li>The most dangerous thing about the illusion of control is how convincing it is.</li>
+        <li>Shame is a poor teacher. But consequences — those really teach.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CH6 -->
+<section class="chapter-section" id="ch6">
+  <div class="chapter-label">Chapter 06</div>
+  <h2 class="chapter-title">Women, Love and the Ego</h2>
+  <img class="chapter-img" src="https://raw.githubusercontent.com/UnserVentures25/yves-book-assets/main/party_young.jpg" alt="">
+  <div class="chapter-body">
+    <p class="lead">There was a time in my life when I thought attention from women would make me happy. I was young. I trained. I started getting compliments I'd never gotten before.</p>
+    <p>Modeling opened doors that were previously closed. And I used those doors extensively. I told colleagues stories from the weekend on Mondays. I profiled myself with it. I thought it made me interesting. What it really did: it showed how little I understood about real connection.</p>
+    <p>My mother always said: "One day someone will come along and break your heart." "Let her talk," I thought. Then that one woman came. We were together for nearly three and a half years. She showed me what love really means — and at the same time how painful it can be. When it ended, it was brutal. Not because she was bad. But because it was real. The first real time.</p>
+    <p>I understood afterwards for the first time that relationships are not entertainment. Not variety. But responsibility. Trust. Vulnerability. And I understood that I had avoided this vulnerability for years by jumping from one connection to the next.</p>
+    <p>When this relationship ended, I did a modeling job for Trigema. On the third day another model asked: "Want to come to Königssee?" I said yes. We camped at Königssee in constant rain, got completely lost, suddenly stood in front of a huge cliff with no way back — and decided anyway: we go on. I remember standing at that cliff thinking: <em>that's my life right now. No visible path. But I keep going.</em></p>
+    <div class="inline-quote">
+      <p>The next morning my phone rang. A photographer from San Diego. He'd seen my Instagram pictures. He wanted to pay for my flight to LA. I said yes.</p>
+    </div>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header"><div class="takeaway-icon">✦</div><div class="takeaway-label">What I learned from this</div></div>
+    <div class="takeaway-body">
+      <p class="takeaway-title">Loss opens the door you never had the courage to open yourself</p>
+      <ul>
+        <li><strong>Allowing vulnerability is not weakness.</strong> It's the prerequisite for real connection.</li>
+        <li>Heartbreak is not the end of love — it's the beginning of honesty.</li>
+        <li>Sometimes you have to walk into the rain before the phone rings.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CH7 -->
+<section class="chapter-section" id="ch7">
+  <div class="chapter-label">Chapter 07</div>
+  <h2 class="chapter-title">Los Angeles: The Villa, The Fraud, The Pitbull Nights</h2>
+  <img class="chapter-img" src="https://raw.githubusercontent.com/UnserVentures25/yves-book-assets/main/la_fashionweek.jpg" alt="">
+  <div class="chapter-body">
+    <p class="lead">Los Angeles. The city of dreams. Also the city where dreams can hit you so hard you don't know whether to laugh or cry.</p>
+    <p>I flew over, coached the photographer for a few weeks, went to Miami and New York. Then: LA, modeling agencies, castings. And there I met Elijah. He said he'd sign me. I'd get a room in his villa in Beverly Hills. He'd organize the artist visa. I thought: this sounds too good to be true. It was too good to be true.</p>
+    <p>But at first everything fit. The villa was real. I walked in the LA Fashion Week — and then in New York. Both fashion weeks. If you've ever had the feeling of being exactly on the right path — that was that moment for me. I stood on the runway in LA and New York and thought: <em>this is it. This is what I did all of this for.</em></p>
+    <p>Then I flew back to LA. On the plane my phone rang. Elijah. "Call me when you land." I landed. I called. The house in Beverly Hills was sold. Money problems. I should come to the hotel.</p>
+    <p>11 PM. LA. I had no idea where to go. At the hotel: Elijah, another model, two beds, three pitbulls. "Sleep with the dogs, I'll have a new house soon."</p>
+    <p>Next morning: the bed was wet. The dogs had pissed on my bed. I stood at the window, watching the two of them in the car below — rolling the window down to let out the bong smoke — and thought only:</p>
+    <div class="inline-quote">
+      <p>What is happening to my life right now?</p>
+    </div>
+    <p>That went on for a week. Every night the same. Then I started researching. Elijah Adams. DNR list. "Do Not Rent." A childhood photo he'd shown us — I found it online. Next to an obituary. This person had been dead for ten years. Elijah had been using the identity of a deceased person.</p>
+    <p>I quietly packed my things while the two sat in the car. Disappeared. And landed a few days later in a real villa in Woodland Hills — through contacts I'd built in LA. My wife visited me. We slept in that villa and everything was, for one moment, exactly how I'd imagined it. I'd loved LA. And I'd hated LA. I'd seen how thin facades can be. But I'd also seen what's possible when you dare.</p>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header"><div class="takeaway-icon">✦</div><div class="takeaway-label">What I learned from this</div></div>
+    <div class="takeaway-body">
+      <p class="takeaway-title">Spot the facade — and don't build one yourself</p>
+      <ul>
+        <li><strong>If something sounds too good to be true — it usually is.</strong> Trust your gut, not your hope.</li>
+        <li>Network is not who you know. It's who's there for you when the villa is gone.</li>
+        <li>Real relationships prove themselves when the bed is wet and you don't know where to go.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CH8 -->
+<section class="chapter-section" id="ch8">
+  <div class="chapter-label">Chapter 08</div>
+  <h2 class="chapter-title">The Woman Who Changed Everything</h2>
+  <img class="chapter-img" src="https://raw.githubusercontent.com/UnserVentures25/yves-book-assets/main/la_fashionweek_couple.jpg" alt="Yves and his wife in LA">
+  <div class="chapter-body">
+    <p class="lead">Somewhere in all that chaos — between modeling jobs, Istanbul, LA, the license revocation and company foundings — I met her. And since then nothing has been the way it was before.</p>
+    <p>Some people you meet and you know instantly: this is someone who stays. Not because you know it. But because you feel how everything inside you gets quieter when she's in the room.</p>
+    <p>She was different. Not because she was perfect. But because she was real. She saw me — not the version I carried outward, not the body, not the resume, not the Instagram pictures. She saw the guy behind it. The boy from the basement who showed up a day too early in his leopard costume. The man who couldn't sleep at night because he didn't know who he was supposed to be.</p>
+    <p>She was in Vienna. Her life was in Vienna. Friends, family, career, a city she knew like her own skin. And then she decided for me. She gave up Vienna to move with me to Germany. A country that wasn't hers. A city she didn't know. A future that was still unclear. She packed her life into suitcases and followed me to where I was — not because she had to. But because she wanted to. Because she believed in me before I believed in myself.</p>
+    <div class="inline-quote">
+      <p>That was the greatest act of love anyone has ever shown me. Not a gift. Not a compliment. A complete decision for my life — at the cost of her own comfort.</p>
+    </div>
+    <p>I have never forgotten that. And I hope I show her every day — not through words, but through what I do.</p>
+    <p>At the beginning it wasn't easy for her. New city, no friends nearby, a partner who was constantly on the move — for modeling jobs, for castings, for a startup that demanded every cent. I sometimes didn't see how much she was carrying while I raced forward. Today I see it. And it hurts to be honest.</p>
+    <p>Because while I was surrounded by pitbulls in LA, she was home. While I stood on modeling stages, she held the fort. While I built my first business, she built our life. Without fanfare. Without applause. With a strength I only truly learned to appreciate much later.</p>
+    <p>She later told me she was pregnant. I had just returned from "The Mole." Six weeks in Argentina. When I got home, she opened a small box. An ultrasound image. My first words: "You're kidding. For real?" I couldn't take it in. I was building my first software company. I'd just come from a TV shoot. And now this. Everything at once.</p>
+    <p>And she smiled. Because she already knew what this moment meant. Because she had already understood more than I had. Because she — as so often — was one step ahead in what truly mattered. She became not only the mother of my children. She became the anchor that held me when I was fighting against everything and everyone and forgetting what for.</p>
+    <div class="inline-quote">
+      <p>Responsibility changes you. Not because you have to. But because you suddenly know what you're fighting for.</p>
+    </div>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header"><div class="takeaway-icon">✦</div><div class="takeaway-label">What I learned from this</div></div>
+    <div class="takeaway-body">
+      <p class="takeaway-title">The strongest force in life is not ambition — it's the person who stays</p>
+      <ul>
+        <li><strong>Behind every man who truly rose, someone made sacrifices.</strong> See them. Really.</li>
+        <li>Love doesn't show itself in gestures. It shows itself in unpacking your life and moving to another city.</li>
+        <li>Gratitude is not a feeling. It's a daily decision — and a daily action.</li>
+        <li>The woman who holds you in your worst moments deserves to be seen in your best ones.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CH9 -->
+<section class="chapter-section" id="ch9">
+  <div class="chapter-label">Chapter 09</div>
+  <h2 class="chapter-title">The Entrepreneur: 1.1 Million All In</h2>
+  <img class="chapter-img" src="https://raw.githubusercontent.com/UnserVentures25/yves-book-assets/main/speaking_stage.jpg" alt="Yves on stage">
+  <div class="chapter-body">
+    <p class="lead">2020. First daughter born. Same year the software company founded. At the same time. No investor. No external funding. Just me — and the unshakeable belief that the product could change the world.</p>
+    <p>Over four years I invested a total of over 1.1 million euros. Every income from modeling, from coaching, from everything flowed in. Every cent I'd ever earned went into this vision. There was no safety line. There was only forward.</p>
+    <p>I slept little. I was present — but also constantly absent. Physically I was sometimes there. Mentally I was always at the business. My wife saw that. She said little. But I saw it in her eyes — the question of whether I was really still there. Really.</p>
+    <p>2022 — second daughter born. A father again. In the middle of the hardest startup year. I remember nights where at 3 AM I was preparing investor meetings, reviewing code, reworking pitch decks — and then went into my daughter's room and just looked at her.</p>
+    <div class="inline-quote">
+      <p>She once asked me: "Would you do it again?" I thought for a long time. And then I said: "Yes. But this time I'd ask you earlier whether it's okay for you."</p>
+    </div>
+    <p>The product grew. The team grew. The vision was real. We had users. We had momentum. I truly believed we had it. That belief wasn't naive — it was the result of four years of hard work. It was earned. And then came 2024.</p>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header"><div class="takeaway-icon">✦</div><div class="takeaway-label">What I learned from this</div></div>
+    <div class="takeaway-body">
+      <p class="takeaway-title">Belief alone isn't enough — presence is the second half of success</p>
+      <ul>
+        <li><strong>Your family also invests. Just not in money.</strong> In patience, sacrifice, silence. Don't forget that.</li>
+        <li>Losing 1.1 million euros is painful. But losing a partner's trust is worse. Guard both.</li>
+        <li>Who builds without external investor has full control — and full risk. Being able to carry both truths simultaneously is maturity.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CH10 -->
+<section class="chapter-section" id="ch10">
+  <div class="chapter-label">Chapter 10</div>
+  <h2 class="chapter-title">The Crash: Losing Everything</h2>
+  <img class="chapter-img" src="https://raw.githubusercontent.com/UnserVentures25/yves-book-assets/main/modeling_3.jpg" alt="">
+  <div class="chapter-body">
+    <p class="lead">There are moments in life you can't talk about for a long time. Not because you're ashamed. But because the words for them don't exist yet. 2024 was such a moment for me.</p>
+    <p>The buyer had agreed. Everything was discussed. The deal was supposed to save — or at least carry on — my business. He didn't keep his promise. What followed was insolvency. 1.1 million euros. Four years of my life. The passion project I had sacrificed sleep, vacations, sometimes even real presence for. Gone.</p>
+    <p>I remember the day it became official. I sat in an empty office. No employees anymore. No team. Just me and the silence. And I didn't even cry. I was too empty for that.</p>
+    <p>Then I thought of her. Of my wife. Of what she had carried in those four years — the nights with two small children when I was at the office. The friends' questions she answered while I reworked pitch decks. The quiet moments when she looked at me without saying what she thought. Now she would know. Now I would have to tell her.</p>
+    <p>That was almost harder than everything else.</p>
+    <p>I drove home. Opened the door. My daughter came running toward me. She knew nothing about it. For her I was just Papa coming home. I picked her up. Held her. And in that moment I decided something. Not loudly. Not dramatically. Just like that.</p>
+    <div class="inline-quote">
+      <p>This is not my ending. This is my material.</p>
+      <cite>— Yves-Len Unser, 2024</cite>
+    </div>
+    <p>And then I talked with my wife. She didn't cry immediately. She looked at me. Long. And then she said: "Then we build again. But this time together." That sentence. That one sentence. It was worth more than everything I had built in four years. Because it showed me: I hadn't lost everything. I still had what mattered most.</p>
+    <p>Failure doesn't make you a failure. Failure shows you what truly matters. Family. Soul. Truth. Everything else is a bonus.</p>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header"><div class="takeaway-icon">✦</div><div class="takeaway-label">What I learned from this</div></div>
+    <div class="takeaway-body">
+      <p class="takeaway-title">The crash is not your ending — it's your raw material</p>
+      <ul>
+        <li><strong>You never lose everything. You lose what you built. What you are, remains.</strong></li>
+        <li>The person who stays when everything is gone — that person is your life. Treat them accordingly.</li>
+        <li>"Then we build again. But this time together." — Remember this sentence. That's the sentence you want to have earned.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CH11 -->
+<section class="chapter-section" id="ch11">
+  <div class="chapter-label">Chapter 11</div>
+  <h2 class="chapter-title">The Mole: When You Think You Know People</h2>
+  <img class="chapter-img" src="https://raw.githubusercontent.com/UnserVentures25/yves-book-assets/main/the_mole.jpg" alt="">
+  <div class="chapter-body">
+    <p class="lead">In the middle of all this came "The Mole." SAT.1. Prime time. Argentina. Six weeks. Ten contestants. One of them a mole, sabotaging from within.</p>
+    <p>I never thought I'd make it to the final. But I made it to the final. Martin and I. Both had answered 19 out of 20 questions correctly. He was five seconds faster. Five seconds. That's less than the time it takes me to read this sentence.</p>
+    <p>I lost "The Mole" by five seconds. I sat on that stage in Argentina trying not to show what I felt. Six weeks away from home. From my wife. Six weeks in which she was alone at home, holding the fort — again the quiet constant, while I played the adventurer somewhere.</p>
+    <p>But here's the thing. My wife had told me at departure: "It's not about winning. It's about knowing what you can do." She was right. She's so often right.</p>
+    <div class="inline-quote">
+      <p>Life is not justice. It's a resource. What you do with it, you decide.</p>
+    </div>
+    <p>In that moment I thought about Mister Germany, where I came fourth. About all the castings I wasn't taken for. About all the moments where it just barely didn't work out. And I understood: just barely losing is also an art. Because to just barely lose, you first have to have gotten there.</p>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header"><div class="takeaway-icon">✦</div><div class="takeaway-label">What I learned from this</div></div>
+    <div class="takeaway-body">
+      <p class="takeaway-title">Second place doesn't mean lost — it means almost the best</p>
+      <ul>
+        <li><strong>Five seconds decide nothing about your worth.</strong> They only decide who was faster that day.</li>
+        <li>If you stand in the final, you've already won — against everyone who never dared to enter.</li>
+        <li>The people you barely lose to — those are your best teachers. Study them.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CH12 -->
+<section class="chapter-section" id="ch12">
+  <div class="chapter-label">Chapter 12</div>
+  <h2 class="chapter-title">Mister Universe: Serbia in Los Angeles</h2>
+  <img class="chapter-img" src="https://raw.githubusercontent.com/UnserVentures25/yves-book-assets/main/koenigssee.jpg" alt="">
+  <div class="chapter-body">
+    <p class="lead">2025. I decided to represent Serbia at Mister Universe. For many this might sound like a footnote. For me it's a statement.</p>
+    <p>I carry German blood and Serbian soul. Born in Germany, worked, modeled and fought in Germany. But my heart, my temperament, my passion — that comes from my father's blood. This decision is not a rejection. It's an embrace of everything I am.</p>
+    <p>When I told my wife, she was quiet at first. Then she laughed. "You. Of course you." Not because she didn't understand what it meant — more preparation, more absence, more focus on something outside. But because she knows me. Because she knows I die when I don't fight. And because she decided to love that.</p>
+    <div class="inline-quote">
+      <p>At the world final in Los Angeles I won't just be trying to win a title. I want to prove that a man who lost everything can come back. Stronger. Clearer. With more focus than ever before.</p>
+    </div>
+    <p>Mister Universe is not a beauty competition for me. It's the last chapter of my first life — and the first chapter of my second. And I know that someone at home falls asleep and waits for me. That's not pressure. That's my greatest strength.</p>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header"><div class="takeaway-icon">✦</div><div class="takeaway-label">What I learned from this</div></div>
+    <div class="takeaway-body">
+      <p class="takeaway-title">Identity is not a choice between two worlds — it's the integration of all worlds</p>
+      <ul>
+        <li><strong>Serbia or Germany? No. Both. Always both.</strong> Strength lies in integration, not in the choice.</li>
+        <li>A comeback is only possible because there was a crash. Nobody applauds someone who never fell.</li>
+        <li>Those who tell you you're fighting for superficialities — they don't understand what stages mean. For some, stages are the loudest proof that they're still here.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CH13 -->
+<section class="chapter-section" id="ch13">
+  <div class="chapter-label">Chapter 13</div>
+  <h2 class="chapter-title">Plant Medicine: The Inner Journey</h2>
+  <img class="chapter-img" src="https://raw.githubusercontent.com/UnserVentures25/yves-book-assets/main/nature_hike.jpg" alt="">
+  <div class="chapter-body">
+    <p class="lead">There are experiences people rarely talk about publicly, especially in Germany. I talk about them. Not to advertise. But because these experiences are a decisive part of my transformation.</p>
+    <p>Plant medicine. Ayahuasca. Silent monastery. I had reached a point where normal reflection was no longer enough. Where therapy kept me in my head but didn't let me go deep. Where I knew there was a door somewhere — but I didn't know how to open it.</p>
+    <p>What Ayahuasca did to me cannot be described in a paragraph. There are walls inside us we can't see while we're caught in everyday life. Structures made of old wounds, old beliefs, old fear patterns. In a single night I understood more about myself than in ten years.</p>
+    <p>Not because Ayahuasca is a shortcut. But because there is no shortcut — and it's still possible to see things that remain hidden in normal consciousness. In that night I saw my own role as a father. As a man. As a human being.</p>
+    <p>The silent monastery was a different experiment. Seven days. No phone. No music. No conversations. Just you. Just the moment. Just the silence.</p>
+    <div class="inline-quote">
+      <p>In the silence come all the thoughts you've been drowning out all day with noise and distraction. But right there — in that silence — I heard for the first time what I truly want. Not what others want from me. What I really want.</p>
+    </div>
+    <p>Family. Depth. Meaning. Visibility. But not to get recognition — to serve others. This clarity was the most valuable gift I've ever given myself.</p>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header"><div class="takeaway-icon">✦</div><div class="takeaway-label">What I learned from this</div></div>
+    <div class="takeaway-body">
+      <p class="takeaway-title">Silence is the most courageous journey you can ever take</p>
+      <ul>
+        <li><strong>The most courageous trip is not outward. It's inward.</strong></li>
+        <li>What you can't handle in silence controls you in the noise. Get to know it.</li>
+        <li>Transformation needs no certificates. It needs honesty. The hardest currency there is.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CH14 -->
+<section class="chapter-section" id="ch14">
+  <div class="chapter-label">Chapter 14</div>
+  <h2 class="chapter-title">Be Like Water: The Philosophy</h2>
+  <img class="chapter-img portrait" src="https://raw.githubusercontent.com/UnserVentures25/yves-book-assets/main/modeling_4.jpg" alt="">
+  <div class="chapter-body">
+    <p class="lead">Bruce Lee said: "Be formless, shapeless — like water." I read this sentence for years without truly understanding it. Until I lived it.</p>
+    <p>After the insolvency, after the crash, after everything — I stood before a decision that most people know but rarely name: Do I keep fighting? Or do I let go?</p>
+    <p>And the answer I found was neither. The answer was: I learn to distinguish when I need what. Water flows around every stone. It always finds a way. But give water enough energy, it breaks through rock. That's the core of everything I pass on as a coach today.</p>
+    <p>Not "fight harder." Not "never give up." Those are slogans. The real question is: <strong>when do you fight? And when do you let go?</strong></p>
+    <div class="inline-quote">
+      <p>Through moments in the mud of the military. Through nights in a foreign city without a license. Through the day you sign the insolvency papers. Through the wife who says: "Then we build again." Through the daughters who run toward you and don't know you just lost everything.</p>
+    </div>
+    <p>I've been through all of this. And that's exactly why I can talk about it today. Not because I'm smarter than others. But because I've been through more fire — and learned not to become ash, but steel. Being like water doesn't mean being formless. It means taking the shape the moment requires — while always remaining yourself.</p>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header"><div class="takeaway-icon">✦</div><div class="takeaway-label">What I learned from this</div></div>
+    <div class="takeaway-body">
+      <p class="takeaway-title">Adaptation is not defeat — it is intelligence</p>
+      <ul>
+        <li><strong>The greatest fighters I know are not those who never yielded.</strong> They're the ones who knew when yielding was strength.</li>
+        <li>Stubbornness without flexibility is stubbornness. Flexibility without stubbornness is irrelevance. The art lies between.</li>
+        <li>Ask yourself daily: Am I fighting because I must — or because my ego demands it?</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CH15 -->
+<section class="chapter-section" id="ch15">
+  <div class="chapter-label">Chapter 15</div>
+  <h2 class="chapter-title">Coaching: What I Really Do</h2>
+  <img class="chapter-img" src="https://raw.githubusercontent.com/UnserVentures25/yves-book-assets/main/coaching_dumbbells.jpg" alt="Yves coaching">
+  <div class="chapter-body">
+    <p class="lead">With fitmityves.de I generated over 450,000 euros in coaching revenue. Not through hype. Not through big promises. But through real work with real people.</p>
+    <p>But over time I noticed: what I was offering didn't match what I really had. I had a holistic offering for a broad target group — mostly women, holistic health coaching. My real core was different.</p>
+    <p>I help men who walk into a room — and aren't noticed. Not because they're ugly or poor or unsuccessful. But because they haven't seen themselves. Because inside they're still the boy who showed up too early in his carnival costume. Because they've never learned when to fight and when to flow. Because they treat body, mind, soul and timing as four separate things — instead of one unit.</p>
+    <p><strong>THE RISER</strong> is the name for what I do. The <strong>M.O.D.E.L.³ Method</strong> is the tool for it:</p>
+    <div style="background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.25);padding:32px 40px;margin:40px 0">
+      <p style="font-family:'Playfair Display',serif;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:24px">The M.O.D.E.L.³ Method</p>
+      <p style="margin-bottom:16px"><strong style="color:var(--gold-light)">M — Mind:</strong> Clarity, identity, inner alignment</p>
+      <p style="margin-bottom:16px"><strong style="color:var(--gold-light)">O — Outward:</strong> Body, presence, posture, appearance</p>
+      <p style="margin-bottom:16px"><strong style="color:var(--gold-light)">D — Depth:</strong> Soul, spirituality, inner truth</p>
+      <p style="margin-bottom:16px"><strong style="color:var(--gold-light)">E — Energy:</strong> Flow, timing — knowing when to fight, when to let go</p>
+      <p style="margin-bottom:0"><strong style="color:var(--gold-light)">L — Legacy:</strong> What for, for whom, what remains</p>
+    </div>
+    <p>90 days. Four levels. One transformation. Not becoming a model. Modeling your life.</p>
+    <div class="inline-quote">
+      <p>A model wears clothes for others. Someone who models their life wears their life for themselves.</p>
+    </div>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header"><div class="takeaway-icon">✦</div><div class="takeaway-label">What I learned from this</div></div>
+    <div class="takeaway-body">
+      <p class="takeaway-title">Finding your niche means honestly encountering yourself</p>
+      <ul>
+        <li><strong>450,000 euros is not a failure of the old model.</strong> It's proof that you work. Now with more precision.</li>
+        <li>Those who truly need your coaching recognize themselves in your story — not in your offer. Tell your story.</li>
+        <li>Legacy is not created through methods. It's created through people who say: "He showed me who I am."</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CH16 -->
+<section class="chapter-section" id="ch16">
+  <div class="chapter-label">Chapter 16</div>
+  <h2 class="chapter-title">Being a Father: The Only Thing That Truly Matters</h2>
+  <img class="chapter-img" src="https://raw.githubusercontent.com/UnserVentures25/yves-book-assets/main/father_stroller.jpg" alt="Yves with his daughters">
+  <div class="chapter-body">
+    <p class="lead">I've written a lot in this book about crashes, rises, modeling, business and self-discovery. But the most honest thing I can tell you is this:</p>
+    <p>When I go into my daughters' room in the evening and see them sleeping — that's the only moment in which everything else stops existing. No Instagram. No fitness goal. No pitch. No Mister Universe. Just me and these two small human beings I call everything.</p>
+    <p>I was not always a good father. I was in my head, in my business, in my dreams. I was physically present and mentally absent. That still hurts me today. But it also gave me the most important lesson of my life: <strong>success without presence is not fulfillment.</strong></p>
+    <div class="inline-quote">
+      <p>My wife once said to me: "I don't need you to be successful. I need you to be here." That sentence changed me more than any business course.</p>
+    </div>
+    <p>I learn every day to be both: ambitious and present. Fighter and father. Man and human being. That's the most difficult balance I've ever tried to hold. And the only one that truly matters. Because in the end — when everything else is gone, when the titles have faded, when the followers have forgotten who you were — you sit at a table with your children. And they tell their children about you. The question is: what will they say?</p>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header"><div class="takeaway-icon">✦</div><div class="takeaway-label">What I learned from this</div></div>
+    <div class="takeaway-body">
+      <p class="takeaway-title">Presence is the rarest and most valuable resource you can give</p>
+      <ul>
+        <li><strong>"I don't need you to be successful. I need you to be here."</strong> Remember this. For your children. For your partner. For yourself.</li>
+        <li>Ambition and presence don't exclude each other. They need boundaries — clear, loved, consistently kept boundaries.</li>
+        <li>Your children don't remember your achievements. They remember how they felt when you were in the room.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CH17 -->
+<section class="chapter-section" id="ch17">
+  <div class="chapter-label">Chapter 17</div>
+  <h2 class="chapter-title">Lessons: What I Really Learned</h2>
+  <img class="chapter-img" src="https://raw.githubusercontent.com/UnserVentures25/yves-book-assets/main/modeling_4.jpg" alt="">
+  <div class="chapter-body">
+    <p class="lead">No calendar quotes. No generic motivational sayings. What I really learned — from pain, loss, crashes and new beginnings.</p>
+    <p style="font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);margin:40px 0 16px">1. Your biggest mistake is your strongest argument.</p>
+    <p>I lost 1.1 million. I had no driver's license for four years. I was rejected by hundreds of castings. These are not defeats I hide — they're the reasons people trust me. Nobody trusts a trainer who has never lost.</p>
+    <p style="font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);margin:40px 0 16px">2. Discipline is not the goal. Clarity is the goal.</p>
+    <p>When you know why you're doing something, discipline needs no willpower. It comes on its own. The question is not "how do I stay disciplined?" The question is "for exactly what?"</p>
+    <p style="font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);margin:40px 0 16px">3. Pain is a compass, not an enemy.</p>
+    <p>Wherever it hurts, something important is being shown to you. Not about the situation. About you. The pain after the insolvency showed me: I had neglected my family. I had ignored my body. I had emptied my soul for a vision that wasn't mine.</p>
+    <p style="font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);margin:40px 0 16px">4. You can't fight all fronts at once.</p>
+    <p>Too many projects. Too many roles. Too little focus. Water that flows in all directions has no power. Water that flows in one direction breaks rock.</p>
+    <p style="font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);margin:40px 0 16px">5. Family is not a distraction from success. It is the reason for success.</p>
+    <p>I understood this too late. But I understood it. And my wife — who moved from Vienna to Germany, who raised two children while I built startups and shot TV shows, who stayed when everything collapsed and said "then we build again" — she didn't just show me this. She proved it.</p>
+    <p style="font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);margin:40px 0 16px">6. Vulnerability is not weakness.</p>
+    <p>The strongest men I know are also the most vulnerable. Not because they're weak. But because they have the courage to be real.</p>
+    <p style="font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);margin:40px 0 16px">7. Knowing when you are water is your greatest superpower.</p>
+    <p>Not always fighting. Not always yielding. Reading what the moment needs. You can't learn that from books. You can only learn it by living.</p>
+    <div class="inline-quote">
+      <p>Life doesn't test you to break you. It tests you to show you what you carry. You carry more than you know.</p>
+      <cite>— Yves-Len Unser</cite>
+    </div>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header"><div class="takeaway-icon">✦</div><div class="takeaway-label">The conclusion</div></div>
+    <div class="takeaway-body">
+      <p class="takeaway-title">Life begins where your excuses end</p>
+      <p>You've read this book now. You know my story. You know the moments that made me. Now the question is: what do you do with yours?</p>
+      <ul>
+        <li>Which wall in you is waiting to be torn down?</li>
+        <li>Which step do you already know — but aren't taking?</li>
+        <li>Who stands next to you — and do you truly see them?</li>
+        <li><strong>What is your material?</strong></li>
+      </ul>
+      <p style="margin-top:24px;font-style:italic;color:var(--gold-light)">When you're ready to model your life — let's talk.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AFTERWORD -->
+<section class="special-section" id="afterword">
+  <div class="section-label">Afterword</div>
+  <h2>Why I Tell All This</h2>
+  <div class="chapter-body">
+    <img class="chapter-img" src="https://raw.githubusercontent.com/UnserVentures25/yves-book-assets/main/ny_fashionweek.jpg" alt="" style="margin-bottom:48px">
+    <p class="lead">I didn't have to write this book. I could have kept showing only the pictures. The successes. The titles. The fashion weeks.</p>
+    <p>But that would not be honest. And honesty — real, uncomfortable, sometimes embarrassing honesty — is the only thing that truly connects.</p>
+    <p>I write this book for the 25-year-old guy who doesn't know right now where his life is going. For the 35-year-old entrepreneur who stands before the ruins of his project. For every man who has everything on the outside — and is still empty inside.</p>
+    <p>And I write it for my daughters. So that one day they know who their father was. Not the polished Instagram picture. But the real person behind it. Someone who was often wrong. Who often wanted too much. Who fell — and got back up every time.</p>
+    <p>And I write it for my wife. For the woman who came from Vienna to Germany and never looked back. Who raised two children while I built startups and chased dreams. Who stayed when everything collapsed. Who said: "Then we build again. But this time together."</p>
+    <div class="inline-quote">
+      <p>Without you this book would be a story. With you it is the truth.</p>
+    </div>
+    <div class="gold-line"></div>
+    <p style="text-align:center;font-style:italic;color:var(--text-muted);margin-bottom:8px">— Yves-Len Unser</p>
+    <p style="text-align:center;font-size:12px;color:var(--text-muted);letter-spacing:.2em">yvesunser.de/coaching</p>
+    <div class="divider"></div>
+    <p style="text-align:center;font-size:13px;color:var(--text-muted)">
+      <em>FROM MODEL TO ENTREPRENEUR</em><br>
+      Yves-Len Unser<br>
+      © 2026 — All rights reserved<br><br>
+      <em>Part 2 coming: The spiritual journey — Ayahuasca, silent monastery, and what I really found on the path to myself.</em>
+    </p>
+  </div>
+</section>
+
+<section class="impressum-section">
+  <h3>Legal Notice / Impressum</h3>
+  <p>
+    Yves Unser<br>
+    Y-Ventures UG<br>
+    Strütweg 11<br>
+    75334 Conweiler<br><br>
+    © 2026 — All rights reserved<br>
+    yvesunser.de
+  </p>
+</section>
+
+<footer class="no-print">
+  <div class="footer-logo">Yves-Len Unser</div>
+  <p>THE RISER · M.O.D.E.L.³ · Coaching<br>
+  <a href="https://www.yvesunser.de/coaching" style="color:var(--gold);text-decoration:none">yvesunser.de/coaching</a></p>
+</footer>
+
+<button class="pdf-btn" onclick="window.print()">↓ Save as PDF</button>
+
+</body>
+</html>
