@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vom Model zum Unternehmer — Yves-Len Unser</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0a0a;
+    --bg2: #111111;
+    --bg3: #161616;
+    --gold: #c9a84c;
+    --gold-light: #e8c96a;
+    --gold-dim: rgba(201,168,76,0.15);
+    --text: #d4d0c8;
+    --text-bright: #f0ece0;
+    --text-muted: #888880;
+    --border: rgba(201,168,76,0.25);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--gold); letter-spacing: 0.1em; }
+  .nav-sub { font-size: 11px; color: var(--text-muted); letter-spacing: 0.2em; text-transform: uppercase; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 120px 40px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 11px; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 32px;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 700; line-height: 1.05;
+    color: var(--text-bright); margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+  .hero-title em { font-style: italic; color: var(--gold); }
+  .hero-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 2.5vw, 26px);
+    font-style: italic; color: var(--text-muted);
+    margin-bottom: 48px; font-weight: 400;
+  }
+  .hero-author {
+    font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 64px;
+  }
+  .hero-img {
+    width: min(480px, 90vw); border: 1px solid var(--border);
+    filter: grayscale(20%) contrast(1.05);
+  }
+  .gold-line {
+    width: 80px; height: 1px; background: var(--gold);
+    margin: 40px auto;
+  }
+
+  /* TOC */
+  .toc-section {
+    max-width: 760px; margin: 0 auto; padding: 80px 40px;
+  }
+  .toc-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 40px; text-align: center;
+  }
+  .toc-list { list-style: none; }
+  .toc-list li {
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    padding: 14px 0;
+    display: flex; align-items: baseline; gap: 16px;
+  }
+  .toc-num { font-size: 11px; color: var(--gold); letter-spacing: 0.1em; min-width: 36px; }
+  .toc-list a {
+    color: var(--text); text-decoration: none; font-size: 15px;
+    transition: color 0.2s;
+  }
+  .toc-list a:hover { color: var(--gold-light); }
+
+  /* CHAPTERS */
+  .chapter-section {
+    max-width: 860px; margin: 0 auto; padding: 80px 40px;
+    border-top: 1px solid rgba(201,168,76,0.08);
+  }
+  .chapter-label {
+    font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px;
+  }
+  .chapter-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700; line-height: 1.15;
+    color: var(--text-bright); margin-bottom: 48px;
+    letter-spacing: -0.01em;
+  }
+  .chapter-img {
+    width: 100%; max-height: 520px; object-fit: cover;
+    filter: grayscale(30%) contrast(1.08) brightness(0.85);
+    border: 1px solid var(--border);
+    margin-bottom: 56px;
+    display: block;
+  }
+  .chapter-img.portrait {
+    max-height: 680px; object-fit: cover; object-position: top;
+  }
+  .chapter-body p {
+    margin-bottom: 28px; color: var(--text);
+  }
+  .chapter-body p.lead {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 2.5vw, 26px);
+    font-style: italic; color: var(--text-bright);
+    line-height: 1.6; margin-bottom: 40px;
+  }
+  .chapter-body strong { color: var(--text-bright); font-weight: 500; }
+  .chapter-body em { color: var(--gold-light); font-style: italic; }
+  .inline-quote {
+    border-left: 3px solid var(--gold);
+    padding: 20px 28px;
+    margin: 40px 0;
+    background: var(--gold-dim);
+  }
+  .inline-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-style: italic;
+    color: var(--text-bright) !important;
+    margin: 0 !important;
+    line-height: 1.5;
+  }
+  .inline-quote cite {
+    display: block; margin-top: 12px;
+    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* TAKEAWAY */
+  .takeaway-box {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    padding: 44px 48px; margin-top: 64px;
+  }
+  .takeaway-header {
+    display: flex; align-items: center; gap: 16px; margin-bottom: 32px;
+  }
+  .takeaway-icon {
+    width: 40px; height: 40px; border: 1px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); font-size: 18px; flex-shrink: 0;
+  }
+  .takeaway-label {
+    font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .takeaway-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; color: var(--text-bright);
+    margin-bottom: 24px;
+  }
+  .takeaway-body p { color: var(--text); margin-bottom: 20px; }
+  .takeaway-body ul { padding-left: 20px; }
+  .takeaway-body li { margin-bottom: 12px; color: var(--text); }
+  .takeaway-body li::marker { color: var(--gold); }
+  .takeaway-body strong { color: var(--gold-light); font-weight: 500; }
+
+  /* FOREWORD / AFTERWORD */
+  .special-section {
+    max-width: 760px; margin: 0 auto; padding: 80px 40px;
+    border-top: 1px solid rgba(201,168,76,0.08);
+  }
+  .special-section .section-label {
+    font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px; text-align: center;
+  }
+  .special-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 700; color: var(--text-bright);
+    margin-bottom: 48px; text-align: center;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center; padding: 80px 40px;
+    border-top: 1px solid var(--border);
+    margin-top: 80px;
+  }
+  footer .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; color: var(--gold);
+    margin-bottom: 16px;
+  }
+  footer p { font-size: 13px; color: var(--text-muted); line-height: 2; }
+
+  /* DIVIDER */
+  .divider { width: 60px; height: 1px; background: var(--gold); margin: 56px auto; }
+  .divider-full { width: 100%; height: 1px; background: var(--border); margin: 24px 0; }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    nav { padding: 16px 20px; }
+    .hero { padding: 100px 20px 60px; }
+    .chapter-section, .special-section, .toc-section { padding: 60px 20px; }
+    .takeaway-box { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div>
+    <div class="nav-logo">Yves-Len Unser</div>
+    <div class="nav-sub">Vom Model zum Unternehmer</div>
+  </div>
+  <div style="font-size:12px;color:var(--text-muted);">yvesunser.de</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Eine wahre Geschichte</div>
+  <h1 class="hero-title">Vom <em>Model</em><br>zum Unternehmer</h1>
+  <p class="hero-subtitle">Die Wahrheit hinter Erfolg, Abstürzen und Neuanfängen</p>
+  <div class="hero-author">Yves-Len Unser</div>
+  <img class="hero-img" src="https://www.yvesunser.de/coaching/assets/quiz-intro-portrait-SwF3YwKZ.jpg" alt="Yves-Len Unser">
+  <div class="gold-line" style="margin-top:56px;"></div>
+  <p style="font-size:13px;color:var(--text-muted);letter-spacing:0.1em;">Scroll to read</p>
+</section>
+
+<!-- TABLE OF CONTENTS -->
+<section class="toc-section">
+  <h2>Inhalt</h2>
+  <ul class="toc-list">
+    <li><span class="toc-num">—</span><a href="#vorwort">Vorwort</a></li>
+    <li><span class="toc-num">01</span><a href="#kap1">Der Junge, der anders war</a></li>
+    <li><span class="toc-num">02</span><a href="#kap2">Grenzen überschreiten: Die Bundeswehrzeit</a></li>
+    <li><span class="toc-num">03</span><a href="#kap3">Von Mercedes zum Model: Der erste Aufstieg</a></li>
+    <li><span class="toc-num">04</span><a href="#kap4">Istanbul: Allein auf fremdem Terrain</a></li>
+    <li><span class="toc-num">05</span><a href="#kap5">Party, Drogen und die Illusion der Kontrolle</a></li>
+    <li><span class="toc-num">06</span><a href="#kap6">Frauen, Liebe und das Ego</a></li>
+    <li><span class="toc-num">07</span><a href="#kap7">Los Angeles: Villa, Betrug und Pitbull-Nächte</a></li>
+    <li><span class="toc-num">08</span><a href="#kap8">Die Frau, die alles veränderte</a></li>
+    <li><span class="toc-num">09</span><a href="#kap9">Der Unternehmer: 1,1 Millionen auf alles gesetzt</a></li>
+    <li><span class="toc-num">10</span><a href="#kap10">Der Absturz: Alles verloren</a></li>
+    <li><span class="toc-num">11</span><a href="#kap11">The Mole: Wenn du denkst, du kennst Menschen</a></li>
+    <li><span class="toc-num">12</span><a href="#kap12">Mister Universe: Serbien in Los Angeles</a></li>
+    <li><span class="toc-num">13</span><a href="#kap13">Pflanzliche Lehrmeister: Die innere Reise</a></li>
+    <li><span class="toc-num">14</span><a href="#kap14">Wie Wasser sein: Die Philosophie dahinter</a></li>
+    <li><span class="toc-num">15</span><a href="#kap15">Coaching: Was ich wirklich tue</a></li>
+    <li><span class="toc-num">16</span><a href="#kap16">Vater sein: Das Einzige, das wirklich zählt</a></li>
+    <li><span class="toc-num">17</span><a href="#kap17">Erkenntnisse: Was ich wirklich gelernt habe</a></li>
+    <li><span class="toc-num">—</span><a href="#nachwort">Nachwort</a></li>
+  </ul>
+</section>
+
+<!-- VORWORT -->
+<section class="special-section" id="vorwort">
+  <div class="section-label">Vorwort</div>
+  <h2>Bevor du anfängst zu lesen</h2>
+  <div class="chapter-body">
+    <p class="lead">Die meisten Menschen sehen heute nur die Bilder. Sie sehen Reisen. Luxus. Fashion Weeks. Reichweite. Muskeln. Titel. Erfolg.</p>
+    <p>Aber kaum jemand kennt die Geschichte dahinter.</p>
+    <p>Kaum jemand weiß, wie oft ich komplett am Boden lag. Wie oft ich Entscheidungen getroffen habe, die mein ganzes Leben zerstören konnten. Wie oft ich nachts wach lag und nicht wusste, wohin mein Weg überhaupt führen soll.</p>
+    <p>Dieses Buch ist keine perfekte Erfolgsgeschichte. Es ist die Wahrheit.</p>
+    <p>Die Wahrheit über einen Jungen, der nie wirklich irgendwo hineinpasste. Der immer das Gefühl hatte, anders zu sein. Der sich beweisen wollte. Der gefallen ist. Und der trotzdem immer wieder aufgestanden ist.</p>
+    <p>Ich war Fallschirmjäger. Ich stand auf Fashion Weeks in Los Angeles und New York. Ich verlor meinen Führerschein für vier Jahre. Ich investierte 1,1 Millionen Euro in ein Startup — ohne einen einzigen Investor. Ich wurde Mister Universe Kandidat für Serbien. Ich meldete Insolvenz an. Ich verlor alles. Und ich baute alles wieder auf.</p>
+    <p>Ich schlief in Luxusvillen — und kurz danach in einem Hotelbett neben drei fremden Pitbulls, die mir jede Nacht ins Bett pissten.</p>
+    <p>Ich machte dumme Fehler. Teilweise sehr dumme Fehler.</p>
+    <p>Aber genau diese Fehler haben mich zu dem Menschen gemacht, der ich heute bin.</p>
+    <div class="inline-quote">
+      <p>Dieses Buch soll dir nicht zeigen, dass ich perfekt bin. Es soll dir zeigen, dass Veränderung möglich ist — egal wie oft du scheiterst, egal wie verloren du dich gerade fühlst, egal wie viele Menschen nicht an dich glauben.</p>
+    </div>
+    <p>Denn manchmal beginnt dein neues Leben genau dort, wo dein altes komplett auseinanderbricht.</p>
+    <p>Und eine Person war dabei immer an meiner Seite — durch jeden Absturz, durch jede Nacht, durch jede Version von mir, die sie sich eigentlich nicht hätte vorstellen können. Ohne sie wäre dieses Buch keine Wahrheit. Es wäre nur eine Geschichte.</p>
+    <p>Das hier ist beides.</p>
+    <div class="divider"></div>
+    <p style="text-align:right;font-style:italic;color:var(--text-muted);">— Yves-Len Unser</p>
+  </div>
+</section>
+
+<!-- KAPITEL 1 -->
+<section class="chapter-section" id="kap1">
+  <div class="chapter-label">Kapitel 01</div>
+  <h2 class="chapter-title">Der Junge, der anders war</h2>
+  <img class="chapter-img" src="https://www.yvesunser.de/coaching/assets/editorial-2-CVUKxaLo.jpg" alt="Editorial">
+  <div class="chapter-body">
+    <p class="lead">Ich war schon als Kind der Typ, der nie ganz dazugehörte. Nicht weil ich introvertiert oder schüchtern war — ganz im Gegenteil.</p>
+    <p>Ich war laut, präsent, brauchte ständig Stimulation und Action. Aber irgendwie war ich immer einen Schritt neben dem Rest. Ein bisschen zu viel. Ein bisschen zu anders. Zu intensiv für Räume, die Stille bevorzugten. Zu echt für eine Welt, die Anpassung belohnte.</p>
+    <p>Meine Eltern erzogen uns gut. Gesund essen, viel reisen, Erlebnisse statt Geschenke. Als Kind hatte ich dafür kein Verständnis. Die anderen hatten Gameboys. Neue Turnschuhe. Coole Klamotten. Ich hatte braune Äpfel aus dem Garten und Eltern, die mir sagten, dass die Erinnerungen wertvoller sind. In diesem Moment hasste ich das. Heute bin ich dankbar dafür.</p>
+    <p>Ich erinnere mich an den Tag im Fasching.</p>
+    <p>Die ganze Klasse hatte sich verabredet, verkleidet zu kommen. Ich hatte mit meinem Vater stundenlang ein Leopardenkostüm vorbereitet — komplett mit Schminke, Schwanz, dem ganzen Programm. Ich war stolz. Mehr als stolz. Ich war überzeugt, das beste Kostüm aller Zeiten zu haben.</p>
+    <p>Als ich in der Schule ankam, war ich der Einzige. Ein Tag zu früh.</p>
+    <p>Ich stand dort — neun oder zehn Jahre alt — in meinem Leopardenkostüm, mit Schminke im Gesicht, während alle anderen mich anstarrten. Das Lachen. Die Blicke. Diese eigenartige Mischung aus Mitleid und Belustigung, die man als Kind so gut kennt und nie vergisst. Ich rannte in den Keller und heulte, bis eine Mitschülerin runter kam und mich holte.</p>
+    <p>Den Rest des Tages saß ich mit meinem Leopardenschwänzchen im Unterricht. Schminke verweint. Schweigen.</p>
+    <div class="inline-quote">
+      <p>Was ich damals nicht verstand: Dieser Moment hatte nichts mit dem Kostüm zu tun. Es war die erste echte Lektion meines Lebens darüber, wie es sich anfühlt, der Einzige zu sein.</p>
+    </div>
+    <p>Sichtbar zu sein, wenn alle anderen lieber unsichtbar bleiben. Aufzufallen — nicht weil du es wolltest, sondern weil du einfach anders tickst. Jahre später würde mich genau diese Eigenschaft auf Laufstege in Los Angeles und New York tragen. In Castings, Boardrooms und TV-Studios. Auf Bühnen weltweit.</p>
+    <p>Aber in diesem Kellerraum der Grundschule war das noch weit, weit weg.</p>
+    <p>Was mich damals wirklich prägte war nicht der Moment selbst — sondern wie ich damit umging. Ich saß nicht weinend im Keller. Ich kam wieder hoch. Ich setzte mich in die erste Reihe. Mit vollem Kostüm, verweinter Schminke und dem stummen Entschluss, dass mir die Meinung anderer Leute nicht mein Leben bestimmt.</p>
+    <p>Das kostete mich damals sehr viel Kraft. Aber es war das erste Mal in meinem Leben, dass ich bewusst entschied: Ich lasse mich nicht verstecken. Nicht für andere. Nicht für Komfort. Nicht für Akzeptanz.</p>
+    <p>Dieser Entschluss hat mich seitdem nicht mehr losgelassen.</p>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header">
+      <div class="takeaway-icon">✦</div>
+      <div class="takeaway-label">Was ich davon gelernt habe</div>
+    </div>
+    <div class="takeaway-body">
+      <p class="takeaway-title" style="font-family:'Playfair Display',serif;font-size:20px;color:var(--text-bright);margin-bottom:20px;">Dein "Anderssein" ist kein Fehler — es ist dein Kapital</p>
+      <p>Die Momente, in denen du dich am meisten schämst für das, wer du bist, werden oft genau die Momente, die dich am weitesten tragen. Das Problem liegt nie darin, anders zu sein. Das Problem liegt darin, aufzuhören, es zu sein.</p>
+      <p>Frag dich: <strong>Wo versteckst du dich gerade — und warum?</strong></p>
+      <ul>
+        <li>Wer hat dir beigebracht, dass du zu viel bist? Und warum hörst du noch auf diese Stimme?</li>
+        <li>Sichtbarkeit kostet. Aber Unsichtbarkeit kostet mehr — sie kostet dich dein Leben.</li>
+        <li>Du musst nicht alle überzeugen. Du musst nur aufhören, dich selbst zu verbiegen.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- KAPITEL 2 -->
+<section class="chapter-section" id="kap2">
+  <div class="chapter-label">Kapitel 02</div>
+  <h2 class="chapter-title">Grenzen überschreiten: Die Bundeswehrzeit</h2>
+  <img class="chapter-img" src="https://www.yvesunser.de/coaching/assets/yves-before-1-bjo7IGcK.jpg" alt="Yves Unser">
+  <div class="chapter-body">
+    <p class="lead">Bevor es ums Modeln geht, gibt es eine Geschichte, über die ich selten in dieser Tiefe rede. Die Bundeswehr. Genauer gesagt: die Fallschirmjäger.</p>
+    <p>Ich hatte mich dafür eingetragen, weil ich schon immer ein Fan von Extremsportarten war und meine Grenzen testen wollte. Klingt simpel. War es nicht.</p>
+    <p>Die Fallschirmjägerausbildung ist nach den Kampfschwimmern die härteste Ausbildung der Bundeswehr. Ich wusste das. Ich wollte es trotzdem.</p>
+    <p>Der erste Tag begann um 4:50 Uhr. Nicht Wecken. Nicht Frühstück. Drill. Jeden Tag bis 22 Uhr. Drei Monate lang. Kein Wochenende, das sich wirklich nach Wochenende anfühlte. Marschieren. Schießen. Schlafen. Wiederholen.</p>
+    <p>Das erste Mal, als ich eine Waffe in der Hand hielt, eine G36 — spürte ich etwas, das ich bis dahin nicht kannte. Nicht Macht. Sondern Verantwortung. Dieser Gegenstand konnte Leben beenden. Das war keine abstrakte Idee mehr, sondern eine körperliche Realität in meinen Händen.</p>
+    <p>Das Härteste kam nicht beim Schießen. Es kam drei Monate später bei der Rekrutenbesichtigung.</p>
+    <p>Wir wurden nachts um 22:30 Uhr angekündigt. Um 3:30 Uhr morgens heulte der Alarm. Kein Licht. Gepäck packen in kompletter Dunkelheit. Verschlafen. Verwirrt. Wir wurden in Militärtransporter geworfen — neun Mann, eineinhalb Stunden durch die Pampa, zwei Grad, Dauerregen.</p>
+    <p>Was folgte, waren drei Tage, die ich nie vergessen werde.</p>
+    <p>Wir saßen mit Ponchos im Wald. Schlamm. Kälte. Aufgeteilt in Schichten: Wache, Feuer, Patrouille, Schlafen. Das Feuer wollte im Dauerregen nicht brennen.</p>
+    <p>Ich war eingeteilt für den Alarmposten. Das bedeutete: Ich legte mich mit meinem Buddy in den Matsch neben das Lager und durfte nicht einschlafen. Wenn ich eingeschlafen wäre, hätte ich ernsthaft Ärger bekommen.</p>
+    <p>Die Kälte kroch langsam durch die Kleidung. Erst durch die Jacke. Dann durch die Hose. Dann in die Knochen. Irgendwann hört das auf zu schmerzen — weil man zu taub ist, um noch etwas zu spüren. Ich lag dort im Matsch und dachte an mein warmes Bett zuhause. An die Wärme. An alles, was gerade nicht existierte.</p>
+    <p>Und dann passierte etwas.</p>
+    <p>Irgendwann — ich weiß nicht mehr wann genau — hörte ich auf, dagegen anzukämpfen. Die Kälte war da. Der Matsch war da. Der Regen war da. Ich war auch da. Das war mein erster bewusster Moment mit der Idee, die mich Jahre später als Coach formen würde: <strong>Man kann nicht gegen alles ankämpfen. Manchmal muss man einfach sein.</strong></p>
+    <div class="inline-quote">
+      <p>Dein Körper kann mehr als dein Kopf glaubt. Immer. Wenn dein Kopf aufgibt, kann dein Körper noch weiter. Und wenn dein Körper aufgibt — kann dein Wille noch weiter.</p>
+      <cite>— Yves-Len Unser</cite>
+    </div>
+    <p>Am Ende dieser drei Tage führte uns ein Oberfeldwebel raus — als Strafe für irgendetwas, das wir angeblich getan hatten. Wir joggten los. Erschöpft. Leer. Am Ende. Und dann: Lagerfeuer. Bier. Essen. Die "Strafe" war eine Überraschung. Wir bekamen unsere Lizenzen.</p>
+    <p>Ich habe in diesem Moment geweint. Nicht vor allen. Aber ich habe geweint. Weil ich verstanden hatte, dass der Körper mehr kann als der Kopf erlaubt. Weil ich verstanden hatte, dass das Durchhalten der härtesten Momente die zuverlässigste Art ist, sich selbst zu vertrauen. Diese Erkenntnis hat mir das Leben gerettet. Mehrfach.</p>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header">
+      <div class="takeaway-icon">✦</div>
+      <div class="takeaway-label">Was ich davon gelernt habe</div>
+    </div>
+    <div class="takeaway-body">
+      <p class="takeaway-title" style="font-family:'Playfair Display',serif;font-size:20px;color:var(--text-bright);margin-bottom:20px;">Dein Körper weiß mehr als dein Verstand — hör auf ihn</p>
+      <p>Wir sind so trainiert darin, mental zu rationalisieren, zu planen, zu kontrollieren — dass wir vergessen, dass unser Körper ein eigenes Wissen trägt. Das Nervensystem erinnert sich an alles. Und in Extremsituationen ist der Körper immer ehrlicher als der Kopf.</p>
+      <ul>
+        <li><strong>Stress ist kein Feind.</strong> Er ist ein Signal. Die Frage ist, ob du es lesen kannst.</li>
+        <li>Wenn du aufgeben willst: Das ist nicht das Ende. Das ist der Moment kurz vor dem Durchbruch.</li>
+        <li>Das Leben prüft dich regelmäßig. Nicht um dich zu brechen — sondern um dir zu zeigen, was du trägst.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- KAPITEL 3 -->
+<section class="chapter-section" id="kap3">
+  <div class="chapter-label">Kapitel 03</div>
+  <h2 class="chapter-title">Von Mercedes zum Model: Der erste Aufstieg</h2>
+  <img class="chapter-img" src="https://www.yvesunser.de/coaching/assets/2011-1-SNuvTICZ.jpg" alt="Yves frühe Jahre">
+  <div class="chapter-body">
+    <p class="lead">Nach der Bundeswehr landete ich bei Daimler. Gutes Geld. Firmenwagen. Sicherheit. Ausbildung mit Ruf. Aber je länger ich dort war, desto mehr wusste ich: Das ist nicht mein Leben.</p>
+    <p>Ich sah Kollegen, die seit zwanzig Jahren in denselben Hallen arbeiteten. Dieselben Abläufe. Dieselben Gespräche beim Mittagessen. Dieselben Gesichter. Sie sahen nicht unglücklich aus. Aber sie sahen auch nicht lebendig aus.</p>
+    <p>Und ich dachte mir: Ich will in zwanzig Jahren lebendig aussehen.</p>
+    <p>Also kündigte ich. Meine Eltern waren nicht begeistert. Das war ihr gutes Recht. Eine sichere Stelle bei Mercedes aufzugeben, um — was genau? — zu werden, klingt für viele Eltern wie eine schlechte Entscheidung. Aber ich hatte diese innere Stimme, die immer lauter wurde. Sie sagte nicht, was ich tun sollte. Sie sagte nur: <em>Das hier ist nicht es.</em></p>
+    <p>Die ersten Schritte ins Modelbusiness waren alles andere als glamourös. Mit 17 das erste Shooting. Mit 19 der erste Agenturvertrag. Anfangs vielleicht ein Job pro Jahr. Ich investierte Geld in Fotografen, das ich kaum hatte. Bekam nicht genug Jobs. Zweifelte.</p>
+    <p>Dann die Wette.</p>
+    <p>Damals wog ich 95 Kilo. Zu viel für ein Model. Zu viel für mich. Ich fühlte mich in meinem eigenen Körper nicht wohl. Ein Kumpel wettete mit mir: Wenn du in drei Wochen ein Sixpack hast, bekommst du 50 Euro.</p>
+    <p>50 Euro. Das war meine Motivation.</p>
+    <p>Und ich zog es durch. Kein Gramm Fett. Täglich zur Arbeit gejoggt. Vier Stunden Sport am Tag. Drei Wochen. Minus zehn Kilo. Ich gewann die Wette.</p>
+    <p>Aber ich gewann mehr als 50 Euro. Ich gewann das erste echte Vertrauen in meinen eigenen Willen. Diese drei Wochen zeigten mir: Disziplin ist keine Persönlichkeitseigenschaft. Es ist eine Entscheidung. Jeden Tag neu. Manchmal stündlich. Das Modelbusiness begann danach wirklich. Langsam. Aber es begann.</p>
+    <div class="inline-quote">
+      <p>Mut bedeutet nicht, keine Angst zu haben. Mut bedeutet, trotz der Angst zu kündigen — und nicht zu wissen, was als nächstes kommt.</p>
+    </div>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header">
+      <div class="takeaway-icon">✦</div>
+      <div class="takeaway-label">Was ich davon gelernt habe</div>
+    </div>
+    <div class="takeaway-body">
+      <p class="takeaway-title" style="font-family:'Playfair Display',serif;font-size:20px;color:var(--text-bright);margin-bottom:20px;">Sicherheit ist die teuerste Lüge, die du dir erzählst</p>
+      <p>Ein sicherer Job schützt dich nicht vor dem Leben. Er schützt dich nur vor dir selbst — vor dem Risiko, herauszufinden, was du wirklich kannst. Sicherheit ist selten sicher. Sie ist meistens nur bequem.</p>
+      <ul>
+        <li><strong>Die innere Stimme, die sagt "das hier ist nicht es" — die lügt nicht.</strong> Sie hat nur schlechtes Timing.</li>
+        <li>Du brauchst keine große Motivation für große Veränderung. Du brauchst manchmal nur 50 Euro und eine Wette.</li>
+        <li>Disziplin entsteht nicht aus Charakter. Sie entsteht aus einem Grund, der größer ist als dein Unbehagen.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- KAPITEL 4 -->
+<section class="chapter-section" id="kap4">
+  <div class="chapter-label">Kapitel 04</div>
+  <h2 class="chapter-title">Istanbul: Allein auf fremdem Terrain</h2>
+  <img class="chapter-img" src="https://www.yvesunser.de/coaching/assets/editorial-3-BLXsXVig.jpg" alt="Editorial">
+  <div class="chapter-body">
+    <p class="lead">Irgendwann Anfang der 2010er-Jahre saß ich in einem Flugzeug nach Istanbul. Keine Agentur, die auf mich wartete. Keine Garantie. Kein Plan B. Nur ich, mein Koffer und der naive Glaube, dass dort irgendwie Aufträge auf mich warteten.</p>
+    <p>Das Apartment, das ich bekam, war für acht Models ausgelegt. Als ich ankam, kurz vor Weihnachten, war fast niemand da. Nur Victor — ein belgischer Typ, ruhig, sympatisch, der gerade dabei war, eine Dusche zu putzen, die seit Monaten niemand geputzt hatte.</p>
+    <p>Die Wohnung sah aus wie ein Tatort. Verschimmeltes Bad. Fettige Küche. Acht Matratzen in Zimmern, die für die Hälfte ausgelegt waren.</p>
+    <p>Mein erster Gedanke: Sofort wieder nach Hause. Mein zweiter Gedanke: Wofür hast du den Flug bezahlt?</p>
+    <p>Victor sah mein Gesicht und meinte nur: "Komm, wir machen das sauber. Dann wird's schon."</p>
+    <p>Wir putzten die nächsten zwei Stunden.</p>
+    <div class="inline-quote">
+      <p>Du bekommst selten die Situation, die du willst. Du bekommst die Situation, die da ist. Die Frage ist nur, was du damit machst.</p>
+    </div>
+    <p>Die fünf Monate in Istanbul waren hart. Täglich Castings. Manchmal Absagen. Manchmal Jobs. Das Geld war okay, aber nicht großartig. Der türkische Winter war kalt auf eine Art, die man nicht kannte. Die Sprache war fremd. Die Stadt war groß und gleichgültig.</p>
+    <p>Aber ich war dort. Ich machte es. Ich lernte, was es bedeutet, in einem fremden Land auf eigenen Beinen zu stehen, ohne Sicherheitsnetz, ohne Familie in Rufweite. Ich lernte, dass Einsamkeit keine Bedrohung ist — sondern ein Zustand, den man navigieren kann, wenn man aufhört, sich davor zu fürchten.</p>
+    <p>Istanbul lehrte mich Demut. Und es lehrte mich, Menschen schnell einzuschätzen — eine Fähigkeit, die ich in LA noch dringend brauchen würde.</p>
+    <p>Genau dieser Mut — oder Irrsinn, je nach Perspektive — würde mich wenige Jahre später nach Los Angeles führen.</p>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header">
+      <div class="takeaway-icon">✦</div>
+      <div class="takeaway-label">Was ich davon gelernt habe</div>
+    </div>
+    <div class="takeaway-body">
+      <p class="takeaway-title" style="font-family:'Playfair Display',serif;font-size:20px;color:var(--text-bright);margin-bottom:20px;">Unbehagen ist kein Zeichen, dass du am falschen Ort bist</p>
+      <p>Wir verwechseln Unbehagen mit Fehler. Dabei ist Unbehagen oft das Signal, dass wir wachsen. Die schmutzige Wohnung in Istanbul war keine Schande — sie war der Eintrittspreis für alles, was danach kam.</p>
+      <ul>
+        <li><strong>Fremde Städte, fremde Menschen, fremde Sprachen — das alles trainiert Adaptionsfähigkeit.</strong> Die wertvollste Fähigkeit im Leben.</li>
+        <li>Plan B zu haben ist nicht Realismus. Es ist oft Selbstsabotage. Wenn du Plan B hast, kämpfst du nie wirklich für Plan A.</li>
+        <li>Victor putzte. Ich half. Danach war es besser. Manchmal fängt Wachstum beim Staubwischen an.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- KAPITEL 5 -->
+<section class="chapter-section" id="kap5">
+  <div class="chapter-label">Kapitel 05</div>
+  <h2 class="chapter-title">Party, Drogen und die Illusion der Kontrolle</h2>
+  <img class="chapter-img" src="https://www.yvesunser.de/coaching/assets/editorial-4-B66WkIOV.jpg" alt="Editorial">
+  <div class="chapter-body">
+    <p class="lead">Ich war nie der Typ, der jeden Abend in Clubs war. Aber ich liebte Festivals. Die Energie. Die Menschen. Das Gefühl von Freiheit, wenn Tausende Menschen zusammen feiern und für einen Moment alle Strukturen des Alltags wegfallen.</p>
+    <p>Irgendwann kamen Drogen dazu. Ich sage das ohne Entschuldigung und ohne Verklärung. Nicht weil ich flüchten wollte. Sondern weil ich neugierig war. Weil ich schon immer das Prinzip hatte: Ich urteile nicht über etwas, das ich nicht selbst erfahren habe.</p>
+    <p>Das redete ich mir zumindest ein. Die Wahrheit ist komplizierter. Ein Teil davon war Neugier. Ein Teil war Gruppenidentität — das Gefühl, dabei zu sein, wenn alle anderen auch dabei waren. Und ein kleiner Teil war vielleicht auch der Versuch, kurzfristig etwas zu fühlen, das echte Erfüllung ersetzte.</p>
+    <p>Ich hatte alles "unter Kontrolle." Das Wasser und gesunde Shakes, die ich mitnahm, die Selbstdisziplin, die ich mir einredete. Und dann kam die Nacht, die alles veränderte.</p>
+    <p>Ich hatte seit Monaten nichts genommen. Es war ein besonderer Abend. Einer hatte MDMA dabei. Ich dachte: Nur dieses eine Mal. Nur ein bisschen. Nur wenige Minuten Fahrt bis nach Hause. Ich fühlte mich klar genug. Oder ich redete es mir ein.</p>
+    <p>Als ich auf dem Parkplatz vor meiner Wohnung stand, tauchte hinter mir ein Polizeiauto auf. Alkoholtest. Negativ. Dann leuchteten sie mir in die Augen. "Haben Sie etwas genommen?" Nein. Nein. Natürlich nein.</p>
+    <p>Urinprobe. Ich bekam sie nicht hin. Blutprobe auf dem Revier. Der Arzt sagte, er sehe nichts Auffälliges. Aber das Labor sagte etwas anderes. MDMA im Blut.</p>
+    <p>Was folgte, waren nicht Wochen, sondern Jahre. MPU. Gerichtsverhandlungen. Strafe. Schande. Stress. Und vier Jahre ohne Führerschein.</p>
+    <p>Vier Jahre. Vier Jahre, in denen jede einfache Autofahrt zu einem logistischen Problem wurde. In denen ich BlaBlaCar, Bahn und Bus lernte wie andere Leute das Einmaleins. Circa 14.000 Euro in MPU-Verfahren, Psychologen und Gerichtskosten investiert — für eine Entscheidung, die keine zehn Minuten gedauert hatte.</p>
+    <div class="inline-quote">
+      <p>Als die Psychologin mir mitteilte, dass ich bestanden hatte, umarmte ich sie. Nicht wegen des Führerscheins. Sondern weil ich in diesem Moment wusste: Du hast etwas durchgehalten, das dich fast gebrochen hätte. Und du bist noch da.</p>
+    </div>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header">
+      <div class="takeaway-icon">✦</div>
+      <div class="takeaway-label">Was ich davon gelernt habe</div>
+    </div>
+    <div class="takeaway-body">
+      <p class="takeaway-title" style="font-family:'Playfair Display',serif;font-size:20px;color:var(--text-bright);margin-bottom:20px;">Kontrolle ist oft die Geschichte, die du dir erzählst — nicht die Realität</p>
+      <p>Das Gefährlichste an der Illusion von Kontrolle ist, wie überzeugend sie ist. Wir glauben, dass wir die Ausnahme sind. Dass für uns andere Regeln gelten. Bis sie nicht mehr gelten. Konsequenzen treffen nicht die schlechtesten Menschen. Sie treffen die mutigsten Entschuldigungen.</p>
+      <ul>
+        <li><strong>Eine schlechte Entscheidung von zehn Minuten kann vier Jahre kosten.</strong> Das ist Mathematik, keine Moral.</li>
+        <li>Das MPU-Verfahren lehrte mich mehr über mich selbst als zehn Therapiestunden. Nicht weil es gut war — sondern weil es keine andere Wahl ließ als Ehrlichkeit.</li>
+        <li>Scham ist eine schlechte Lehrerin. Aber Konsequenzen — die lehren wirklich.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- KAPITEL 6 -->
+<section class="chapter-section" id="kap6">
+  <div class="chapter-label">Kapitel 06</div>
+  <h2 class="chapter-title">Frauen, Liebe und das Ego</h2>
+  <img class="chapter-img" src="https://www.yvesunser.de/coaching/assets/editorial-5-BhEPO5-.jpg" alt="Editorial">
+  <div class="chapter-body">
+    <p class="lead">Es gab eine Zeit in meinem Leben, da dachte ich, dass Aufmerksamkeit von Frauen mich glücklich machen würde. Ich war jung. Ich trainierte. Ich bekam Compliments, die ich früher nie bekommen hatte.</p>
+    <p>Das Model-Dasein öffnete Türen, die vorher zu waren. Und ich nutzte diese Türen ausgiebig. Montags erzählte ich den Kollegen Geschichten vom Wochenende. Ich profilierte mich damit. Ich dachte, das macht mich interessant. Was es wirklich machte: Es zeigte, wie wenig ich von echter Verbindung verstand.</p>
+    <p>Meine Mutter sagte immer: "Irgendwann kommt eine und bricht dir das Herz." "Lass sie reden," dachte ich.</p>
+    <p>Dann kam diese eine Frau.</p>
+    <p>Wir waren fast dreieinhalb Jahre zusammen. Sie zeigte mir, was Liebe wirklich bedeutet — und gleichzeitig, wie schmerzhaft sie sein kann. Als es endete, war es brutal. Nicht weil sie böse war. Sondern weil es echt war. Das erste echte Mal.</p>
+    <p>Ich verstand danach zum ersten Mal, dass Beziehungen keine Abwechslung sind. Kein Entertainment. Sondern Verantwortung. Vertrauen. Verletzlichkeit. Und ich verstand, dass ich diese Verletzlichkeit jahrelang vermieden hatte, indem ich von einer Verbindung zur nächsten sprang.</p>
+    <p>Als diese Beziehung endete, machte ich einen Modeljob für Trigema. Am zweiten Tag schickte mir meine Mutter einen Artikel: <em>Zum Verarbeiten von Trennungen empfehlen Experten Zeit in der Natur.</em></p>
+    <p>Am dritten Tag fragte mich ein belgisches Model: "Willst du mit an den Königssee?" Ich sagte ja.</p>
+    <p>Wir zelteten am Königssee im Dauerregen, verliefen uns komplett, standen plötzlich vor einem riesigen Abhang ohne Weg zurück — und entschieden trotzdem: Wir gehen weiter. Ich weiß noch, wie ich dort am Abhang stand und dachte: <em>Das ist mein Leben gerade. Kein sichtbarer Weg. Aber ich gehe trotzdem weiter.</em></p>
+    <div class="inline-quote">
+      <p>Am nächsten Morgen klingelte mein Telefon. Ein Fotograf aus San Diego. Er hatte meine Instagram-Bilder gesehen. Er wollte mir den Flug nach LA bezahlen. Ich sagte ja.</p>
+    </div>
+    <p>Das Leben belohnt nicht immer Geduld. Manchmal belohnt es das einfache, mutige Ja.</p>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header">
+      <div class="takeaway-icon">✦</div>
+      <div class="takeaway-label">Was ich davon gelernt habe</div>
+    </div>
+    <div class="takeaway-body">
+      <p class="takeaway-title" style="font-family:'Playfair Display',serif;font-size:20px;color:var(--text-bright);margin-bottom:20px;">Verlust öffnet die Tür, die du dir nie getraut hättest aufzumachen</p>
+      <p>Herzschmerz ist nicht das Ende von Liebe — er ist der Beginn von Ehrlichkeit. Erst wenn du dir selbst begegnet bist, ohne die Ablenkung der nächsten Person, weißt du, wer du wirklich bist. Und wer du wirklich liebst.</p>
+      <ul>
+        <li><strong>Verletzlichkeit zuzulassen ist nicht Schwäche.</strong> Es ist die Voraussetzung für echte Verbindung.</li>
+        <li>Der Königssee lehrte mich: Manchmal musst du in den Regen gehen, damit du das Telefon klingeln hörst.</li>
+        <li>Trennungen zeigen uns, was wir gebraucht hätten zu sagen — und sagten wir nicht. Diese Lücke ist der Wachstumsraum.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- KAPITEL 7 -->
+<section class="chapter-section" id="kap7">
+  <div class="chapter-label">Kapitel 07</div>
+  <h2 class="chapter-title">Los Angeles: Villa, Betrug und Pitbull-Nächte</h2>
+  <img class="chapter-img" src="https://www.yvesunser.de/coaching/assets/yves-after-cowboy-DB9TaMDB.jpg" alt="Yves in LA">
+  <div class="chapter-body">
+    <p class="lead">Los Angeles. Die Stadt der Träume. Auch die Stadt, wo Träume dich manchmal so hart treffen, dass du nicht mehr weißt, ob du lachst oder weinst.</p>
+    <p>Ich flog rüber, coachte den Fotografen ein paar Wochen, war in Miami und New York. Dann: LA, Mode-Agenturen, Castings. Und dort traf ich Elijah.</p>
+    <p>Er meinte, er würde mich unter Vertrag nehmen. Ich bekomme ein Zimmer in seiner Villa in Beverly Hills. Er würde das Künstlervisum organisieren. Ich dachte: Das klingt zu gut, um wahr zu sein. Es war zu gut, um wahr zu sein.</p>
+    <p>Aber vorerst passte alles. Die Villa war real. Ich lief auf der Fashion Week in LA — und dann in New York. Fashion Weeks. Beide. Wenn du jemals das Gefühl hattest, auf dem richtigen Weg zu sein — das war dieser Moment für mich. Ich stand auf dem Laufsteg in Los Angeles und New York, und dachte: <em>Das ist es. Dafür habe ich das alles gemacht.</em></p>
+    <p>Dann flog ich zurück nach LA. Im Flieger klingelte mein Telefon. Elijah. "Ruf mich an, wenn du landest." Ich landete. Ich rief an. Das Haus in Beverly Hills war verkauft. Geldprobleme. Ich solle ins Hotel kommen.</p>
+    <p>23 Uhr abends. LA. Ich wusste nicht wohin. Im Hotel: Elijah, ein anderes Model, zwei Betten, drei Pitbulls. "Schlaf mit den Hunden, ich habe bald ein neues Haus."</p>
+    <p>Nächster Morgen: Das Bett war nass. Die Hunde hatten mir ins Bett gepisst. Ich stand am Fenster, sah unten die beiden im Auto — sie kurbelten das Fenster runter um den Bong-Rauch raus zu lassen — und dachte nur: <em>Was passiert hier gerade mit meinem Leben?</em></p>
+    <p>Das ging eine Woche so. Jede Nacht dasselbe. Dann begann ich zu recherchieren. Elijah Adams. DNR-Liste. "Do Not Rent." Kommt man drauf bei Gewaltdelikten, Steuerhinterziehung. Ein Kindheitsfoto, das er uns gezeigt hatte — ich fand es online. Neben einem Nachruf. Diese Person war seit zehn Jahren tot. Elijah hatte die Identität eines Verstorbenen benutzt.</p>
+    <p>Ich packte meine Sachen während die beiden im Auto saßen. Verschwand lautlos.</p>
+    <div class="inline-quote">
+      <p>Und landete wenige Tage später in einer echten Villa in Woodland Hills — durch Kontakte, die ich mir in LA aufgebaut hatte. Meine Frau besuchte mich. Wir schliefen in dieser Villa und alles war einen Moment lang genau so, wie ich es mir vorgestellt hatte.</p>
+    </div>
+    <p>Ich hatte LA geliebt. Und ich hatte LA gehasst. Ich hatte gesehen, wie dünne Fassaden manchmal sind. Wie Menschen in dieser Stadt bereit sind, alles vorzuspiegeln. Aber ich hatte auch gesehen, was möglich ist, wenn man sich traut — und was entsteht, wenn zwei Menschen füreinander da sind, auch mitten in einem fremden Land.</p>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header">
+      <div class="takeaway-icon">✦</div>
+      <div class="takeaway-label">Was ich davon gelernt habe</div>
+    </div>
+    <div class="takeaway-body">
+      <p class="takeaway-title" style="font-family:'Playfair Display',serif;font-size:20px;color:var(--text-bright);margin-bottom:20px;">Fassaden erkennen — und nicht selbst eine bauen</p>
+      <p>LA ist ein Spiegel. Es zeigt dir, wer du wärst, wenn du aufhörst, echt zu sein. Elijah war der extremste Ausdruck von etwas, das überall existiert: die Bereitschaft, eine falsche Identität zu leben, um Zugang zu bekommen. Der Unterschied zwischen mir und ihm war nicht Moral. Es war die Entscheidung, wer ich wirklich sein will.</p>
+      <ul>
+        <li><strong>Wenn etwas zu gut klingt, um wahr zu sein — ist es meistens zu gut.</strong> Hör auf dein Bauchgefühl, nicht auf deine Hoffnung.</li>
+        <li>Netzwerk ist nicht, wen du kennst. Netzwerk ist, wer für dich da ist, wenn die Villa weg ist.</li>
+        <li>Echte Beziehungen beweisen sich nicht in guten Zeiten. Sie beweisen sich, wenn das Bett nass ist und du nicht weißt wohin.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- KAPITEL 8 -->
+<section class="chapter-section" id="kap8">
+  <div class="chapter-label">Kapitel 08</div>
+  <h2 class="chapter-title">Die Frau, die alles veränderte</h2>
+  <img class="chapter-img portrait" src="https://www.yvesunser.de/coaching/assets/editorial-1-iDM6G-ey.jpg" alt="Editorial">
+  <div class="chapter-body">
+    <p class="lead">Irgendwo in all dem Chaos — zwischen Modeljobs, Istanbul, LA, MPU und Firmengründungen — traf ich sie. Und seitdem ist nichts mehr so gewesen, wie es vorher war.</p>
+    <p>Manche Menschen triffst du, und du weißt sofort: Das ist jemand, der bleibt. Nicht weil du es weißt. Sondern weil du spürst, wie alles in dir ruhiger wird, wenn sie im Raum ist.</p>
+    <p>Sie war anders. Nicht weil sie perfekt war. Sondern weil sie echt war. Sie sah mich — nicht die Version, die ich nach außen trug, nicht den Körper, nicht den Lebenslauf, nicht die Bilder auf Instagram. Sie sah den Typen dahinter. Den Jungen aus dem Keller, der zu früh im Faschingskostüm stand. Den Mann, der nachts nicht schlafen konnte, weil er nicht wusste, wer er sein sollte.</p>
+    <p>Sie war in Wien. Ihr Leben war in Wien. Freunde, Familie, Karriere, eine Stadt, die sie kannte wie ihre eigene Haut.</p>
+    <p>Und dann entschied sie sich für mich.</p>
+    <p>Sie gab Wien auf, um mit mir nach Deutschland zu ziehen. Ein Land, das nicht ihres war. Eine Stadt, die sie nicht kannte. Eine Zukunft, die noch unklar war. Sie packte ihr Leben in Koffer und folgte mir dorthin, wo ich gerade war — nicht weil sie musste. Sondern weil sie wollte. Weil sie an mich glaubte, noch bevor ich an mich geglaubt hatte.</p>
+    <div class="inline-quote">
+      <p>Das war der größte Liebesbeweis, den mir je jemand gemacht hat. Nicht ein Geschenk. Nicht ein Kompliment. Eine vollständige Entscheidung für mein Leben — auf Kosten ihres eigenen Komforts.</p>
+    </div>
+    <p>Ich habe das nie vergessen. Und ich hoffe, dass ich es ihr jeden Tag zeige — nicht durch Worte, sondern durch das, was ich tue.</p>
+    <p>Am Anfang war es nicht einfach für sie. Neue Stadt, keine Freunde in der Nähe, ein Partner, der ständig unterwegs war — für Modeljobs, für Castings, für ein Startup, das jeden Cent forderte. Ich sah manchmal nicht, wie viel sie trug, während ich nach vorne raste. Heute sehe ich es. Und es tut weh, ehrlich zu sein.</p>
+    <p>Denn während ich in LA von Pitbulls umgeben war, stand sie zuhause. Während ich auf Modelbühnen stand, hielt sie die Stellung. Während ich mein erstes Business aufbaute, baute sie unser Leben auf. Ohne großes Aufheben. Ohne Applaus. Mit einer Stärke, die ich erst viel später wirklich zu schätzen lernte.</p>
+    <p>Wenig später teilte sie mir mit, dass sie schwanger war. Ich war gerade von "The Mole" zurückgekommen. Sechs Wochen Argentinien. Als ich nach Hause kam, öffnete sie ein kleines Schächtelchen. Ein Ultraschallbild.</p>
+    <p>Meine ersten Worte: "Mach keinen Scheiß. Echt jetzt?"</p>
+    <p>Ich konnte es nicht fassen. Ich baute gerade meine erste Software-Firma. Ich kam von einem TV-Dreh. Und jetzt das. Alles auf einmal.</p>
+    <p>Und sie lächelte. Weil sie wusste, was dieses Moment bedeutete. Weil sie schon damals mehr verstanden hatte als ich. Weil sie — wie so oft — einen Schritt voraus war in dem, was wirklich zählte.</p>
+    <p>Sie wurde nicht nur die Mutter meiner Kinder. Sie wurde der Anker, der mich hielt, wenn ich gegen alles und jeden kämpfte und vergaß, wofür. Sie war der ruhige Teil in allem Sturm. Nicht weil sie nicht kämpfte. Sondern weil sie wusste, welche Kämpfe sich lohnen. Das habe ich von ihr gelernt — mehr als von jedem Buch, jedem Coach, jedem Kurs.</p>
+    <div class="inline-quote">
+      <p>Verantwortung verändert dich. Nicht, weil du musst. Sondern weil du auf einmal weißt, wofür du kämpfst.</p>
+    </div>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header">
+      <div class="takeaway-icon">✦</div>
+      <div class="takeaway-label">Was ich davon gelernt habe</div>
+    </div>
+    <div class="takeaway-body">
+      <p class="takeaway-title" style="font-family:'Playfair Display',serif;font-size:20px;color:var(--text-bright);margin-bottom:20px;">Die stärkste Kraft im Leben ist nicht Ambition — es ist die Person, die bleibt</p>
+      <p>Wir reden viel über Selbstoptimierung, über Disziplin, über Erfolg. Wir reden zu wenig über die Menschen, die uns erlauben, das alles zu sein. Die im Hintergrund tragen, halten, aufbauen — während wir vorne stehen und die Lorbeeren ernten.</p>
+      <ul>
+        <li><strong>Hinter jedem Mann, der wirklich aufgestiegen ist, steht jemand, der dafür Opfer gebracht hat.</strong> Sieh sie. Wirklich.</li>
+        <li>Liebe zeigt sich nicht in Gesten. Sie zeigt sich darin, sein Leben umzupacken und in eine andere Stadt zu ziehen.</li>
+        <li>Dankbarkeit ist nicht ein Gefühl. Es ist eine tägliche Entscheidung — und eine tägliche Handlung.</li>
+        <li>Die Frau, die dich in deinen schlechtesten Momenten hält, verdient es, in deinen besten Momenten gesehen zu werden.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- KAPITEL 9 -->
+<section class="chapter-section" id="kap9">
+  <div class="chapter-label">Kapitel 09</div>
+  <h2 class="chapter-title">Der Unternehmer: 1,1 Millionen auf alles gesetzt</h2>
+  <img class="chapter-img" src="https://www.yvesunser.de/coaching/assets/coaching-new-1RhgTfQc.webp" alt="Yves als Unternehmer">
+  <div class="chapter-body">
+    <p class="lead">2020. Erste Tochter geboren. Im selben Jahr die Software-Firma gegründet. Gleichzeitig. Kein Investor. Kein externer Geldgeber. Nur ich — und der unerschütterliche Glaube, dass das Produkt die Welt verändern kann.</p>
+    <p>Über vier Jahre investierte ich insgesamt über 1,1 Millionen Euro. Jede Einnahme aus dem Modeln, aus dem Coaching, aus allem floss rein. Jeder Cent, den ich verdient hatte, wanderte in diese Vision. Es gab keine Sicherheitslinie. Es gab nur vorwärts.</p>
+    <p>Ich schlief wenig. Ich war präsent — aber ich war auch ständig abwesend. Physisch war ich manchmal da. Mental war ich immer beim Business. Beim nächsten Sprint, beim nächsten Investor-Gespräch, beim nächsten Feature. Meine Frau sah das. Sie sagte wenig. Aber ich sah es in ihren Augen — die Frage, ob ich auch noch da war. Wirklich.</p>
+    <p>2022 — zweite Tochter geboren. Wieder Vater. Mitten im härtesten Startup-Jahr.</p>
+    <p>Ich erinnere mich an Nächte, in denen ich um 3 Uhr morgens auf Investorengespräche vorbereitet, Code gereviewed, Pitchdecks überarbeitet — und dann ins Zimmer meiner Tochter gegangen bin und sie einfach angeschaut habe. In diesen Momenten wusste ich: Ich tue das für sie. Und in diesen Momenten wusste ich auch: Wenn ich scheitere, ist das nicht das Ende. Weil ich das hier hatte. Zwei schlafende Kinder. Eine Frau, die in der nächsten Tür schläft und noch da war, noch immer. Trotz allem.</p>
+    <div class="inline-quote">
+      <p>Sie fragte mich einmal: "Würdest du es nochmal tun?" Ich dachte lange nach. Und dann sagte ich: "Ja. Aber diesmal würde ich dich früher fragen, ob es für dich okay ist."</p>
+    </div>
+    <p>Das Produkt wuchs. Das Team wuchs. Die Vision war real. Wir hatten Nutzer. Wir hatten Momentum. Ich glaubte wirklich, wir hätten es. Dieser Glaube war nicht naiv — er war das Ergebnis von vier Jahren harter Arbeit. Er war verdient.</p>
+    <p>Und dann kam 2024.</p>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header">
+      <div class="takeaway-icon">✦</div>
+      <div class="takeaway-label">Was ich davon gelernt habe</div>
+    </div>
+    <div class="takeaway-body">
+      <p class="takeaway-title" style="font-family:'Playfair Display',serif;font-size:20px;color:var(--text-bright);margin-bottom:20px;">Glaube allein reicht nicht — Präsenz ist die zweite Hälfte von Erfolg</p>
+      <p>Du kannst mit Leidenschaft und Überzeugung bauen und trotzdem verlieren, was am meisten zählt — nämlich die Menschen um dich herum. Das Startup lehrte mich, dass Ambition ohne Achtsamkeit ein sehr teurer Preis ist. Nicht in Geld. In Beziehungen.</p>
+      <ul>
+        <li><strong>Wer ohne externen Investor baut, hat die volle Kontrolle — und das volle Risiko.</strong> Beides ist wahr. Beide Wahrheiten gleichzeitig tragen zu können ist Reife.</li>
+        <li>Deine Familie investiert auch. Nur nicht in Geld. In Geduld, in Opfer, in Stille. Vergiss das nicht.</li>
+        <li>1,1 Millionen Euro zu verlieren ist schmerzhaft. Aber das Vertrauen eines Partners zu verlieren ist ärger. Hüte beides.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- KAPITEL 10 -->
+<section class="chapter-section" id="kap10">
+  <div class="chapter-label">Kapitel 10</div>
+  <h2 class="chapter-title">Der Absturz: Alles verloren</h2>
+  <img class="chapter-img" src="https://www.yvesunser.de/coaching/assets/editorial-6-BrtayScI.jpg" alt="Editorial">
+  <div class="chapter-body">
+    <p class="lead">Es gibt Momente im Leben, über die du lange nicht reden kannst. Nicht weil du dich schämst. Sondern weil die Wörter dafür noch nicht existieren.</p>
+    <p>2024 war so ein Moment für mich.</p>
+    <p>Der Käufer hatte zugesagt. Alles war besprochen. Der Deal sollte mein Business retten — oder zumindest weitertragen. Er hielt sein Versprechen nicht.</p>
+    <p>Was folgte, war Insolvenz. 1,1 Millionen Euro. Vier Jahre meines Lebens. Das Herzensprojekt, für das ich auf Schlaf, Urlaub, manchmal sogar auf echte Präsenz verzichtet hatte. Weg.</p>
+    <p>Ich erinnere mich an den Tag, an dem es offiziell war. Ich saß in einem leeren Büro. Keine Mitarbeiter mehr. Kein Team. Nur ich und die Stille. Und ich weinte nicht mal. Ich war zu leer dafür.</p>
+    <p>Dann dachte ich an sie. An meine Frau. An das, was sie die letzten vier Jahre getragen hatte — die Nächte mit zwei kleinen Kindern, wenn ich im Büro war. Die Fragen der Freunde, die sie beantwortete, während ich Pitchdecks überarbeitete. Die stillen Momente, in denen sie mich angesehen hat, ohne zu sagen, was sie dachte. Jetzt würde sie es wissen. Jetzt würde ich es ihr sagen müssen.</p>
+    <p>Das war fast schwerer als alles andere.</p>
+    <p>Ich fuhr nach Hause. Öffnete die Tür. Meine Tochter kam mir entgegengelaufen. Sie wusste nichts davon. Für sie war ich einfach Papa, der nach Hause kommt. Ich hob sie hoch. Hielt sie. Und in diesem Moment entschied ich etwas. Nicht laut. Nicht dramatisch. Einfach so.</p>
+    <div class="inline-quote">
+      <p>Das hier ist nicht mein Ende. Das ist mein Material.</p>
+      <cite>— Yves-Len Unser, 2024</cite>
+    </div>
+    <p>Und dann sprach ich mit meiner Frau. Sie weinte nicht sofort. Sie sah mich an. Lang. Und dann sagte sie: "Dann bauen wir neu. Aber diesmal zusammen."</p>
+    <p>Dieser Satz. Dieser eine Satz. Er war mehr wert als alles, was ich in vier Jahren aufgebaut hatte. Weil er mir zeigte: Ich hatte nicht alles verloren. Ich hatte das Wichtigste noch.</p>
+    <p>Scheitern macht dich nicht zu einem Versager. Scheitern zeigt dir, was wirklich zählt. Familie. Seele. Wahrheit. Der Rest ist Bonus. Hätte ich nicht alles verloren, hätte ich nie gelernt, was ich wirklich besitze.</p>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header">
+      <div class="takeaway-icon">✦</div>
+      <div class="takeaway-label">Was ich davon gelernt habe</div>
+    </div>
+    <div class="takeaway-body">
+      <p class="takeaway-title" style="font-family:'Playfair Display',serif;font-size:20px;color:var(--text-bright);margin-bottom:20px;">Der Absturz ist nicht dein Ende — er ist deine Rohstoffquelle</p>
+      <p>Wir haben eine kollektive Angst vor dem Scheitern, die größer ist als das Scheitern selbst. Dabei ist das Schlimmste am Absturz nicht der Aufprall — sondern die Zeit davor, wenn du weißt was kommt und nichts tun kannst. Diese Zeit ist das eigentliche Training.</p>
+      <ul>
+        <li><strong>Du verlierst nie alles. Du verlierst das, was du aufgebaut hast. Was du bist, bleibt.</strong></li>
+        <li>Die Person, die bleibt, wenn alles weg ist — die ist dein Leben. Behandle sie entsprechend.</li>
+        <li>"Dann bauen wir neu. Aber diesmal zusammen." — Merke dir diesen Satz. Das ist der Satz, den du verdient haben willst.</li>
+        <li>Scheitern ist kein Versagen. Es ist der Preis für das, was du riskiert hast. Und wer nie riskiert, zahlt einen anderen Preis: das Leben, das er hätte leben können.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- KAPITEL 11 -->
+<section class="chapter-section" id="kap11">
+  <div class="chapter-label">Kapitel 11</div>
+  <h2 class="chapter-title">The Mole: Wenn du denkst, du kennst Menschen</h2>
+  <img class="chapter-img" src="https://www.yvesunser.de/coaching/assets/editorial-7-D5LnW4v0.jpg" alt="Editorial">
+  <div class="chapter-body">
+    <p class="lead">Zwischen all dem kam "The Mole". SAT.1. Primetime. Argentinien. Sechs Wochen. Zehn Teilnehmer. Einer davon ein Maulwurf, der das Spiel von innen sabotiert.</p>
+    <p>Ich hätte nie gedacht, dass ich ins Finale komme. Aber ich kam ins Finale. Martin und ich. Beide hatten 19 von 20 Fragen richtig beantwortet.</p>
+    <p>Er war fünf Sekunden schneller.</p>
+    <p>Fünf Sekunden. Das ist weniger als die Zeit, die ich brauche, um diesen Satz zu lesen.</p>
+    <p>Ich verlor "The Mole" um fünf Sekunden.</p>
+    <p>Ich saß auf dieser Bühne in Argentinien und versuchte, nicht zu zeigen, was ich fühlte. Sechs Wochen weg von zu Hause. Von meiner Frau. Von den Kindern. Sechs Wochen, in denen sie alleine mit den Mädchen war — wieder einmal der Anker, während ich irgendwo der Abenteurer spielte. Und dann: fünf Sekunden.</p>
+    <p>Aber hier ist das Ding. Meine Frau hatte mir beim Abschied gesagt: "Es geht nicht ums Gewinnen. Es geht darum, dass du weißt, was du kannst." Sie hatte Recht. Sie hat so oft Recht.</p>
+    <div class="inline-quote">
+      <p>Das Leben ist keine Gerechtigkeit. Es ist eine Ressource. Was du daraus machst, bestimmst du.</p>
+    </div>
+    <p>In diesem Moment dachte ich an Mister Germany, wo ich Platz vier gemacht hatte. An all die Castings, bei denen ich nicht genommen wurde. An all die Momente, wo es knapp nicht reichte. Und ich verstand: Knapp daneben ist auch eine Kunst. Denn um knapp daneben zu sein, musst du erst einmal dort angekommen sein.</p>
+    <p>Die sechs Wochen in Argentinien haben mir gezeigt, dass ich unter extremem Druck klarer denke als die meisten. Das war das Geschenk. Nicht die Trophäe.</p>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header">
+      <div class="takeaway-icon">✦</div>
+      <div class="takeaway-label">Was ich davon gelernt habe</div>
+    </div>
+    <div class="takeaway-body">
+      <p class="takeaway-title" style="font-family:'Playfair Display',serif;font-size:20px;color:var(--text-bright);margin-bottom:20px;">Zweiter Platz bedeutet nicht verloren — es bedeutet fast der Beste</p>
+      <p>Wir haben eine Kultur, die nur Sieger feiert. Dabei ist das Wachstum meistens beim Verlierer. Der Sieger bestätigt sich. Der Verlierer lernt.</p>
+      <ul>
+        <li><strong>Fünf Sekunden entscheiden nichts über deinen Wert.</strong> Sie entscheiden nur, wer an diesem Tag schneller war.</li>
+        <li>Die Menschen, die du knapp verlierst gegen — das sind deine besten Lehrer. Studiere sie.</li>
+        <li>Wenn du im Finale stehst, hast du bereits gewonnen — gegen alle, die sich gar nicht erst getraut haben anzutreten.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- KAPITEL 12 -->
+<section class="chapter-section" id="kap12">
+  <div class="chapter-label">Kapitel 12</div>
+  <h2 class="chapter-title">Mister Universe: Serbien in Los Angeles</h2>
+  <img class="chapter-img" src="https://www.yvesunser.de/coaching/assets/editorial-8-_5Rv5g9y.jpg" alt="Editorial">
+  <div class="chapter-body">
+    <p class="lead">2025. Ich habe mich entschieden, Serbien beim Mister Universe zu vertreten. Das klingt für viele vielleicht wie eine Randnotiz. Für mich ist es ein Statement.</p>
+    <p>Ich trage deutsches Blut und serbische Seele. Ich wurde in Deutschland geboren, habe in Deutschland gearbeitet, modelt, gekämpft. Aber mein Herz, mein Temperament, meine Leidenschaft — das kommt aus dem Blut meines Vaters. Diese Entscheidung ist keine Abkehr. Sie ist eine Umarmung von allem, was ich bin.</p>
+    <p>Als ich meiner Frau davon erzählte, war sie zunächst still. Dann lachte sie. "Du. Natürlich du." Nicht weil sie nicht verstand, was das bedeutet — wieder Vorbereitung, wieder Abwesenheit, wieder Fokus auf etwas außerhalb. Sondern weil sie mich kennt. Weil sie weiß, dass ich sterbe, wenn ich nicht kämpfe. Und weil sie beschlossen hat, das zu lieben.</p>
+    <p>Sie unterstützte die Entscheidung. Nicht blindlings — wir sprachen darüber, was es bedeutet, was es kostet, wie wir das zusammen tragen. Das war das Neue. Das Zusammen. Das Gespräch davor, statt das Verzeihen danach.</p>
+    <div class="inline-quote">
+      <p>Beim Weltfinale in Los Angeles werde ich nicht einfach nur einen Titel holen wollen. Ich will beweisen, dass ein Mann, der alles verloren hat, zurückkommen kann. Stärker. Klarer. Mit mehr Fokus als je zuvor.</p>
+    </div>
+    <p>Das Mister Universe ist für mich kein Schönheitswettbewerb. Es ist das letzte Kapitel meines ersten Lebens — und das erste Kapitel meines zweiten. Wenn ich auf dieser Bühne in Los Angeles stehe, bin ich nicht der Typ, der es gerade so schafft. Ich bin der Mann, der seinen Absturz überlebt hat, der seine Familie schützt, der seine Vision lebt.</p>
+    <p>Und ich weiß, dass zuhause jemand einschläft und auf mich wartet. Das ist kein Druck. Das ist meine größte Stärke.</p>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header">
+      <div class="takeaway-icon">✦</div>
+      <div class="takeaway-label">Was ich davon gelernt habe</div>
+    </div>
+    <div class="takeaway-body">
+      <p class="takeaway-title" style="font-family:'Playfair Display',serif;font-size:20px;color:var(--text-bright);margin-bottom:20px;">Identität ist keine Wahl zwischen zwei Welten — sie ist die Integration aller Welten</p>
+      <p>Zwischen Kulturen, zwischen Welten, zwischen Rollen aufgerieben zu sein ist ein Geschenk, das sich zuerst wie ein Fluch anfühlt. Du gehörst nirgends ganz dazu — oder du gehörst überall ein bisschen dazu. Der Unterschied ist Perspektive.</p>
+      <ul>
+        <li><strong>Serbien oder Deutschland? Nein. Beides. Immer beides.</strong> Stärke liegt in der Integration, nicht in der Entscheidung.</li>
+        <li>Ein Comeback ist nur möglich, weil es einen Absturz gab. Niemand applaudiert dem, der nie gefallen ist.</li>
+        <li>Wer dir sagt, du kämpfst für Äußerlichkeiten — der versteht nicht, was Bühnen bedeuten. Bühnen sind für manche der lauteste Beweis, dass man noch da ist.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- KAPITEL 13 -->
+<section class="chapter-section" id="kap13">
+  <div class="chapter-label">Kapitel 13</div>
+  <h2 class="chapter-title">Pflanzliche Lehrmeister: Die innere Reise</h2>
+  <img class="chapter-img" src="https://www.yvesunser.de/coaching/assets/editorial-9-3Z9KUteC.jpg" alt="Editorial">
+  <div class="chapter-body">
+    <p class="lead">Es gibt Erfahrungen, über die man in Deutschland selten öffentlich redet. Ich rede darüber. Nicht weil ich Werbung machen will. Sondern weil diese Erfahrungen einen entscheidenden Teil meiner Transformation ausmachen.</p>
+    <p>Plant Medicine. Ayahuasca. Schweigekloster.</p>
+    <p>Ich war an einem Punkt angekommen, wo normale Reflexion nicht mehr ausreichte. Wo Therapie mich im Kopf hielt, aber nicht in die Tiefe ließ. Wo ich wusste, dass irgendwo eine Tür war — aber nicht wusste, wie ich sie öffnen sollte.</p>
+    <p>Was Ayahuasca mit mir gemacht hat, lässt sich nicht in einem Absatz beschreiben. Es gibt Mauern in uns, die wir nicht sehen können, solange wir im Alltag gefangen sind. Strukturen aus alten Wunden, alten Überzeugungen, alten Angst-Mustern. In einer einzigen Nacht habe ich mehr über mich selbst verstanden als in zehn Jahren.</p>
+    <p>Nicht weil Ayahuasca eine Abkürzung ist. Sondern weil es keine Abkürzung gibt — und es trotzdem möglich ist, Dinge zu sehen, die im normalen Bewusstsein verborgen bleiben. Ich habe in dieser Nacht meine eigene Rolle als Vater gesehen. Als Mann. Als Mensch. Ich habe gesehen, wo ich kämpfte, wenn ich hätte loslassen sollen. Und wo ich losgelassen hatte, wenn ich hätte kämpfen müssen.</p>
+    <p>Das Schweigekloster war ein anderes Experiment. Sieben Tage. Kein Handy. Keine Musik. Keine Gespräche. Nur du. Nur der Moment. Nur die Stille.</p>
+    <div class="inline-quote">
+      <p>In der Stille kommen all die Gedanken, die du den ganzen Tag mit Lärm und Ablenkung übertönst. Aber genau dort — in dieser Stille — habe ich zum ersten Mal wirklich gehört, was ich will.</p>
+    </div>
+    <p>Nicht was andere von mir wollen. Nicht was mein Ego mir einflüstert. Was ich wirklich will. Familie. Tiefe. Bedeutung. Sichtbarkeit. Aber nicht um Anerkennung zu bekommen — sondern um anderen zu dienen. Diese Klarheit war das wertvollste Geschenk, das ich mir je gemacht habe. Und ohne die Unterstützung meiner Frau, ohne ihre Bereitschaft, diese Wege mit mir zu gehen — auch wenn sie manchmal seltsam oder weit weg schienen — wäre ich dort nie angekommen.</p>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header">
+      <div class="takeaway-icon">✦</div>
+      <div class="takeaway-label">Was ich davon gelernt habe</div>
+    </div>
+    <div class="takeaway-body">
+      <p class="takeaway-title" style="font-family:'Playfair Display',serif;font-size:20px;color:var(--text-bright);margin-bottom:20px;">Stille ist die mutigste Reise, die du je antreten kannst</p>
+      <p>In einer Welt, die ständig lärmt, ist Stille eine radikale Handlung. Die meisten Menschen haben nie wirklich erfahren, wie sie sind, wenn sie allein sind — ohne Ablenkung, ohne Aufgaben, ohne Identität durch Arbeit oder Beziehungen. Dort, wo der Lärm aufhört, beginnt die Wahrheit.</p>
+      <ul>
+        <li><strong>Der mutigste Trip ist nicht nach außen. Er ist nach innen.</strong></li>
+        <li>Was du in der Stille nicht aushalten kannst, kontrolliert dich im Lärm. Lerne es kennen.</li>
+        <li>Transformation braucht keine Zertifikate. Sie braucht Ehrlichkeit. Die härteste Währung, die es gibt.</li>
+        <li>Wer dir sagt, du sollst keinen dieser Wege gehen — frag dich, ob er selbst je gegangen ist. Urteile erst nach eigener Erfahrung.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- KAPITEL 14 -->
+<section class="chapter-section" id="kap14">
+  <div class="chapter-label">Kapitel 14</div>
+  <h2 class="chapter-title">Wie Wasser sein: Die Philosophie dahinter</h2>
+  <img class="chapter-img portrait" src="https://www.yvesunser.de/coaching/assets/yves-after-suit-CMjqRmZA.jpg" alt="Yves Unser">
+  <div class="chapter-body">
+    <p class="lead">Bruce Lee sagte: "Be formless, shapeless — like water." Ich habe diesen Satz jahrelang gelesen, ohne ihn wirklich zu verstehen. Bis ich ihn lebte.</p>
+    <p>Nach der Insolvenz, nach dem Absturz, nach allem — stand ich vor einer Entscheidung, die die meisten kennen, aber selten benennen: Kämpfe ich weiter? Oder lasse ich los?</p>
+    <p>Und die Antwort, die ich gefunden habe, war keine von beiden. Die Antwort war: Ich lerne zu unterscheiden, wann ich was brauche.</p>
+    <p>Wasser fließt um jeden Stein herum. Es findet immer einen Weg. Aber wenn du Wasser genug Energie gibst, bricht es durch Fels. Das ist der Kern von allem, was ich heute als Coach weitergebe.</p>
+    <p>Nicht "kämpf härter." Nicht "gib niemals auf." Das sind Slogans. Die echte Frage ist: <strong>Wann kämpfst du? Und wann lässt du los?</strong></p>
+    <p>Wann ist Widerstand Stärke — und wann ist er Ego? Wann ist Akzeptanz Weisheit — und wann ist sie Resignation? Das lässt sich nicht in einem Seminar lernen. Das lässt sich nur durch das Leben lernen.</p>
+    <div class="inline-quote">
+      <p>Durch Momente im Matsch der Bundeswehr. Durch Nächte in einer fremden Stadt ohne Führerschein. Durch den Tag, an dem du die Insolvenz unterzeichnest. Durch die Frau, die sagt: "Dann bauen wir neu." Durch die Töchter, die dir entgegenlaufen und nicht wissen, dass du gerade alles verloren hast.</p>
+    </div>
+    <p>Ich bin durch all das gegangen. Und genau deshalb kann ich heute darüber sprechen. Nicht weil ich klüger bin als andere. Sondern weil ich durch mehr Feuer gegangen bin — und gelernt habe, nicht Asche zu werden, sondern Stahl.</p>
+    <p>Wie Wasser zu sein bedeutet nicht, formlos zu sein. Es bedeutet, die Form anzunehmen, die der Moment verlangt — und trotzdem immer man selbst zu bleiben.</p>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header">
+      <div class="takeaway-icon">✦</div>
+      <div class="takeaway-label">Was ich davon gelernt habe</div>
+    </div>
+    <div class="takeaway-body">
+      <p class="takeaway-title" style="font-family:'Playfair Display',serif;font-size:20px;color:var(--text-bright);margin-bottom:20px;">Anpassung ist keine Niederlage — sie ist Intelligenz</p>
+      <p>Die größten Kämpfer, die ich kenne, sind nicht die, die nie nachgegeben haben. Sie sind die, die wussten, wann nachgeben Stärke ist — und wann Kämpfen Pflicht. Das ist Weisheit. Und Weisheit entsteht nur durch gelebte Erfahrung.</p>
+      <ul>
+        <li><strong>Fließen ist kein Zeichen von Schwäche. Es ist das Zeichen von jemandem, der den Unterschied kennt.</strong></li>
+        <li>Hartnäckigkeit ohne Flexibilität ist Sturheit. Flexibilität ohne Hartnäckigkeit ist Beliebigkeit. Die Kunst liegt dazwischen.</li>
+        <li>Frag dich täglich: Kämpfe ich heute, weil ich muss — oder weil mein Ego es verlangt? Das ist der wichtigste Test.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- KAPITEL 15 -->
+<section class="chapter-section" id="kap15">
+  <div class="chapter-label">Kapitel 15</div>
+  <h2 class="chapter-title">Coaching: Was ich wirklich tue</h2>
+  <img class="chapter-img" src="https://www.yvesunser.de/coaching/assets/editorial-10-CQTlDUTX.jpg" alt="Editorial">
+  <div class="chapter-body">
+    <p class="lead">Mit fitmityves.de habe ich über 450.000 Euro Coaching-Umsatz gemacht. Nicht durch Hype. Nicht durch große Versprechen. Sondern durch echte Arbeit mit echten Menschen.</p>
+    <p>Aber ich merkte mit der Zeit: Das, was ich anbot, passte nicht zu dem, was ich wirklich hatte. Ich hatte ein ganzheitliches Angebot für eine breite Zielgruppe — mehrheitlich Frauen, ganzheitliches Gesundheitscoaching. Mein eigentlicher Kern war ein anderer.</p>
+    <p>Ich helfe Männern, die in einen Raum gehen — und die man nicht sieht. Nicht weil sie hässlich sind oder arm oder erfolglos. Sondern weil sie sich selbst nicht gesehen haben. Weil sie im Innern noch der Junge sind, der zu früh im Faschingskostüm in der Schule stand. Weil sie nie gelernt haben, wann sie kämpfen und wann sie fließen sollen.</p>
+    <p>Weil sie Körper, Geist, Seele und Timing als vier getrennte Dinge behandeln — statt als eine Einheit. <strong>THE RISER</strong> ist der Name für das, was ich mache. Die <strong>M.O.D.E.L.³-Methode</strong> ist das Werkzeug dafür:</p>
+    <div style="background:var(--gold-dim);border:1px solid var(--border);padding:32px 40px;margin:40px 0;">
+      <p style="font-family:'Playfair Display',serif;font-size:13px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;">Die M.O.D.E.L.³ Methode</p>
+      <p style="margin-bottom:16px;"><strong style="color:var(--gold-light);">M — Mind:</strong> Klarheit, Identität, innere Ausrichtung</p>
+      <p style="margin-bottom:16px;"><strong style="color:var(--gold-light);">O — Outward:</strong> Körper, Präsenz, Haltung, Auftritt</p>
+      <p style="margin-bottom:16px;"><strong style="color:var(--gold-light);">D — Depth:</strong> Seele, Spiritualität, innere Wahrheit</p>
+      <p style="margin-bottom:16px;"><strong style="color:var(--gold-light);">E — Energy:</strong> Fluss, Timing — erkennen wann kämpfen, wann lassen</p>
+      <p style="margin-bottom:0;"><strong style="color:var(--gold-light);">L — Legacy:</strong> Wofür, für wen, was bleibt</p>
+    </div>
+    <p>90 Tage. Vier Ebenen. Eine Transformation. Nicht zum Model werden. Das Leben modellieren.</p>
+    <div class="inline-quote">
+      <p>Wer ein Model ist, trägt Kleidung für andere. Wer sein Leben modelliert, trägt sein Leben für sich selbst.</p>
+    </div>
+    <p>Alles, was ich in diesem Buch erzählt habe — der Junge im Keller, der Soldat im Matsch, der Unternehmer mit der leeren Kasse, der Vater, der seine Töchter hochhält — das ist das Material meines Coachings. Nicht Theorie. Gelebte Wahrheit.</p>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header">
+      <div class="takeaway-icon">✦</div>
+      <div class="takeaway-label">Was ich davon gelernt habe</div>
+    </div>
+    <div class="takeaway-body">
+      <p class="takeaway-title" style="font-family:'Playfair Display',serif;font-size:20px;color:var(--text-bright);margin-bottom:20px;">Deine Branche zu finden bedeutet, dir selbst ehrlich zu begegnen</p>
+      <p>Der Markt will oft, dass wir breit sind. "Mehr Zielgruppe = mehr Umsatz." Aber der tiefste Umsatz — der, der bleibt und sich aufbaut — entsteht aus radikaler Spezifität. Die Frage ist nicht "Wer kann ich ansprechen?" sondern "Wen wirklich zu helfen bin ich berufen?"</p>
+      <ul>
+        <li><strong>450.000 Euro sind kein Versagen des alten Modells.</strong> Sie sind der Beweis, dass du wirkst. Jetzt mit mehr Präzision.</li>
+        <li>Wer dein Coaching wirklich braucht, erkennt sich in deiner Geschichte — nicht in deinem Angebot. Erzähle deine Geschichte.</li>
+        <li>Legacy entsteht nicht durch Methoden. Sie entsteht durch Menschen, die sagen: "Er hat mir gezeigt, wer ich bin."</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- KAPITEL 16 -->
+<section class="chapter-section" id="kap16">
+  <div class="chapter-label">Kapitel 16</div>
+  <h2 class="chapter-title">Vater sein: Das Einzige, das wirklich zählt</h2>
+  <img class="chapter-img" src="https://www.yvesunser.de/coaching/assets/editorial-6-BrtayScI.jpg" alt="Editorial">
+  <div class="chapter-body">
+    <p class="lead">Ich habe in diesem Buch viel über Absturz, Aufstieg, Modeln, Business und Selbstfindung geschrieben. Aber das Ehrlichste, das ich dir sagen kann, ist das:</p>
+    <p>Wenn ich abends ins Zimmer meiner Töchter gehe und sie schlafen sehe — ist das der einzige Moment, in dem alles andere aufhört zu existieren. Kein Instagram. Kein Fitness-Ziel. Kein Pitch. Kein Mister Universe. Nur ich und diese zwei kleinen Menschen, die ich alles nenne.</p>
+    <p>Ich war nicht immer ein guter Vater. Ich war in meinem Kopf, in meinem Business, in meinen Träumen. Ich war körperlich anwesend und mental abwesend. Das schmerzt mich noch heute.</p>
+    <p>Aber es hat mir auch die wichtigste Lektion meines Lebens gegeben: <strong>Erfolg ohne Präsenz ist keine Erfüllung.</strong></p>
+    <p>Du kannst der reichste Mann der Welt sein — wenn deine Kinder nicht wissen, wer du wirklich bist, hast du verloren. Wenn deine Frau neben einem Mann schläft, der körperlich da ist und in Gedanken immer woanders — dann ist das kein Erfolg. Das ist eine teure Form von Einsamkeit.</p>
+    <div class="inline-quote">
+      <p>Meine Frau hat mir einmal gesagt: "Ich brauche nicht, dass du erfolgreich bist. Ich brauche, dass du da bist." Dieser Satz hat mich mehr verändert als jeder Business-Kurs.</p>
+    </div>
+    <p>Ich lerne jeden Tag, beides zu sein: ambitioniert und präsent. Kämpfer und Vater. Mann und Mensch. Das ist das schwierigste Gleichgewicht, das ich je versucht habe zu halten.</p>
+    <p>Und das einzige, das wirklich zählt.</p>
+    <p>Weil am Ende — wenn alles andere weg ist, wenn die Titel verblasst sind, wenn die Follower vergessen haben, wer du warst — dann sitzt du mit deinen Kindern am Tisch. Und sie erzählen ihren Kindern von dir. Die Frage ist: Was werden sie sagen?</p>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header">
+      <div class="takeaway-icon">✦</div>
+      <div class="takeaway-label">Was ich davon gelernt habe</div>
+    </div>
+    <div class="takeaway-body">
+      <p class="takeaway-title" style="font-family:'Playfair Display',serif;font-size:20px;color:var(--text-bright);margin-bottom:20px;">Präsenz ist die seltenste und wertvollste Ressource, die du geben kannst</p>
+      <p>In einer Welt voller Notifications, Deadlines und Möglichkeiten ist wirklich da zu sein — ohne Handy, ohne Gedanken woanders, ohne Agenda — das radikalste Geschenk. Und das billigste. Es kostet nichts außer der Entscheidung.</p>
+      <ul>
+        <li><strong>"Ich brauche nicht, dass du erfolgreich bist. Ich brauche, dass du da bist."</strong> Merk dir diesen Satz. Für deine Kinder. Für deinen Partner. Für dich selbst.</li>
+        <li>Ambition und Präsenz schließen sich nicht aus. Sie brauchen Grenzen — klare, geliebte, konsequent gehaltene Grenzen.</li>
+        <li>Dein Kinder erinnern sich nicht an deine Leistungen. Sie erinnern sich daran, wie sie sich gefühlt haben, wenn du im Raum warst.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- KAPITEL 17 -->
+<section class="chapter-section" id="kap17">
+  <div class="chapter-label">Kapitel 17</div>
+  <h2 class="chapter-title">Erkenntnisse: Was ich wirklich gelernt habe</h2>
+  <img class="chapter-img" src="https://www.yvesunser.de/coaching/assets/yves-after-suit-CMjqRmZA.jpg" alt="Yves Unser">
+  <div class="chapter-body">
+    <p class="lead">Keine Kalendersprüche. Keine generischen Motivationssätze. Was ich wirklich gelernt habe — aus Schmerz, Verlust, Absturz und Neuanfang.</p>
+
+    <p style="font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);margin:40px 0 16px;">1. Dein größter Fehler ist dein stärkstes Argument.</p>
+    <p>Ich habe 1,1 Millionen verloren. Ich hatte vier Jahre keinen Führerschein. Ich wurde von hunderten Castings abgelehnt. Das sind keine Niederlagen, die ich verstecke — das sind die Gründe, warum Menschen mir vertrauen. Niemand traut einem Trainer, der nie verloren hat.</p>
+
+    <p style="font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);margin:40px 0 16px;">2. Disziplin ist nicht das Ziel. Klarheit ist das Ziel.</p>
+    <p>Wenn du weißt, warum du etwas tust, braucht Disziplin keine Willenskraft. Sie kommt von allein. Die Frage ist nicht: "Wie bleibe ich diszipliniert?" Die Frage ist: "Wofür genau?"</p>
+
+    <p style="font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);margin:40px 0 16px;">3. Schmerz ist ein Kompass, kein Feind.</p>
+    <p>Überall wo es wehtut, zeigt dir etwas Wichtiges. Nicht über die Situation. Über dich. Der Schmerz nach der Insolvenz hat mir gezeigt: Ich hatte meine Familie vernachlässigt. Ich hatte meinen Körper ignoriert. Ich hatte meine Seele leer gemacht für eine Vision, die nicht meiner war.</p>
+
+    <p style="font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);margin:40px 0 16px;">4. Du kannst nicht alles gleichzeitig kämpfen.</p>
+    <p>Die größte Schwäche meiner frühen Jahre war: Zu viele Fronten gleichzeitig. Zu viele Projekte. Zu viele Rollen. Zu wenig Fokus. Wasser, das in alle Richtungen fließt, hat keine Kraft. Wasser, das in eine Richtung fließt, bricht Fels.</p>
+
+    <p style="font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);margin:40px 0 16px;">5. Familie ist keine Ablenkung vom Erfolg. Sie ist der Grund für Erfolg.</p>
+    <p>Das habe ich zu spät verstanden. Aber ich habe es verstanden. Und meine Frau — die von Wien nach Deutschland zog, die zwei Kinder großzog während ich Startups baute und TV-Shows drehte, die blieb, als alles zusammenbrach und sagte "dann bauen wir neu" — sie hat mir das nicht nur gezeigt. Sie hat es mir bewiesen.</p>
+
+    <p style="font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);margin:40px 0 16px;">6. Verletzlichkeit ist keine Schwäche.</p>
+    <p>Die stärksten Männer, die ich kenne, sind auch die verletzlichsten. Nicht weil sie schwach sind. Sondern weil sie den Mut haben, echt zu sein.</p>
+
+    <p style="font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);margin:40px 0 16px;">7. Wissen wann du Wasser bist, ist deine größte Superkraft.</p>
+    <p>Nicht immer kämpfen. Nicht immer nachgeben. Lesen, was der Moment braucht. Das lernt man nicht aus Büchern. Das lernt man, indem man lebt.</p>
+
+    <div class="inline-quote">
+      <p>Das Leben testet dich nicht, um dich zu brechen. Es testet dich, um dir zu zeigen, was du trägst. Du trägst mehr, als du weißt.</p>
+      <cite>— Yves-Len Unser</cite>
+    </div>
+  </div>
+  <div class="takeaway-box">
+    <div class="takeaway-header">
+      <div class="takeaway-icon">✦</div>
+      <div class="takeaway-label">Das Fazit</div>
+    </div>
+    <div class="takeaway-body">
+      <p class="takeaway-title" style="font-family:'Playfair Display',serif;font-size:20px;color:var(--text-bright);margin-bottom:20px;">Das Leben beginnt dort, wo deine Ausreden enden</p>
+      <p>Du hast dieses Buch jetzt gelesen. Du kennst meine Geschichte. Du kennst die Momente, die mich gemacht haben. Jetzt ist die Frage: Was machst du mit deiner?</p>
+      <ul>
+        <li>Welche Mauer in dir wartet darauf, eingerissen zu werden?</li>
+        <li>Welchen Schritt weißt du schon lange, aber machst ihn nicht?</li>
+        <li>Wer steht neben dir — und siehst du ihn oder sie wirklich?</li>
+        <li><strong>Was ist dein Material?</strong></li>
+      </ul>
+      <p style="margin-top:24px;font-style:italic;color:var(--gold-light);">Wenn du bereit bist, dein Leben zu modellieren — dann lass uns reden.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NACHWORT -->
+<section class="special-section" id="nachwort">
+  <div class="section-label">Nachwort</div>
+  <h2>Warum ich das alles erzähle</h2>
+  <div class="chapter-body">
+    <img class="chapter-img" src="https://www.yvesunser.de/coaching/assets/editorial-1-iDM6G-ey.jpg" alt="Yves Unser" style="margin-bottom:48px;">
+    <p class="lead">Ich hätte dieses Buch nicht schreiben müssen. Ich könnte weiterhin nur die Bilder zeigen. Die Erfolge. Die Titel. Die Fashion Weeks.</p>
+    <p>Aber das wäre nicht ehrlich. Und Ehrlichkeit — die echte, unbequeme, manchmal peinliche Ehrlichkeit — ist das Einzige, das wirklich verbindet.</p>
+    <p>Ich schreibe dieses Buch für den 25-jährigen Typ, der gerade nicht weiß, wohin sein Leben geht. Für den 35-jährigen Unternehmer, der gerade vor den Trümmern seines Projekts steht. Für jeden Mann, der im Außen alles hat — und innen trotzdem leer ist.</p>
+    <p>Und ich schreibe es für meine Töchter. Damit sie eines Tages wissen, wer ihr Vater war. Nicht das polierte Instagram-Bild. Sondern der echte Mensch dahinter. Jemand, der oft falsch lag. Der oft zu viel wollte. Der gefallen ist — und immer wieder aufgestanden ist.</p>
+    <p>Und ich schreibe es für meine Frau. Für die Frau, die von Wien nach Deutschland kam und nie zurückblickte. Die zwei Kinder großzog, während ich Startups baute und Träume verfolgte. Die blieb, als alles zusammenbrach. Die sagte: "Dann bauen wir neu. Aber diesmal zusammen."</p>
+    <p>Ohne dich wäre dieses Buch eine Geschichte. Mit dir ist es die Wahrheit.</p>
+    <div class="inline-quote">
+      <p>Nicht weil er mutig war. Sondern weil er keine andere Wahl kannte — und weil jemand an seiner Seite war, der an ihn glaubte, bevor er es selbst tat.</p>
+    </div>
+    <div class="gold-line"></div>
+    <p style="text-align:center;font-style:italic;color:var(--text-muted);margin-bottom:8px;">Euer Yves</p>
+    <p style="text-align:center;font-size:12px;color:var(--text-muted);letter-spacing:0.2em;">yvesunser.de/coaching</p>
+    <div class="divider"></div>
+    <p style="text-align:center;font-size:13px;color:var(--text-muted);">
+      <em>VOM MODEL ZUM UNTERNEHMER</em><br>
+      Yves-Len Unser<br>
+      © 2026 — Alle Rechte vorbehalten<br><br>
+      <em>Teil 2 folgt: Die spirituelle Reise — Ayahuasca, Schweigekloster, und was ich auf dem Weg zu mir selbst wirklich fand.</em>
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Yves-Len Unser</div>
+  <p>
+    Coaching · Transformation · THE RISER<br>
+    <a href="https://www.yvesunser.de/coaching" style="color:var(--gold);text-decoration:none;">yvesunser.de/coaching</a>
+  </p>
+</footer>
+
+</body>
+</html>

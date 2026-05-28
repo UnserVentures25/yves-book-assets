@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yves-Len Unser — Vom Model zum Unternehmer | Book Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0a0a;--bg2:#111;--bg3:#161616;--gold:#c9a84c;--gold-light:#e8c96a;--gold-dim:rgba(201,168,76,.12);--text:#d4d0c8;--text-bright:#f0ece0;--text-muted:#888880;--border:rgba(201,168,76,.22)}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-weight:300;font-size:16px;line-height:1.8;-webkit-font-smoothing:antialiased}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:18px 48px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Playfair Display',serif;font-size:18px;color:var(--gold);letter-spacing:.08em}
+.nav-link{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);text-decoration:none}
+.nav-link:hover{color:var(--gold)}
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:140px 40px 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 90% 70% at 50% 40%,rgba(201,168,76,.07) 0%,transparent 65%);pointer-events:none}
+.hero-eyebrow{font-size:10px;letter-spacing:.45em;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(48px,8vw,100px);font-weight:700;line-height:1.02;color:var(--text-bright);margin-bottom:16px;letter-spacing:-.025em}
+.hero-title em{font-style:italic;color:var(--gold)}
+.hero-subtitle{font-family:'Playfair Display',serif;font-size:clamp(16px,2vw,22px);font-style:italic;color:var(--text-muted);margin-bottom:32px;max-width:600px}
+.hero-author{font-size:11px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:72px}
+/* BOOK GRID */
+.books-section{max-width:1080px;margin:0 auto;padding:80px 40px 120px}
+.books-header{text-align:center;margin-bottom:72px}
+.books-header .eyebrow{font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.books-header h2{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,44px);color:var(--text-bright);font-weight:700}
+.books-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px}
+.book-card{background:var(--bg3);border:1px solid var(--border);padding:48px 44px;position:relative;transition:border-color .3s}
+.book-card:hover{border-color:var(--gold)}
+.book-card.free-card{border-top:3px solid var(--gold)}
+.book-card.full-card{border-top:3px solid rgba(201,168,76,.4)}
+.card-flag{font-size:24px;margin-bottom:16px;display:block}
+.card-badge{display:inline-block;padding:4px 14px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;margin-bottom:20px}
+.badge-free{background:rgba(201,168,76,.2);color:var(--gold);border:1px solid var(--gold)}
+.badge-full{background:rgba(255,255,255,.05);color:var(--text-muted);border:1px solid rgba(255,255,255,.1)}
+.card-title{font-family:'Playfair Display',serif;font-size:22px;color:var(--text-bright);margin-bottom:10px;line-height:1.3}
+.card-subtitle{font-size:13px;color:var(--text-muted);margin-bottom:28px;line-height:1.6}
+.card-includes{list-style:none;margin-bottom:32px}
+.card-includes li{font-size:13px;color:var(--text);padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.card-includes li::before{content:'✦  ';color:var(--gold);font-size:10px}
+.card-btn{display:block;text-align:center;padding:14px 24px;font-family:'Inter',sans-serif;font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;margin-bottom:10px;transition:background .2s}
+.btn-primary{background:var(--gold);color:#0a0a0a}
+.btn-primary:hover{background:var(--gold-light)}
+.btn-secondary{background:transparent;color:var(--gold);border:1px solid var(--gold)}
+.btn-secondary:hover{background:var(--gold-dim)}
+.card-note{font-size:11px;color:var(--text-muted);text-align:center;margin-top:8px}
+/* HOW TO PDF */
+.howto{max-width:720px;margin:0 auto;padding:0 40px 80px;text-align:center}
+.howto-box{background:var(--bg3);border:1px solid var(--border);padding:40px 44px}
+.howto h3{font-family:'Playfair Display',serif;font-size:22px;color:var(--text-bright);margin-bottom:20px}
+.howto p{color:var(--text);font-size:14px;margin-bottom:14px}
+.steps{display:flex;gap:24px;margin-top:28px;text-align:left;flex-wrap:wrap}
+.step{flex:1;min-width:160px}
+.step-num{font-size:28px;font-family:'Playfair Display',serif;color:var(--gold);margin-bottom:8px}
+.step-text{font-size:13px;color:var(--text);line-height:1.6}
+/* ABOUT */
+.about-section{max-width:860px;margin:0 auto;padding:80px 40px;border-top:1px solid rgba(201,168,76,.08);display:grid;grid-template-columns:280px 1fr;gap:60px;align-items:center}
+.about-img{width:100%;filter:grayscale(20%) contrast(1.05) brightness(.88);border:1px solid var(--border)}
+.about-text h2{font-family:'Playfair Display',serif;font-size:32px;color:var(--text-bright);margin-bottom:20px}
+.about-text p{color:var(--text);margin-bottom:18px;font-size:15px}
+.about-btn{display:inline-block;margin-top:12px;padding:13px 32px;background:var(--gold);color:#0a0a0a;font-family:'Inter',sans-serif;font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none}
+.about-btn:hover{background:var(--gold-light)}
+/* IMPRESSUM */
+.impressum{max-width:600px;margin:0 auto;padding:40px 40px;border-top:1px solid var(--border)}
+.impressum h3{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.impressum p{font-size:12px;color:var(--text-muted);line-height:1.8}
+/* FOOTER */
+footer{text-align:center;padding:56px 40px;border-top:1px solid var(--border);margin-top:40px}
+.footer-logo{font-family:'Playfair Display',serif;font-size:26px;color:var(--gold);margin-bottom:12px}
+footer p{font-size:12px;color:var(--text-muted);line-height:2}
+@media(max-width:760px){
+  nav{padding:14px 20px}
+  .hero{padding:120px 20px 60px}
+  .books-section{padding:60px 20px 80px}
+  .books-grid{grid-template-columns:1fr}
+  .book-card{padding:36px 24px}
+  .about-section{grid-template-columns:1fr;gap:32px;padding:60px 20px}
+  .about-img{max-width:260px}
+  .howto{padding:0 20px 60px}
+  .howto-box{padding:32px 20px}
+  .steps{flex-direction:column;gap:16px}
+  .impressum{padding:40px 20px}
+  footer{padding:48px 20px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Yves-Len Unser</div>
+  <a class="nav-link" href="https://www.yvesunser.de/coaching" target="_blank">yvesunser.de</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Official Book Hub</div>
+  <h1 class="hero-title">Vom <em>Model</em><br>zum Unternehmer</h1>
+  <p class="hero-subtitle">Die wahre Geschichte — in Deutsch und Englisch. Kostenlose Leseprobe oder vollständige Version.</p>
+  <div class="hero-author">Yves-Len Unser</div>
+  <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center">
+    <a href="#books" style="display:inline-block;padding:15px 36px;background:var(--gold);color:#0a0a0a;font-family:'Inter',sans-serif;font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none">Alle Versionen ↓</a>
+    <a href="https://www.yvesunser.de/coaching" target="_blank" style="display:inline-block;padding:15px 36px;background:transparent;color:var(--gold);border:1px solid var(--gold);font-family:'Inter',sans-serif;font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none">Coaching anfragen</a>
+  </div>
+</section>
+
+<!-- BOOK CARDS -->
+<section class="books-section" id="books">
+  <div class="books-header">
+    <div class="eyebrow">Alle Versionen</div>
+    <h2>Wähle deine Version</h2>
+  </div>
+
+  <div class="books-grid">
+    <!-- DE TEASER -->
+    <div class="book-card free-card">
+      <span class="card-flag">🇩🇪</span>
+      <span class="card-badge badge-free">Gratis Leseprobe</span>
+      <div class="card-title">Vom Model zum Unternehmer</div>
+      <div class="card-subtitle">Deutsch · 3 Kapitel · Kostenlos · Mit Cliffhanger</div>
+      <ul class="card-includes">
+        <li>Kapitel 1: Der Junge, der anders war</li>
+        <li>Kapitel 2: Die Bundeswehrzeit</li>
+        <li>Kapitel 7: LA — Pitbulls & Betrug</li>
+        <li>Mit "Was ich davon gelernt habe" Sektionen</li>
+        <li>Als PDF speicherbar</li>
+      </ul>
+      <a class="card-btn btn-primary" href="https://unserventures25.github.io/yves-book-assets/teaser_de.html" target="_blank">Online lesen ↗</a>
+      <a class="card-btn btn-secondary" href="https://unserventures25.github.io/yves-book-assets/teaser_de.html" target="_blank" id="dl-teaser-de">Als PDF herunterladen</a>
+      <p class="card-note">Öffnen → Im Browser Drucken → "Als PDF speichern"</p>
+    </div>
+
+    <!-- EN TEASER -->
+    <div class="book-card free-card">
+      <span class="card-flag">🇬🇧</span>
+      <span class="card-badge badge-free">Free Preview</span>
+      <div class="card-title">From Model to Entrepreneur</div>
+      <div class="card-subtitle">English · 3 Chapters · Free · With Cliffhanger</div>
+      <ul class="card-includes">
+        <li>Chapter 1: The Boy Who Was Different</li>
+        <li>Chapter 2: Pushing Limits — The Military</li>
+        <li>Chapter 7: LA — Pitbulls &amp; Fraud</li>
+        <li>With "What I Learned" takeaway sections</li>
+        <li>Saveable as PDF</li>
+      </ul>
+      <a class="card-btn btn-primary" href="https://unserventures25.github.io/yves-book-assets/teaser_en.html" target="_blank">Read Online ↗</a>
+      <a class="card-btn btn-secondary" href="https://unserventures25.github.io/yves-book-assets/teaser_en.html" target="_blank" id="dl-teaser-en">Download as PDF</a>
+      <p class="card-note">Open → Print in browser → "Save as PDF"</p>
+    </div>
+
+    <!-- DE FULL -->
+    <div class="book-card full-card">
+      <span class="card-flag">🇩🇪</span>
+      <span class="card-badge badge-full">Vollständige Version</span>
+      <div class="card-title">Vom Model zum Unternehmer</div>
+      <div class="card-subtitle">Deutsch · 17 Kapitel + Vorwort + Nachwort · Vollständig</div>
+      <ul class="card-includes">
+        <li>Alle 17 Kapitel ungekürzt</li>
+        <li>"Was ich davon gelernt habe" nach jedem Kapitel</li>
+        <li>Ehefrau · Familie · 1,1 Mio. Startup</li>
+        <li>Insolvenz, Wiederaufbau, THE RISER</li>
+        <li>Als PDF speicherbar</li>
+      </ul>
+      <a class="card-btn btn-primary" href="https://unserventures25.github.io/yves-book-assets/full_de.html" target="_blank">Online lesen ↗</a>
+      <a class="card-btn btn-secondary" href="https://unserventures25.github.io/yves-book-assets/full_de.html" target="_blank">Als PDF herunterladen</a>
+      <p class="card-note">Öffnen → Im Browser Drucken → "Als PDF speichern"</p>
+    </div>
+
+    <!-- EN FULL -->
+    <div class="book-card full-card">
+      <span class="card-flag">🇬🇧</span>
+      <span class="card-badge badge-full">Full Version</span>
+      <div class="card-title">From Model to Entrepreneur</div>
+      <div class="card-subtitle">English · 17 Chapters + Foreword + Afterword · Complete</div>
+      <ul class="card-includes">
+        <li>All 17 chapters, unabridged</li>
+        <li>"What I Learned" after every chapter</li>
+        <li>Wife · Family · 1.1M Startup</li>
+        <li>Insolvency, Rebuild, THE RISER</li>
+        <li>Saveable as PDF</li>
+      </ul>
+      <a class="card-btn btn-primary" href="https://unserventures25.github.io/yves-book-assets/full_en.html" target="_blank">Read Online ↗</a>
+      <a class="card-btn btn-secondary" href="https://unserventures25.github.io/yves-book-assets/full_en.html" target="_blank">Download as PDF</a>
+      <p class="card-note">Open → Print in browser → "Save as PDF"</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO SAVE AS PDF -->
+<div class="howto">
+  <div class="howto-box">
+    <h3>So speicherst du als PDF</h3>
+    <p>Alle Bücher sind im Browser lesbar und können kostenlos als PDF gespeichert werden — kein Account, keine App, kein Abo.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-text">Klicke "Online lesen" oder "Als PDF" — das Buch öffnet im Browser.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-text">Klicke den goldenen "Als PDF speichern" Button unten rechts im Buch.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-text">Im Druckdialog wähle "Als PDF speichern" als Drucker. Fertig.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about-section">
+  <img class="about-img" src="https://www.yvesunser.de/coaching/assets/quiz-intro-portrait-SwF3YwKZ.jpg" alt="Yves-Len Unser">
+  <div class="about-text">
+    <h2>Yves-Len Unser</h2>
+    <p>Fallschirmjäger. Model. Unternehmer. Vater. Coach. Mister Universe Kandidat für Serbien.</p>
+    <p>Yves hat alles gegeben — für ein Startup, für einen Traum, für eine Identität. Er hat 1,1 Millionen Euro investiert, Insolvenz angemeldet und trotzdem nicht aufgehört. Heute hilft er Männern, ihr Leben mit der M.O.D.E.L.³-Methode zu transformieren.</p>
+    <p><strong style="color:var(--gold-light)">THE RISER</strong> ist sein 90-Tage-Programm für Männer, die in einen Raum gehen — und nicht gesehen werden. Bis jetzt.</p>
+    <a class="about-btn" href="https://www.yvesunser.de/coaching" target="_blank">Coaching entdecken ↗</a>
+  </div>
+</section>
+
+<!-- IMPRESSUM -->
+<div class="impressum">
+  <h3>Impressum</h3>
+  <p>
+    Yves Unser<br>
+    Y-Ventures UG<br>
+    Strütweg 11<br>
+    75334 Conweiler<br><br>
+    © 2026 — Alle Rechte vorbehalten · yvesunser.de
+  </p>
+</div>
+
+<footer>
+  <div class="footer-logo">Yves-Len Unser</div>
+  <p>
+    THE RISER · M.O.D.E.L.³ · Coaching<br>
+    <a href="https://www.yvesunser.de/coaching" style="color:var(--gold);text-decoration:none">yvesunser.de/coaching</a>
+  </p>
+</footer>
+
+</body>
+</html>
