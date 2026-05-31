@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yves-Len Unser — Vom Model zum Unternehmer | Book Hub</title>
+<title>Unser Ventures — Hub | Yves · VanessaSpirit</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -68,6 +68,34 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,.93
 .impressum{max-width:600px;margin:0 auto;padding:40px 40px;border-top:1px solid var(--border)}
 .impressum h3{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
 .impressum p{font-size:12px;color:var(--text-muted);line-height:1.8}
+/* TABS */
+.tab-bar{background:rgba(10,10,10,.97);border-bottom:1px solid var(--border);padding:0 48px;display:flex;gap:0;position:sticky;top:57px;z-index:90}
+.tab-btn{padding:16px 28px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-muted);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;font-family:'Inter',sans-serif;transition:color .2s,border-color .2s}
+.tab-btn:hover{color:var(--gold)}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+.tab-btn.active-purple{color:#b08cdc;border-bottom-color:#9b6bcc}
+.tab-btn:hover.tab-btn-purple{color:#b08cdc}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+/* VANESSA PANEL */
+.vs-hero{min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 40px;position:relative;overflow:hidden}
+.vs-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 90% 70% at 50% 40%,rgba(155,107,204,.09) 0%,transparent 65%);pointer-events:none}
+.vs-hero .hero-eyebrow{color:#b08cdc}
+.vs-hero .hero-title em{color:#9b6bcc}
+.vs-grid{max-width:1080px;margin:0 auto;padding:60px 40px 100px;display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.vs-card{background:var(--bg3);border:1px solid rgba(155,107,204,.22);padding:40px 36px;position:relative;transition:border-color .3s}
+.vs-card:hover{border-color:#9b6bcc}
+.vs-card.featured{border-top:3px solid #9b6bcc}
+.vs-card.secondary{border-top:3px solid rgba(155,107,204,.4)}
+.vs-badge{display:inline-block;padding:4px 14px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;margin-bottom:20px;border:1px solid #9b6bcc;color:#b08cdc;background:rgba(155,107,204,.1)}
+.vs-badge-gold{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.1)}
+.vs-card .card-title{font-family:'Playfair Display',serif;font-size:20px;color:var(--text-bright);margin-bottom:10px;line-height:1.3}
+.vs-card .card-subtitle{font-size:13px;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+.vs-card .card-includes li::before{color:#9b6bcc}
+.btn-purple{background:#9b6bcc;color:#fff}
+.btn-purple:hover{background:#b08cdc}
+.btn-purple-outline{background:transparent;color:#9b6bcc;border:1px solid #9b6bcc}
+.btn-purple-outline:hover{background:rgba(155,107,204,.1)}
 /* FOOTER */
 footer{text-align:center;padding:56px 40px;border-top:1px solid var(--border);margin-top:40px}
 .footer-logo{font-family:'Playfair Display',serif;font-size:26px;color:var(--gold);margin-bottom:12px}
@@ -91,9 +119,18 @@ footer p{font-size:12px;color:var(--text-muted);line-height:2}
 <body>
 
 <nav>
-  <div class="nav-logo">Yves-Len Unser</div>
+  <div class="nav-logo">Unser Ventures</div>
   <a class="nav-link" href="https://www.yvesunser.de/coaching" target="_blank">yvesunser.de</a>
 </nav>
+
+<!-- TAB BAR -->
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('yves', this)">Yves · Bücher &amp; Coaching</button>
+  <button class="tab-btn tab-btn-purple" onclick="switchTab('vanessa', this)">VanessaSpirit · Raum des Bewusstseins</button>
+</div>
+
+<!-- TAB: YVES -->
+<div id="tab-yves" class="tab-panel active">
 
 <!-- HERO -->
 <section class="hero">
@@ -235,13 +272,148 @@ footer p{font-size:12px;color:var(--text-muted);line-height:2}
   </p>
 </div>
 
+</div><!-- end tab-yves -->
+
+<!-- TAB: VANESSASPIRIT -->
+<div id="tab-vanessa" class="tab-panel">
+
+  <!-- VS HERO -->
+  <section class="vs-hero hero">
+    <div class="hero-eyebrow">VanessaSpirit · Masterplan 2026</div>
+    <h1 class="hero-title">Der Raum des<br><em>Bewusstseins</em></h1>
+    <p class="hero-subtitle" style="color:rgba(176,140,220,.8);">Zielgruppenanalyse · Story · Philosophie · Angebote · Bug-Fixes · Lovable-Prompt</p>
+    <div class="hero-author" style="color:#9b6bcc;">Vanessa Unser · VanessaSpirit</div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
+      <a href="RaumDesBewusstseins_Masterplan.html" target="_blank" style="display:inline-block;padding:15px 36px;background:#9b6bcc;color:#fff;font-family:'Inter',sans-serif;font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none">Vollständigen Masterplan öffnen ↗</a>
+      <a href="https://www.raumdesbewusstseins.de" target="_blank" style="display:inline-block;padding:15px 36px;background:transparent;color:#9b6bcc;border:1px solid #9b6bcc;font-family:'Inter',sans-serif;font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none">Website besuchen ↗</a>
+    </div>
+  </section>
+
+  <!-- VS CARDS GRID -->
+  <div class="vs-grid">
+
+    <!-- MASTERPLAN -->
+    <div class="vs-card featured" style="grid-column:span 1;">
+      <span class="card-flag">✨</span>
+      <span class="vs-badge">Vollständiger Masterplan</span>
+      <div class="card-title">Coaching Masterplan 2026</div>
+      <div class="card-subtitle">Positionierung · Story · Zielgruppe · Philosophie · Angebote · Content · Bugs · Lovable</div>
+      <ul class="card-includes">
+        <li>01 — Die drei Fundament-Fragen</li>
+        <li>02 — Das Kern-Versprechen</li>
+        <li>03 — Die vier Säulen der Philosophie</li>
+        <li>04 — Die Hero's Journey</li>
+        <li>05 — Identität &amp; Credentials</li>
+        <li>06 — Zielgruppe: Die Erwachende Frau</li>
+        <li>07 — Alle Angebote &amp; Preise</li>
+        <li>08 — 4-Wochen Content-Plan</li>
+        <li>09 — Referenz-Accounts</li>
+        <li>10 — 30-Tage Aktionsplan</li>
+        <li>11 — 19 Bugs &amp; Website-Analyse</li>
+        <li>12 — Lovable Fix-Prompt</li>
+      </ul>
+      <a class="card-btn btn-purple" href="RaumDesBewusstseins_Masterplan.html" target="_blank">Masterplan öffnen ↗</a>
+      <a class="card-btn btn-purple-outline" href="RaumDesBewusstseins_Masterplan.html" target="_blank">Als PDF speichern</a>
+      <p class="card-note">Öffnen → Im Browser Drucken → "Als PDF speichern"</p>
+    </div>
+
+    <!-- WEBSITE ANALYSE -->
+    <div class="vs-card secondary">
+      <span class="card-flag">🐛</span>
+      <span class="vs-badge">Website Analyse</span>
+      <div class="card-title">19 Bugs &amp; Fixes</div>
+      <div class="card-subtitle">Vollständige Analyse von raumdesbewusstseins.de — Mai 2026</div>
+      <ul class="card-includes">
+        <li>4 Kritische Bugs (sofort fixen)</li>
+        <li>4 Rechtliche Probleme (DSGVO/DE)</li>
+        <li>6 Fehlende Features (blockieren Käufe)</li>
+        <li>5 Content / UX Probleme</li>
+        <li>Lovable-Prompt für alle 19 Fixes</li>
+        <li>USt-IdNr: DE363590150 ✓</li>
+      </ul>
+      <a class="card-btn btn-purple" href="RaumDesBewusstseins_Masterplan.html#bugs" target="_blank">Bug-Liste &amp; Lovable-Prompt ↗</a>
+      <p class="card-note">Im Masterplan Abschnitt 11 &amp; 12 — direkt zu Lovable kopieren</p>
+    </div>
+
+    <!-- WEBSITE LIVE -->
+    <div class="vs-card secondary">
+      <span class="card-flag">🌐</span>
+      <span class="vs-badge vs-badge-gold">Live Website</span>
+      <div class="card-title">raumdesbewusstseins.de</div>
+      <div class="card-subtitle">VanessaSpirit — Der Raum des Bewusstseins</div>
+      <ul class="card-includes">
+        <li>Mitgliedschaft: €33,33/Monat</li>
+        <li>Einzelsitzung: €144,00</li>
+        <li>VIP 8 Wochen: €4.440,00</li>
+        <li>Lion Gate 3.0: €555,50</li>
+        <li>Elja Kindercoaching: €25–€75</li>
+        <li>Shop: Kakao €55,50 · Kerzen €22,20</li>
+      </ul>
+      <a class="card-btn btn-purple" href="https://www.raumdesbewusstseins.de" target="_blank">Website besuchen ↗</a>
+      <a class="card-btn btn-purple-outline" href="https://www.raumdesbewusstseins.de/angebote" target="_blank">Alle Angebote ansehen ↗</a>
+      <p class="card-note">Kontakt: vanessaunser.business@gmx.de · +49 1515 9874894</p>
+    </div>
+
+  </div>
+
+  <!-- VS QUICK FACTS -->
+  <div style="max-width:900px;margin:0 auto;padding:0 40px 80px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+
+    <div style="background:var(--bg3);border:1px solid rgba(155,107,204,.2);padding:28px 24px;border-radius:4px;">
+      <div style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#9b6bcc;margin-bottom:12px;font-weight:700;">Zielgruppe</div>
+      <div style="font-size:14px;color:var(--text);line-height:1.8;">
+        Frauen, 30–55 Jahre<br>
+        Haben sich in Rollen verloren<br>
+        Suchen spirituelle Tiefe<br>
+        "Jetzt bin ich an der Reihe"<br>
+        DACH-Raum, Instagram/Facebook
+      </div>
+    </div>
+
+    <div style="background:var(--bg3);border:1px solid rgba(155,107,204,.2);padding:28px 24px;border-radius:4px;">
+      <div style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#c9a84c;margin-bottom:12px;font-weight:700;">Kern-Versprechen</div>
+      <div style="font-size:14px;color:var(--text);line-height:1.8;font-style:italic;">
+        "Du holst dir die Kraft deiner Macht zurück — und weißt zum ersten Mal seit Jahren wieder wer du wirklich bist."
+      </div>
+    </div>
+
+    <div style="background:var(--bg3);border:1px solid rgba(155,107,204,.2);padding:28px 24px;border-radius:4px;">
+      <div style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#9b6bcc;margin-bottom:12px;font-weight:700;">Unique Selling Points</div>
+      <div style="font-size:14px;color:var(--text);line-height:1.8;">
+        Kartenlektüre + Akasha<br>
+        Elja Pferdetherapie (einzigartig)<br>
+        Kakao-Zeremonien (Maya)<br>
+        61 Jahre — gelebte Erfahrung<br>
+        Emigration + Mutterschaft als Story
+      </div>
+    </div>
+
+  </div>
+
+</div><!-- end tab-vanessa -->
+
 <footer>
-  <div class="footer-logo">Yves-Len Unser</div>
+  <div class="footer-logo">Unser Ventures</div>
   <p>
-    THE RISER · M.O.D.E.L.³ · Coaching<br>
+    Yves-Len Unser · VanessaSpirit<br>
     <a href="https://www.yvesunser.de/coaching" style="color:var(--gold);text-decoration:none">yvesunser.de/coaching</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.raumdesbewusstseins.de" style="color:#9b6bcc;text-decoration:none">raumdesbewusstseins.de</a>
   </p>
 </footer>
+
+<script>
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active', 'active-purple'));
+  document.getElementById('tab-' + name).classList.add('active');
+  if (name === 'vanessa') {
+    btn.classList.add('active-purple');
+  } else {
+    btn.classList.add('active');
+  }
+}
+</script>
 
 </body>
 </html>
