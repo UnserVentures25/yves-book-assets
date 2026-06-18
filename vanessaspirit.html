@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>@vanessaspirit — Content Hub</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #faf8f5;
+    color: #2c2c2c;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(135deg, #c9a882 0%, #e8c99a 50%, #d4a96a 100%);
+    padding: 40px 32px 32px;
+    text-align: center;
+  }
+  header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  }
+  header p {
+    color: rgba(255,255,255,0.85);
+    font-size: 14px;
+    margin-top: 6px;
+  }
+
+  /* TABS */
+  nav {
+    display: flex;
+    background: #fff;
+    border-bottom: 1px solid #e8e0d5;
+    overflow-x: auto;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  nav button {
+    flex: none;
+    padding: 14px 22px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: #888;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  nav button:hover { color: #c9a882; }
+  nav button.active {
+    color: #b8834a;
+    border-bottom-color: #b8834a;
+  }
+
+  /* MAIN */
+  main { max-width: 960px; margin: 0 auto; padding: 32px 20px 60px; }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* SECTION TITLE */
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #b8834a;
+    margin-bottom: 6px;
+  }
+  .section-subtitle {
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 28px;
+  }
+
+  /* STATUS BADGE */
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .badge-idee    { background: #fef3e2; color: #b8834a; }
+  .badge-gedreht { background: #e8f4fd; color: #2980b9; }
+  .badge-geschnitten { background: #eaf6ec; color: #27ae60; }
+  .badge-gepostet { background: #2c2c2c; color: #fff; }
+  .badge-paar   { background: #fce8f3; color: #a0447a; }
+  .badge-solo   { background: #e8ecfd; color: #4a67b8; }
+
+  /* REEL CARD */
+  .reel-card {
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid #ede7dd;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    transition: box-shadow 0.2s;
+  }
+  .reel-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.09); }
+
+  .reel-header {
+    padding: 18px 22px 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .reel-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: #c9a882;
+    background: #fdf6ee;
+    border-radius: 8px;
+    padding: 3px 9px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .reel-title-block { flex: 1; }
+  .reel-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2c2c2c;
+    margin-bottom: 4px;
+  }
+  .reel-hook {
+    font-size: 13px;
+    color: #666;
+    font-style: italic;
+  }
+  .reel-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+  .reel-toggle {
+    font-size: 18px;
+    color: #ccc;
+    flex-shrink: 0;
+    margin-top: 2px;
+    transition: transform 0.2s;
+  }
+  .reel-card.open .reel-toggle { transform: rotate(180deg); }
+
+  .reel-body {
+    display: none;
+    padding: 0 22px 22px;
+    border-top: 1px solid #f0ece6;
+  }
+  .reel-card.open .reel-body { display: block; }
+
+  .reel-field { margin-top: 14px; }
+  .reel-field label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #b8834a;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .reel-field p {
+    font-size: 14px;
+    color: #3a3a3a;
+    background: #faf8f5;
+    border-radius: 8px;
+    padding: 10px 14px;
+    line-height: 1.6;
+  }
+  .hashtags {
+    font-size: 13px;
+    color: #b8834a;
+    background: #fdf6ee;
+    border-radius: 8px;
+    padding: 8px 14px;
+  }
+
+  /* FILTER BAR */
+  .filter-bar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  .filter-btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1.5px solid #e0d8cd;
+    background: #fff;
+    cursor: pointer;
+    font-size: 13px;
+    color: #666;
+    transition: all 0.15s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: #b8834a;
+    border-color: #b8834a;
+    color: #fff;
+  }
+
+  /* SWIPE TABLE */
+  .swipe-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .swipe-table th {
+    background: #b8834a;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 12px 14px;
+    text-align: left;
+  }
+  .swipe-table td {
+    padding: 13px 14px;
+    border-bottom: 1px solid #f0ece6;
+    vertical-align: top;
+    line-height: 1.5;
+    color: #3a3a3a;
+  }
+  .swipe-table tr:last-child td { border-bottom: none; }
+  .swipe-table tr:hover td { background: #fdf9f5; }
+  .creator-name { font-weight: 600; color: #2c2c2c; }
+  .creator-handle { font-size: 12px; color: #b8834a; }
+
+  /* REFERENCE PANELS */
+  .ref-card {
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid #ede7dd;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  .ref-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #b8834a;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0ece6;
+  }
+  .ref-card p, .ref-card li {
+    font-size: 14px;
+    color: #3a3a3a;
+    line-height: 1.7;
+  }
+  .ref-card ul { padding-left: 18px; margin-top: 6px; }
+  .ref-card li { margin-bottom: 4px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .voice-card {
+    background: #faf8f5;
+    border-radius: 10px;
+    padding: 16px;
+    border: 1px solid #ede7dd;
+  }
+  .voice-card h4 { font-size: 14px; font-weight: 700; color: #2c2c2c; margin-bottom: 8px; }
+  .voice-card .example {
+    font-size: 13px;
+    color: #888;
+    font-style: italic;
+    border-left: 3px solid #c9a882;
+    padding-left: 10px;
+    margin-top: 10px;
+  }
+  .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px; }
+  .do-list { background: #eef7ef; border-radius: 10px; padding: 14px; }
+  .dont-list { background: #fef0f0; border-radius: 10px; padding: 14px; }
+  .do-list h4 { color: #27ae60; font-size: 13px; margin-bottom: 8px; }
+  .dont-list h4 { color: #c0392b; font-size: 13px; margin-bottom: 8px; }
+
+  @media (max-width: 600px) {
+    .two-col, .do-dont { grid-template-columns: 1fr; }
+    header h1 { font-size: 22px; }
+    .swipe-table { font-size: 12px; }
+    .swipe-table td, .swipe-table th { padding: 10px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>@vanessaspirit — Content Hub</h1>
+  <p>Spirit-Coaching · Polarity · Embodiment · Paar-Content</p>
+</header>
+
+<nav>
+  <button class="active" onclick="showTab('backlog')">📋 Reel-Backlog (20)</button>
+  <button onclick="showTab('swipe')">🔍 Swipe-File</button>
+  <button onclick="showTab('voice')">🎙 Brand Voice</button>
+  <button onclick="showTab('brief')">📌 Brief</button>
+</nav>
+
+<main>
+
+  <!-- ========= REEL BACKLOG ========= -->
+  <div id="tab-backlog" class="tab-panel active">
+    <div class="section-title">Reel-Backlog</div>
+    <div class="section-subtitle">Status: Idee → Gedreht → Geschnitten → Gepostet · Klicke auf ein Reel für alle Details.</div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterReels('alle', this)">Alle (20)</button>
+      <button class="filter-btn" onclick="filterReels('paar', this)">💑 Paar-Reels</button>
+      <button class="filter-btn" onclick="filterReels('solo', this)">👤 Solo Vanessa</button>
+      <button class="filter-btn" onclick="filterReels('idee', this)">🟡 Idee</button>
+    </div>
+
+    <div id="reel-list">
+
+      <!-- REEL 01 -->
+      <div class="reel-card" data-type="paar" data-status="idee">
+        <div class="reel-header" onclick="toggleReel(this)">
+          <div class="reel-num">01</div>
+          <div class="reel-title-block">
+            <div class="reel-title">Herz-an-Herz (60 Sekunden)</div>
+            <div class="reel-hook">„Wir haben uns 60 Sekunden lang nur die Herzen berührt. Das ist passiert."</div>
+            <div class="reel-badges">
+              <span class="badge badge-paar">💑 Paar</span>
+              <span class="badge badge-idee">Idee</span>
+            </div>
+          </div>
+          <div class="reel-toggle">▾</div>
+        </div>
+        <div class="reel-body">
+          <div class="reel-field"><label>Setup</label><p>Gegenüber sitzend, jeder legt die Hand auf das Herz des anderen. Yves: ruhig, present, hält. Vanessa: lässt zu, öffnet.</p></div>
+          <div class="reel-field"><label>Skript</label><p>Vanessa: „Am Anfang ist da nur Anspannung." / Yves: „Dann wird der Atem langsamer." / Vanessa: „Und irgendwann hörst du auf, dich zu fragen, ob du genug bist." / Yves: „Du bist einfach da."</p></div>
+          <div class="reel-field"><label>Übung / Dynamik</label><p>Augen zu, Schweigen, Atem aneinander angleichen. Ziel: Coregulation, Weichwerden.</p></div>
+          <div class="reel-field"><label>Visual</label><p>Nahe, warme Aufnahme, langsames Push-in. Übergang real → kurze AI-Animation für „Energie fließt".</p></div>
+          <div class="reel-field"><label>Audio</label><p>Ruhiger, warmer Instrumental-Trendsound, leise.</p></div>
+          <div class="reel-field"><label>On-Screen-Text</label><p>Timer 0:00 → 1:00 oben eingeblendet.</p></div>
+          <div class="reel-field"><label>Caption</label><p>Verbindung ist keine Technik. Sie ist Präsenz. Probiert das heute Abend — und schreibt uns, was bei euch passiert. 🤍</p></div>
+          <div class="reel-field"><label>Hashtags</label><p class="hashtags">#beziehung #femininenergy #masculineenergy #paarübung #verbindung #consciouscouple</p></div>
+        </div>
+      </div>
+
+      <!-- REEL 02 -->
+      <div class="reel-card" data-type="paar" data-status="idee">
+        <div class="reel-header" onclick="toggleReel(this)">
+          <div class="reel-num">02</div>
+          <div class="reel-title-block">
+            <div class="reel-title">Masculine vs. Feminine (Split/Duett)</div>
+            <div class="reel-hook">„Der Unterschied zwischen männlicher und weiblicher Energie — ohne ein einziges Klischee."</div>
+            <div class="reel-badges"><span class="badge badge-paar">💑 Paar</span><span class="badge badge-idee">Idee</span></div>
+          </div>
+          <div class="reel-toggle">▾</div>
+        </div>
+        <div class="reel-body">
+          <div class="reel-field"><label>Setup</label><p>Yves grounded, fast bewegungslos (Präsenz/Struktur). Vanessa fließend, in Bewegung (Lebendigkeit/Fühlen). Gleicher Frame, gegensätzliche Qualität.</p></div>
+          <div class="reel-field"><label>Skript</label><p>Yves: „Maskulin ist nicht laut. Es ist der ruhige Punkt, an dem sie sich fallen lassen kann." / Vanessa: „Feminin ist nicht schwach. Es ist die Bewegung, die ihn lebendig macht."</p></div>
+          <div class="reel-field"><label>Übung / Dynamik</label><p>Reine Verkörperung — Kontrast zeigen, nicht erklären.</p></div>
+          <div class="reel-field"><label>Visual</label><p>Mittig geteilter Frame oder weicher Schnitt zwischen beiden.</p></div>
+          <div class="reel-field"><label>Audio</label><p>Sanfter, getragener Sound mit klarem Beat-Wechsel.</p></div>
+          <div class="reel-field"><label>On-Screen-Text</label><p>links „PRÄSENZ", rechts „FLOW".</p></div>
+          <div class="reel-field"><label>Caption</label><p>Polarität ist keine Rolle, die man spielt. Sie ist Energie, die man verkörpert. Speicher dir das.</p></div>
+          <div class="reel-field"><label>Hashtags</label><p class="hashtags">#polarität #femininenergy #masculineenergy #beziehung #energie #verbindung</p></div>
+        </div>
+      </div>
+
+      <!-- REEL 03 -->
+      <div class="reel-card" data-type="paar" data-status="idee">
+        <div class="reel-header" onclick="toggleReel(this)">
+          <div class="reel-num">03</div>
+          <div class="reel-title-block">
+            <div class="reel-title">Eye-Gazing (1 Minute)</div>
+            <div class="reel-hook">„Eine Minute in die Augen schauen, ohne zu reden. Schwerer als es klingt."</div>
+            <div class="reel-badges"><span class="badge badge-paar">💑 Paar</span><span class="badge badge-idee">Idee</span></div>
+          </div>
+          <div class="reel-toggle">▾</div>
+        </div>
+        <div class="reel-body">
+          <div class="reel-field"><label>Setup</label><p>Sehr nah gegenübersitzend, nur Blickkontakt. Yves hält, Vanessa lässt sich sehen.</p></div>
+          <div class="reel-field"><label>Skript</label><p>Vanessa: „Die ersten Sekunden willst du wegschauen." / Yves: „Dann wird's still in dir." / Vanessa: „Und plötzlich fühlst du dich gesehen — ohne dass ein Wort fällt."</p></div>
+          <div class="reel-field"><label>Übung / Dynamik</label><p>60 Sek Blickkontakt, Atem ruhig. Ziel: Nervensystem beruhigt, echtes Gesehenwerden.</p></div>
+          <div class="reel-field"><label>Visual</label><p>Close-up auf beide Gesichter, minimale Bewegung, weiches Licht.</p></div>
+          <div class="reel-field"><label>Audio</label><p>Sehr leiser, warmer Ambient-Sound.</p></div>
+          <div class="reel-field"><label>On-Screen-Text</label><p>„Versuch es: 1 Minute. Nicht wegschauen."</p></div>
+          <div class="reel-field"><label>Caption</label><p>Die meisten Paare schauen sich monatelang nicht wirklich an. Markier die Person, mit der du das machen willst.</p></div>
+          <div class="reel-field"><label>Hashtags</label><p class="hashtags">#eyegazing #paarübung #verbindung #beziehung #nähe #consciouscouple</p></div>
+        </div>
+      </div>
+
+      <!-- REEL 04 -->
+      <div class="reel-card" data-type="paar" data-status="idee">
+        <div class="reel-header" onclick="toggleReel(this)">
+          <div class="reel-num">04</div>
+          <div class="reel-title-block">
+            <div class="reel-title">Sie testet, er hält</div>
+            <div class="reel-hook">„Sie testet nicht, weil sie dich verlassen will. Sie testet, ob du bleibst."</div>
+            <div class="reel-badges"><span class="badge badge-paar">💑 Paar</span><span class="badge badge-idee">Idee</span></div>
+          </div>
+          <div class="reel-toggle">▾</div>
+        </div>
+        <div class="reel-body">
+          <div class="reel-field"><label>Setup</label><p>Kleine Alltagsszene: Vanessa spielerisch herausfordernd/genervt. Yves bleibt ruhig, geerdet, ohne anzubeißen.</p></div>
+          <div class="reel-field"><label>Skript</label><p>Vanessa (gespielt gereizt): „Du hörst mir eh nie zu." / Yves (ruhig, zugewandt): „Ich bin hier. Erzähl's mir nochmal." / Schnitt → beide lächeln.</p></div>
+          <div class="reel-field"><label>Übung / Dynamik</label><p>Polarity-Demo: feminine Welle trifft maskuline Stabilität. Nicht gewinnen, sondern halten.</p></div>
+          <div class="reel-field"><label>Visual</label><p>15–20 Sek Mini-Szene, natürliche Umgebung.</p></div>
+          <div class="reel-field"><label>Audio</label><p>Sound mit leichtem Spannungs-zu-Auflösung-Bogen.</p></div>
+          <div class="reel-field"><label>On-Screen-Text</label><p>„Halten ≠ recht haben."</p></div>
+          <div class="reel-field"><label>Caption</label><p>Stabilität ist das Sexieste, was ein Mann anbieten kann. Stimmt's, oder stimmt's? 👇</p></div>
+          <div class="reel-field"><label>Hashtags</label><p class="hashtags">#polarität #beziehung #masculineenergy #femininenergy #partnerschaft</p></div>
+        </div>
+      </div>
+
+      <!-- REEL 05 -->
+      <div class="reel-card" data-type="paar" data-status="idee">
+        <div class="reel-header" onclick="toggleReel(this)">
+          <div class="reel-num">05</div>
+          <div class="reel-title-block">
+            <div class="reel-title">Frag deinen Partner das heute Abend</div>
+            <div class="reel-hook">„Diese eine Frage hat bei uns mehr ausgelöst als jedes lange Gespräch."</div>
+            <div class="reel-badges"><span class="badge badge-paar">💑 Paar</span><span class="badge badge-idee">Idee</span></div>
+          </div>
+          <div class="reel-toggle">▾</div>
+        </div>
+        <div class="reel-body">
+          <div class="reel-field"><label>Setup</label><p>Beide entspannt, einer stellt die Frage, der andere antwortet ehrlich, kurz.</p></div>
+          <div class="reel-field"><label>Skript</label><p>Yves: „Wann hast du dich zuletzt von mir wirklich gesehen gefühlt?" / Vanessa antwortet echt (kurzer, ungeschnittener Moment).</p></div>
+          <div class="reel-field"><label>Übung / Dynamik</label><p>Verletzlichkeit on camera, echte Reaktion zulassen.</p></div>
+          <div class="reel-field"><label>Visual</label><p>Ruhige Zwei-Personen-Einstellung, authentisch, kaum Schnitt.</p></div>
+          <div class="reel-field"><label>Audio</label><p>Leiser, emotionaler Piano-Sound.</p></div>
+          <div class="reel-field"><label>On-Screen-Text</label><p>Die Frage groß eingeblendet.</p></div>
+          <div class="reel-field"><label>Caption</label><p>Speicher dir die Frage. Stell sie heute Abend. Schreib uns, was passiert ist.</p></div>
+          <div class="reel-field"><label>Hashtags</label><p class="hashtags">#beziehungsfragen #partnerschaft #verbindung #paarübung #nähe</p></div>
+        </div>
+      </div>
+
+      <!-- REEL 06 -->
+      <div class="reel-card" data-type="paar" data-status="idee">
+        <div class="reel-header" onclick="toggleReel(this)">
+          <div class="reel-num">06</div>
+          <div class="reel-title-block">
+            <div class="reel-title">Atem-Synchronisation</div>
+            <div class="reel-hook">„Wenn ihr streitet, redet nicht. Atmet zuerst zusammen."</div>
+            <div class="reel-badges"><span class="badge badge-paar">💑 Paar</span><span class="badge badge-idee">Idee</span></div>
+          </div>
+          <div class="reel-toggle">▾</div>
+        </div>
+        <div class="reel-body">
+          <div class="reel-field"><label>Setup</label><p>Eng beieinander, Hand auf Bauch/Brust des anderen, Atem angleichen.</p></div>
+          <div class="reel-field"><label>Skript</label><p>Yves: „Dein Nervensystem hört auf deinen Atem, nicht auf deine Gedanken." / Vanessa: „Atme mit mir — und der Körper glaubt wieder, dass alles okay ist."</p></div>
+          <div class="reel-field"><label>Übung / Dynamik</label><p>4 Sek ein, 6 Sek aus, gemeinsam. Ziel: Coregulation nach Spannung.</p></div>
+          <div class="reel-field"><label>Visual</label><p>Nahaufnahme Hände + Brustkorb, ruhige Bewegung des Atems sichtbar.</p></div>
+          <div class="reel-field"><label>Audio</label><p>Sehr ruhiger Ambient-/Atem-Sound.</p></div>
+          <div class="reel-field"><label>On-Screen-Text</label><p>„Ein: 4 · Aus: 6"</p></div>
+          <div class="reel-field"><label>Caption</label><p>Verbindung beginnt im Nervensystem, nicht im Kopf. Speicher dir das für den nächsten schweren Moment.</p></div>
+          <div class="reel-field"><label>Hashtags</label><p class="hashtags">#nervensystem #coregulation #beziehung #paarübung #verbindung</p></div>
+        </div>
+      </div>
+
+      <!-- REEL 07 -->
+      <div class="reel-card" data-type="paar" data-status="idee">
+        <div class="reel-header" onclick="toggleReel(this)">
+          <div class="reel-num">07</div>
+          <div class="reel-title-block">
+            <div class="reel-title">Was feminine Energy WIRKLICH ist</div>
+            <div class="reel-hook">„Feminine Energy ist kein Kleid und keine Soft-Life-Ästhetik."</div>
+            <div class="reel-badges"><span class="badge badge-paar">💑 Paar</span><span class="badge badge-idee">Idee</span></div>
+          </div>
+          <div class="reel-toggle">▾</div>
+        </div>
+        <div class="reel-body">
+          <div class="reel-field"><label>Setup</label><p>Beide im Bild. Vanessa spricht, Yves bestätigt mit Präsenz/Nähe.</p></div>
+          <div class="reel-field"><label>Skript</label><p>Vanessa: „Feminin ist nicht, hübsch auszusehen und nichts zu sagen." / „Es ist, fühlen zu dürfen, ohne dich dafür zu entschuldigen." / Yves: „Und ich darf der Mann sein, bei dem das sicher ist."</p></div>
+          <div class="reel-field"><label>Übung / Dynamik</label><p>Reframe-Reel mit Paar-Bestätigung — sie spricht, er hält.</p></div>
+          <div class="reel-field"><label>Visual</label><p>Warme Zwei-Personen-Einstellung, Vanessa im Fokus, Yves präsent dahinter/daneben.</p></div>
+          <div class="reel-field"><label>Audio</label><p>Ruhiger, getragener Sound.</p></div>
+          <div class="reel-field"><label>On-Screen-Text</label><p>„Feminin = fühlen dürfen."</p></div>
+          <div class="reel-field"><label>Caption</label><p>Wir sind es leid, wie feminine Energy verkauft wird. Das hier ist die ehrliche Version. 🤍</p></div>
+          <div class="reel-field"><label>Hashtags</label><p class="hashtags">#femininenergy #weiblichkeit #beziehung #verbindung #mindset</p></div>
+        </div>
+      </div>
+
+      <!-- REEL 08 -->
+      <div class="reel-card" data-type="paar" data-status="idee">
+        <div class="reel-header" onclick="toggleReel(this)">
+          <div class="reel-num">08</div>
+          <div class="reel-title-block">
+            <div class="reel-title">Der Moment, in dem sie sich fallen lässt</div>
+            <div class="reel-hook">„Das passiert, wenn sie endlich aufhört, stark sein zu müssen."</div>
+            <div class="reel-badges"><span class="badge badge-paar">💑 Paar</span><span class="badge badge-idee">Idee</span></div>
+          </div>
+          <div class="reel-toggle">▾</div>
+        </div>
+        <div class="reel-body">
+          <div class="reel-field"><label>Setup</label><p>Vanessa lehnt sich in Yves, er hält ihr Gewicht stabil und ruhig.</p></div>
+          <div class="reel-field"><label>Skript</label><p>Vanessa: „Ich war so lange die, die alles trägt." / Yves: „Du musst nicht stark sein, wenn ich nicht schwanke." / Vanessa: „Und zum ersten Mal lasse ich los."</p></div>
+          <div class="reel-field"><label>Übung / Dynamik</label><p>Körperliches Lehnen/Halten als Bild für Vertrauen. Ziel: zeigen, wie Sicherheit Loslassen ermöglicht.</p></div>
+          <div class="reel-field"><label>Visual</label><p>Weiche, nahe Aufnahme, langsamer Moment, evtl. ein AI-animierter „Entspannungs"-Übergang.</p></div>
+          <div class="reel-field"><label>Audio</label><p>Emotionaler, ruhiger Sound mit Aufbau.</p></div>
+          <div class="reel-field"><label>On-Screen-Text</label><p>„Sicherheit zuerst. Dann das Loslassen."</p></div>
+          <div class="reel-field"><label>Caption</label><p>Sie lässt nicht los, weil sie schwach ist — sondern weil er stabil ist. Markier ihn/sie.</p></div>
+          <div class="reel-field"><label>Hashtags</label><p class="hashtags">#vertrauen #beziehung #masculineenergy #femininenergy #verbindung</p></div>
+        </div>
+      </div>
+
+      <!-- REEL 09 -->
+      <div class="reel-card" data-type="paar" data-status="idee">
+        <div class="reel-header" onclick="toggleReel(this)">
+          <div class="reel-num">09</div>
+          <div class="reel-title-block">
+            <div class="reel-title">Rücken an Rücken</div>
+            <div class="reel-hook">„Setzt euch Rücken an Rücken und atmet. Ihr merkt sofort, wie's um euch steht."</div>
+            <div class="reel-badges"><span class="badge badge-paar">💑 Paar</span><span class="badge badge-idee">Idee</span></div>
+          </div>
+          <div class="reel-toggle">▾</div>
+        </div>
+        <div class="reel-body">
+          <div class="reel-field"><label>Setup</label><p>Beide am Boden, Rücken aneinander gelehnt, Augen zu.</p></div>
+          <div class="reel-field"><label>Skript</label><p>Yves: „Du spürst seinen Atem an deinem Rücken." / Vanessa: „Und ohne ein Wort weißt du, ob ihr verbunden seid oder nur nebeneinander lebt."</p></div>
+          <div class="reel-field"><label>Übung / Dynamik</label><p>Körperkontakt + Atem, ohne Blick/Worte. Ziel: spüren statt reden.</p></div>
+          <div class="reel-field"><label>Visual</label><p>Seitliche Aufnahme, ruhig, warmes Licht.</p></div>
+          <div class="reel-field"><label>Audio</label><p>Leiser Ambient-Sound.</p></div>
+          <div class="reel-field"><label>On-Screen-Text</label><p>„2 Minuten. Kein Wort."</p></div>
+          <div class="reel-field"><label>Caption</label><p>Manchmal sagt ein Rücken mehr als ein ganzes Gespräch. Speicher dir das.</p></div>
+          <div class="reel-field"><label>Hashtags</label><p class="hashtags">#paarübung #verbindung #beziehung #nähe #consciouscouple</p></div>
+        </div>
+      </div>
+
+      <!-- REEL 10 -->
+      <div class="reel-card" data-type="paar" data-status="idee">
+        <div class="reel-header" onclick="toggleReel(this)">
+          <div class="reel-num">10</div>
+          <div class="reel-title-block">
+            <div class="reel-title">Die Frage, die unsere Beziehung verändert hat</div>
+            <div class="reel-hook">„Eine Frage hat bei uns alles verändert — und sie klingt fast zu simpel."</div>
+            <div class="reel-badges"><span class="badge badge-paar">💑 Paar</span><span class="badge badge-idee">Idee</span></div>
+          </div>
+          <div class="reel-toggle">▾</div>
+        </div>
+        <div class="reel-body">
+          <div class="reel-field"><label>Setup</label><p>Storytime zu zweit, abwechselnd erzählend, ehrlich.</p></div>
+          <div class="reel-field"><label>Skript</label><p>Vanessa: „Wir haben uns gefragt: Fühlst du dich neben mir sicher — oder allein?" / Yves: „Die Antwort war unbequem." / Vanessa: „Aber ab da haben wir aufgehört, Rollen zu spielen."</p></div>
+          <div class="reel-field"><label>Übung / Dynamik</label><p>Echte Mini-Geschichte → eine umsetzbare Frage fürs Publikum.</p></div>
+          <div class="reel-field"><label>Visual</label><p>Beide nebeneinander, nah, natürlich, kaum Schnitt.</p></div>
+          <div class="reel-field"><label>Audio</label><p>Ruhiger Story-Sound, dezent.</p></div>
+          <div class="reel-field"><label>On-Screen-Text</label><p>„Fühlst du dich sicher — oder allein?"</p></div>
+          <div class="reel-field"><label>Caption</label><p>Stell deinem Partner heute genau diese Frage. Und sei bereit für die Antwort. 🤍</p></div>
+          <div class="reel-field"><label>Hashtags</label><p class="hashtags">#beziehung #partnerschaft #verbindung #beziehungsfragen #consciouscouple</p></div>
+        </div>
+      </div>
+
+      <!-- REEL 11 -->
+      <div class="reel-card" data-type="paar" data-status="idee">
+        <div class="reel-header" onclick="toggleReel(this)">
+          <div class="reel-num">11</div>
+          <div class="reel-title-block">
+            <div class="reel-title">Schultern loslassen</div>
+            <div class="reel-hook">„Leg deine Hände auf ihre Schultern — und tu einfach gar nichts."</div>
+            <div class="reel-badges"><span class="badge badge-paar">💑 Paar</span><span class="badge badge-idee">Idee</span></div>
+          </div>
+          <div class="reel-toggle">▾</div>
+        </div>
+        <div class="reel-body">
+          <div class="reel-field"><label>Setup</label><p>Yves steht hinter Vanessa, legt beide Hände ruhig auf ihre Schultern. Er bewegt sich nicht. Sie darf sich fallen lassen oder anspannen — was auch immer kommt.</p></div>
+          <div class="reel-field"><label>Skript</label><p>Yves: „Ich halte. Das ist alles." / Vanessa: „Und innerhalb von Sekunden merke ich, wie viel ich unbewusst trage." / Yves: „Sie muss nichts tun, damit ich bleibe." / Vanessa: „Genau das löst mich auf."</p></div>
+          <div class="reel-field"><label>Übung / Dynamik</label><p>Schulter-Halten als körperliches Bild für „Raum halten" — zeigt in 20 Sekunden, was Polarity im Körper auslöst.</p></div>
+          <div class="reel-field"><label>Visual</label><p>Von der Seite, weiches Licht, enge Einstellung auf Hände und Gesicht Vanessas. Kleine Kamerabewegung nach innen zum Ende hin.</p></div>
+          <div class="reel-field"><label>Audio</label><p>Minimalistischer Piano-Loop, sehr leise.</p></div>
+          <div class="reel-field"><label>On-Screen-Text</label><p>„Probiert das: 30 Sekunden. Kein Wort."</p></div>
+          <div class="reel-field"><label>Caption</label><p>Die meisten Paare reden viel über Verbindung. Dabei braucht sie manchmal nur zwei Hände. 🤍 Probiert das heute — und schreibt uns, was bei euch passiert.</p></div>
+          <div class="reel-field"><label>Hashtags</label><p class="hashtags">#paarübung #masculineenergy #verbindung #coregulation #beziehung #polarity</p></div>
+        </div>
+      </div>
+
+      <!-- REEL 12 -->
+      <div class="reel-card" data-type="paar" data-status="idee">
+        <div class="reel-header" onclick="toggleReel(this)">
+          <div class="reel-num">12</div>
+          <div class="reel-title-block">
+            <div class="reel-title">Sie führt in die Feminine (Polarity-Demo)</div>
+            <div class="reel-hook">„Schau ihr einfach zu — und du siehst sofort, welche Energie sie gerade trägt."</div>
+            <div class="reel-badges"><span class="badge badge-paar">💑 Paar</span><span class="badge badge-idee">Idee</span></div>
+          </div>
+          <div class="reel-toggle">▾</div>
+        </div>
+        <div class="reel-body">
+          <div class="reel-field"><label>Setup</label><p>Vanessa bewegt sich zuerst angespannt/maskulin (aufrecht, kontrolliert, hält alles fest). Dann — nach einem Moment mit Yves' ruhiger Präsenz — weich, fließend, offen. Kein Kommentar, nur der Kontrast.</p></div>
+          <div class="reel-field"><label>Skript</label><p>Vanessa: „Ich merke es nicht mal, wenn ich in die maskuline Energie rutsche." / Yves: „Aber ich merke es." / Vanessa: „Und wenn er nicht reagiert, sondern einfach bleibt — dann komme ich von selbst zurück."</p></div>
+          <div class="reel-field"><label>Übung / Dynamik</label><p>Verkörperter Kontrast: maskuline vs. feminine Qualität im gleichen Körper. Zeigt, dass der Wechsel von innen kommt — nicht erzwungen.</p></div>
+          <div class="reel-field"><label>Visual</label><p>Zwei kurze Clips direkt hintereinander: erste Hälfte Vanessa in Office-Haltung, zweite Hälfte Vanessa weich und beweglich. Yves im Hintergrund, minimal sichtbar, ruhig.</p></div>
+          <div class="reel-field"><label>Audio</label><p>Sanfter Beat-Wechsel zwischen beiden Clips.</p></div>
+          <div class="reel-field"><label>On-Screen-Text</label><p>„Maskulin → Feminin. Kein Trick. Nur Sicherheit."</p></div>
+          <div class="reel-field"><label>Caption</label><p>Feminine Energy zwingt man nicht. Man schafft ihr einen Raum — und sie kommt von selbst. Kennst du das Gefühl?</p></div>
+          <div class="reel-field"><label>Hashtags</label><p class="hashtags">#femininenergy #polarity #beziehung #masculineenergy #verbindung #weiblichkeit</p></div>
+        </div>
+      </div>
+
+      <!-- REEL 13 -->
+      <div class="reel-card" data-type="paar" data-status="idee">
+        <div class="reel-header" onclick="toggleReel(this)">
+          <div class="reel-num">13</div>
+          <div class="reel-title-block">
+            <div class="reel-title">Das Experiment: 5 Minuten ohne Handy</div>
+            <div class="reel-hook">„Wir haben 5 Minuten lang keine Bildschirme benutzt und uns nur angeschaut. Hier ist, was passiert ist."</div>
+            <div class="reel-badges"><span class="badge badge-paar">💑 Paar</span><span class="badge badge-idee">Idee</span></div>
+          </div>
+          <div class="reel-toggle">▾</div>
+        </div>
+        <div class="reel-body">
+          <div class="reel-field"><label>Setup</label><p>Beide sitzen sich gegenüber. Handys liegen sichtbar umgedreht auf dem Tisch. Timer läuft. Keine Agenda, nur Präsenz.</p></div>
+          <div class="reel-field"><label>Skript</label><p>Vanessa (Voiceover): „Die ersten zwei Minuten war es fast unangenehm." / Yves: „Dann hörst du auf zu warten, dass etwas passiert." / Vanessa: „Und merkst: Wir sind uns schon lange nicht mehr so nah gewesen — einfach so."</p></div>
+          <div class="reel-field"><label>Übung / Dynamik</label><p>Keine Technik — nur Entzug von Ablenkung. Ziel: Zeigen, wie wenig Aufwand echter Kontakt braucht.</p></div>
+          <div class="reel-field"><label>Visual</label><p>Timer sichtbar, beide im Bild. Ein echtes, ungeschnittenes Lächeln zum Ende.</p></div>
+          <div class="reel-field"><label>Audio</label><p>Kein Musik-Einsatz bis nach dem Timer-Ende, dann ruhiger Warm-Up-Sound.</p></div>
+          <div class="reel-field"><label>On-Screen-Text</label><p>„5 Minuten. Kein Handy. Nur ihr."</p></div>
+          <div class="reel-field"><label>Caption</label><p>Verbindung braucht keine App. Nur Aufmerksamkeit. Macht es heute Abend — wir sind gespannt, was ihr erlebt. 🤍</p></div>
+          <div class="reel-field"><label>Hashtags</label><p class="hashtags">#beziehung #paarübung #verbindung #präsenz #digitaledetox #consciouscouple</p></div>
+        </div>
+      </div>
+
+      <!-- REEL 14 -->
+      <div class="reel-card" data-type="paar" data-status="idee">
+        <div class="reel-header" onclick="toggleReel(this)">
+          <div class="reel-num">14</div>
+          <div class="reel-title-block">
+            <div class="reel-title">Die Stimme, die beruhigt</div>
+            <div class="reel-hook">„Dein Nervensystem reagiert auf seine Stimme — lange bevor dein Kopf versteht, was er sagt."</div>
+            <div class="reel-badges"><span class="badge badge-paar">💑 Paar</span><span class="badge badge-idee">Idee</span></div>
+          </div>
+          <div class="reel-toggle">▾</div>
+        </div>
+        <div class="reel-body">
+          <div class="reel-field"><label>Setup</label><p>Vanessa sitzt, Augen zu. Yves spricht leise, langsam, nur ihren Namen und einen ruhigen Satz. Sie atmet sichtbar tiefer.</p></div>
+          <div class="reel-field"><label>Skript</label><p>Vanessa: „Ich habe lange nicht begriffen, warum ich ruhiger werde, wenn er einfach redet." / Yves (live, sehr ruhig): „Du bist okay. Ich bin hier." / Vanessa: „Das Nervensystem erkennt Sicherheit, bevor der Verstand es tut."</p></div>
+          <div class="reel-field"><label>Übung / Dynamik</label><p>Stimm-Coregulation: maskuline Stimme als Anker für das weibliche Nervensystem. Live und echte Reaktion zeigen.</p></div>
+          <div class="reel-field"><label>Visual</label><p>Nahaufnahme Vanessas Gesicht, Yves' Lippen halbseitig im Frame. Weicher Übergang.</p></div>
+          <div class="reel-field"><label>Audio</label><p>Kein Hintergrundmusik während des Live-Moments, nur danach leise.</p></div>
+          <div class="reel-field"><label>On-Screen-Text</label><p>„Stimme als Nervensystem-Anker."</p></div>
+          <div class="reel-field"><label>Caption</label><p>Er muss kein Problem lösen. Manchmal reicht es, da zu sein — und zu sprechen. 🤍 Speicher dir das.</p></div>
+          <div class="reel-field"><label>Hashtags</label><p class="hashtags">#nervensystem #coregulation #masculineenergy #beziehung #verbindung #sicherheit</p></div>
+        </div>
+      </div>
+
+      <!-- REEL 15 -->
+      <div class="reel-card" data-type="paar" data-status="idee">
+        <div class="reel-header" onclick="toggleReel(this)">
+          <div class="reel-num">15</div>
+          <div class="reel-title-block">
+            <div class="reel-title">Berühren ohne Grund</div>
+            <div class="reel-hook">„Wie oft berührt ihr euch — einfach so, ohne Grund?"</div>
+            <div class="reel-badges"><span class="badge badge-paar">💑 Paar</span><span class="badge badge-idee">Idee</span></div>
+          </div>
+          <div class="reel-toggle">▾</div>
+        </div>
+        <div class="reel-body">
+          <div class="reel-field"><label>Setup</label><p>Yves berührt Vanessas Arm, Schulter, Hinterkopf — kurz, bewusst, ohne dass etwas passiert oder erwartet wird. Vanessa nimmt es an, ohne zu reagieren oder zu erklären.</p></div>
+          <div class="reel-field"><label>Skript</label><p>Vanessa: „Die meisten Berührungen in Beziehungen haben ein Ziel." / Yves: „Diese hier nicht." / Vanessa: „Und genau das macht sie so anders."</p></div>
+          <div class="reel-field"><label>Übung / Dynamik</label><p>Berührung als Sprache — „ich sehe dich" ohne Worte. Ziel: Paar-Alltag bewusster machen, hohe Nachmach-Rate.</p></div>
+          <div class="reel-field"><label>Visual</label><p>Mehrere kurze Shots: Arm, Schulter, Stirn. Warm, nah, kein Bett-Setting (alltäglich).</p></div>
+          <div class="reel-field"><label>Audio</label><p>Ruhiger, warmer Gitarren-Loop.</p></div>
+          <div class="reel-field"><label>On-Screen-Text</label><p>„Berühren ohne Ziel. Täglich."</p></div>
+          <div class="reel-field"><label>Caption</label><p>Intimität entsteht in den kleinen Momenten zwischen den großen. Wann habt ihr euch heute einfach so berührt? 👇</p></div>
+          <div class="reel-field"><label>Hashtags</label><p class="hashtags">#intimität #paarübung #verbindung #beziehung #femininenergy #consciouscouple</p></div>
+        </div>
+      </div>
+
+      <!-- REEL 16 -->
+      <div class="reel-card" data-type="paar" data-status="idee">
+        <div class="reel-header" onclick="toggleReel(this)">
+          <div class="reel-num">16</div>
+          <div class="reel-title-block">
+            <div class="reel-title">Was er nicht sagt (Männer-Perspektive)</div>
+            <div class="reel-hook">„Was Männer fühlen, wenn ihre Frau weint — und nichts sagen."</div>
+            <div class="reel-badges"><span class="badge badge-paar">💑 Paar</span><span class="badge badge-idee">Idee</span></div>
+          </div>
+          <div class="reel-toggle">▾</div>
+        </div>
+        <div class="reel-body">
+          <div class="reel-field"><label>Setup</label><p>Yves spricht direkt in die Kamera, ruhig, kurz. Vanessa sitzt daneben, hört zu. Keine Unterbrechung.</p></div>
+          <div class="reel-field"><label>Skript</label><p>„Wenn du weinst und mich anschaust — ich weiß nicht, ob ich helfen soll. Ich weiß nur: Ich will nicht weg." / „Das ist kein Fehler von mir. Das ist, wie ich liebe." / Vanessa (leise): „Das hat mir fünf Jahre gebraucht zu verstehen."</p></div>
+          <div class="reel-field"><label>Übung / Dynamik</label><p>Männer-Innenperspektive aus erster Stimme — entlastet Frauen UND Männer gleichzeitig.</p></div>
+          <div class="reel-field"><label>Visual</label><p>Yves frontal, Vanessa im Halbprofil daneben. Ruhige, natürliche Umgebung.</p></div>
+          <div class="reel-field"><label>Audio</label><p>Ruhiger, leicht emotionaler Sound.</p></div>
+          <div class="reel-field"><label>On-Screen-Text</label><p>„Er will nicht weg. Er weiß nur nicht, wie er bleibt."</p></div>
+          <div class="reel-field"><label>Caption</label><p>Manchmal ist Präsenz die einzige Sprache, die zählt. Stimmt ihr zu? 👇 Markier ihn.</p></div>
+          <div class="reel-field"><label>Hashtags</label><p class="hashtags">#masculineenergy #beziehung #männerperspektive #verbindung #polarity #partnerschaft</p></div>
+        </div>
+      </div>
+
+      <!-- REEL 17 -->
+      <div class="reel-card" data-type="paar" data-status="idee">
+        <div class="reel-header" onclick="toggleReel(this)">
+          <div class="reel-num">17</div>
+          <div class="reel-title-block">
+            <div class="reel-title">Polaritäts-Reset nach Streit</div>
+            <div class="reel-hook">„Nach jedem Streit machen wir das — bevor wir noch mal reden."</div>
+            <div class="reel-badges"><span class="badge badge-paar">💑 Paar</span><span class="badge badge-idee">Idee</span></div>
+          </div>
+          <div class="reel-toggle">▾</div>
+        </div>
+        <div class="reel-body">
+          <div class="reel-field"><label>Setup</label><p>Yves und Vanessa nach einem Konflikt (leichte Spannung im Raum spürbar). Keine Umarmung. Yves streckt einfach seine Hand aus, Vanessa legt ihre hinein. Beide Augen zu. Stille.</p></div>
+          <div class="reel-field"><label>Skript</label><p>Vanessa: „Wörter nach einem Streit machen oft alles schlimmer." / Yves: „Der Körper weiß, was er braucht, bevor wir es wissen." / Vanessa: „Eine Hand. Keine Entschuldigung. Nur: Ich bin noch hier."</p></div>
+          <div class="reel-field"><label>Übung / Dynamik</label><p>Körperlicher Anker nach Konflikt — Nervensystem first, Gespräch second. Nachmach-Impuls sehr hoch.</p></div>
+          <div class="reel-field"><label>Visual</label><p>Ruhige, direkte Aufnahme der Hände, dann Schwenk auf beide Gesichter. Weiches Licht.</p></div>
+          <div class="reel-field"><label>Audio</label><p>Ruhiger, getragener Sound, kein Beat.</p></div>
+          <div class="reel-field"><label>On-Screen-Text</label><p>„Erst der Körper. Dann das Gespräch."</p></div>
+          <div class="reel-field"><label>Caption</label><p>Wir reden nicht direkt nach einem Streit. Wir spüren zuerst wieder, ob wir ein Team sind. Probiert das — und schreibt uns. 🤍</p></div>
+          <div class="reel-field"><label>Hashtags</label><p class="hashtags">#beziehung #konflikt #coregulation #paarübung #verbindung #consciouscouple</p></div>
+        </div>
+      </div>
+
+      <!-- REEL 18 -->
+      <div class="reel-card" data-type="solo" data-status="idee">
+        <div class="reel-header" onclick="toggleReel(this)">
+          <div class="reel-num">18</div>
+          <div class="reel-title-block">
+            <div class="reel-title">Sie trägt zu viel (Solo Vanessa)</div>
+            <div class="reel-hook">„Du bist nicht zu viel. Du trägst zu viel."</div>
+            <div class="reel-badges"><span class="badge badge-solo">👤 Solo</span><span class="badge badge-idee">Idee</span></div>
+          </div>
+          <div class="reel-toggle">▾</div>
+        </div>
+        <div class="reel-body">
+          <div class="reel-field"><label>Setup</label><p>Vanessa allein in die Kamera, warm, direkt. Kein Yves in diesem Reel.</p></div>
+          <div class="reel-field"><label>Skript</label><p>„Ich war jahrelang stolz darauf, dass ich alles hinbekomme." / „Dass ich funktioniere, auch wenn es wehtut." / „Bis ich verstanden habe: Das ist nicht Stärke. Das ist Angst, nicht genug zu sein." / „Du darfst Hilfe wollen. Du darfst weich sein. Du darfst fallen lassen."</p></div>
+          <div class="reel-field"><label>Übung / Dynamik</label><p>Identity-Reframe für überforderte Frauen. Klarer Spiegel ohne Belehrung.</p></div>
+          <div class="reel-field"><label>Visual</label><p>Close-up Vanessa, natürliches Licht, authentische Mimik. Keine Ablenkungen.</p></div>
+          <div class="reel-field"><label>Audio</label><p>Ruhiger, emotionaler Piano-Sound.</p></div>
+          <div class="reel-field"><label>On-Screen-Text</label><p>„Du bist nicht zu viel. Du trägst zu viel."</p></div>
+          <div class="reel-field"><label>Caption</label><p>Das ist für alle Frauen, die sich gerade fragen, warum sie so erschöpft sind. 🤍 Speicher dir das — und schick es jemanden, die das gerade braucht.</p></div>
+          <div class="reel-field"><label>Hashtags</label><p class="hashtags">#femininenergy #weiblichkeit #selbstliebe #erschöpfung #feminin #mindset</p></div>
+        </div>
+      </div>
+
+      <!-- REEL 19 -->
+      <div class="reel-card" data-type="paar" data-status="idee">
+        <div class="reel-header" onclick="toggleReel(this)">
+          <div class="reel-num">19</div>
+          <div class="reel-title-block">
+            <div class="reel-title">Körpersprache der Sicherheit (Paar-Demo)</div>
+            <div class="reel-hook">„Dein Körper zeigt ihr die ganze Zeit, ob du sicher bist. Hier ist, was er sagt."</div>
+            <div class="reel-badges"><span class="badge badge-paar">💑 Paar</span><span class="badge badge-idee">Idee</span></div>
+          </div>
+          <div class="reel-toggle">▾</div>
+        </div>
+        <div class="reel-body">
+          <div class="reel-field"><label>Setup</label><p>Drei kurze Szenen: Yves angespannt, abgelenkt, auf Handy schauend → Vanessa wird kleiner, zieht sich zurück. Dann: Yves ruhig, Blick auf sie, offen → Vanessa öffnet sich sichtbar.</p></div>
+          <div class="reel-field"><label>Skript</label><p>Yves: „Frauen lesen Körpersprache wie eine zweite Sprache." / Vanessa: „Und wir tun es die ganze Zeit — ohne es zu wissen." / Yves: „Du musst nicht viel sagen. Du musst nur da sein."</p></div>
+          <div class="reel-field"><label>Übung / Dynamik</label><p>Körpersprache als Polarity-Signal — zeigt konkret, wie maskuline Präsenz funktioniert. Sehr teilbar, weil viele sich wiedererkennen.</p></div>
+          <div class="reel-field"><label>Visual</label><p>Zwei Mini-Szenen nacheinander geschnitten. Kontrastierende Energie deutlich sichtbar.</p></div>
+          <div class="reel-field"><label>Audio</label><p>Leichter Spannungs-Auflösungs-Sound zwischen den Szenen.</p></div>
+          <div class="reel-field"><label>On-Screen-Text</label><p>„Was sie sieht — auch wenn du nichts sagst."</p></div>
+          <div class="reel-field"><label>Caption</label><p>Präsenz ist keine Technik. Sie ist eine Entscheidung — jeden Tag neu. Wie oft bist du wirklich bei ihr? 👇</p></div>
+          <div class="reel-field"><label>Hashtags</label><p class="hashtags">#masculineenergy #beziehung #polarity #körpersprache #verbindung #präsenz</p></div>
+        </div>
+      </div>
+
+      <!-- REEL 20 -->
+      <div class="reel-card" data-type="paar" data-status="idee">
+        <div class="reel-header" onclick="toggleReel(this)">
+          <div class="reel-num">20</div>
+          <div class="reel-title-block">
+            <div class="reel-title">Morgenritual für Verbindung</div>
+            <div class="reel-hook">„3 Minuten jeden Morgen — und die Beziehung fühlt sich wieder wie eine Heimat an."</div>
+            <div class="reel-badges"><span class="badge badge-paar">💑 Paar</span><span class="badge badge-idee">Idee</span></div>
+          </div>
+          <div class="reel-toggle">▾</div>
+        </div>
+        <div class="reel-body">
+          <div class="reel-field"><label>Setup</label><p>Beide gerade aufgestanden, im Alltags-Look (kein Make-up, Morgenhaare okay). Yves zieht Vanessa kurz zu sich, sie lehnt sich an. Drei Minuten Stille, Berührung, kein Handy.</p></div>
+          <div class="reel-field"><label>Skript</label><p>Vanessa: „Wir fangen den Tag nicht mit Nachrichten an. Wir fangen ihn miteinander an." / Yves: „Drei Minuten. Kein Programm." / Vanessa: „Aber es verändert alles, was danach kommt."</p></div>
+          <div class="reel-field"><label>Übung / Dynamik</label><p>Mini-Morgenritual als niedrigschwellige Paar-Übung. Sehr hohe Nachmach- und Save-Rate, weil sofort umsetzbar.</p></div>
+          <div class="reel-field"><label>Visual</label><p>Warmes, natürliches Morgenlicht. Authentisch, ungestellt — Unordnung darf sichtbar sein. Timer kurz eingeblendet.</p></div>
+          <div class="reel-field"><label>Audio</label><p>Ruhiger, warmer Morgen-Sound, leise.</p></div>
+          <div class="reel-field"><label>On-Screen-Text</label><p>„3 Minuten. Kein Handy. Jeden Morgen."</p></div>
+          <div class="reel-field"><label>Caption</label><p>Beziehungen verfallen nicht durch große Fehler. Sie verfallen durch zu viele Morgen ohne Verbindung. Probiert das eine Woche — und sagt uns, was sich verändert. 🤍</p></div>
+          <div class="reel-field"><label>Hashtags</label><p class="hashtags">#paarübung #morgenritual #verbindung #beziehung #consciouscouple #femininenergy</p></div>
+        </div>
+      </div>
+
+    </div><!-- #reel-list -->
+  </div><!-- #tab-backlog -->
+
+
+  <!-- ========= SWIPE FILE ========= -->
+  <div id="tab-swipe" class="tab-panel">
+    <div class="section-title">Swipe-File</div>
+    <div class="section-subtitle">Referenzen aus der Nische. Format/Mechanik adaptieren — nie 1:1 kopieren.</div>
+
+    <div style="overflow-x:auto;">
+    <table class="swipe-table">
+      <thead>
+        <tr>
+          <th>Creator</th>
+          <th>Profil</th>
+          <th>Format-Typ</th>
+          <th>Hook-Mechanik</th>
+          <th>Warum es funktioniert</th>
+          <th>Typ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="creator-name">John Wineland</div></td>
+          <td class="creator-handle">@johnwineland</td>
+          <td>Relationale Embodiment-Übung live</td>
+          <td>„Probier das mit deinem Partner"</td>
+          <td>Zeigt Praxis statt Theorie; sofort nachmachbar</td>
+          <td><span class="badge badge-paar">💑 Paar</span></td>
+        </tr>
+        <tr>
+          <td><div class="creator-name">GS Youngblood</div></td>
+          <td class="creator-handle">The Masculine in Relationship</td>
+          <td>Grounded-masculine Reframe</td>
+          <td>„Sie testet nicht, ob …"</td>
+          <td>Spricht Männer-Rolle klar an; entlastet Frauen</td>
+          <td><span class="badge badge-solo">Solo/Paar</span></td>
+        </tr>
+        <tr>
+          <td><div class="creator-name">Monica Yates</div></td>
+          <td class="creator-handle">@monicayateshealth</td>
+          <td>Feminine/Masculine Reframe</td>
+          <td>„Feminine Energy ist nicht …"</td>
+          <td>Räumt mit Klischees auf; hohe Save-Rate</td>
+          <td><span class="badge badge-solo">👤 Solo</span></td>
+        </tr>
+        <tr>
+          <td><div class="creator-name">Mark Groves & Kylie McBeath</div></td>
+          <td class="creator-handle">@createthelove</td>
+          <td>Conscious-Couple, beide im Bild</td>
+          <td>Beziehungs-Wahrheit als Aussage</td>
+          <td>Paar-Chemie + Substanz; teilbar</td>
+          <td><span class="badge badge-paar">💑 Paar</span></td>
+        </tr>
+        <tr>
+          <td><div class="creator-name">Stefanos Sifandos</div></td>
+          <td class="creator-handle">@stefanossifandos</td>
+          <td>Unbequeme Beziehungs-Wahrheit</td>
+          <td>„Die meisten Beziehungen sind …"</td>
+          <td>Provokanter Reframe → Diskussion in Kommentaren</td>
+          <td><span class="badge badge-solo">Solo/Paar</span></td>
+        </tr>
+        <tr>
+          <td><div class="creator-name">Steffani LeFevour</div></td>
+          <td class="creator-handle">@coachwithsteff</td>
+          <td>Mindset/Identity-Shift für Frauen</td>
+          <td>„Hör auf, … zu wollen"</td>
+          <td>Klare Hooks, klare Zielgruppe</td>
+          <td><span class="badge badge-solo">👤 Solo</span></td>
+        </tr>
+        <tr>
+          <td><div class="creator-name">Kiana Reeves & Chris Keener</div></td>
+          <td class="creator-handle">@kiana.reeves + @thechriskeener</td>
+          <td>Somatic Polarity Live-Demo mit Partner</td>
+          <td>„Dein Nervensystem kennt den Unterschied zwischen Polarity und Performance"</td>
+          <td>Zeigt Übungen (Berührung, Atem, Blick) mit echtem Partner on camera — 118K Follower, sehr hohe Save-Rate bei Paar-Übungen</td>
+          <td><span class="badge badge-paar">💑 Paar</span></td>
+        </tr>
+        <tr>
+          <td><div class="creator-name">Preston Smiles & Alexi Panos</div></td>
+          <td class="creator-handle">@prestonsmiles + @alexipanos</td>
+          <td>Conscious-Couple Embodiment Exercise</td>
+          <td>„Wir haben das Live-Experiment gemacht — hier ist, was passiert ist"</td>
+          <td>Beide charismatisch, Bridge Method: nervous-system-basierte Paar-Übungen live, starke Chemie on screen</td>
+          <td><span class="badge badge-paar">💑 Paar</span></td>
+        </tr>
+        <tr>
+          <td><div class="creator-name">Lorin Krenn</div></td>
+          <td class="creator-handle">@lorinkrenn</td>
+          <td>Masculine/Feminine Deep Polarity Reframe</td>
+          <td>„Das verwechseln die meisten mit Liebe — ist es aber nicht"</td>
+          <td>347K Follower, grounded maskuline Stimme, erklärt Polarity ohne Klischee; Deep Polarity Program für Paare</td>
+          <td><span class="badge badge-solo">Solo/Paar</span></td>
+        </tr>
+        <tr>
+          <td><div class="creator-name">Jayson Gaddis</div></td>
+          <td class="creator-handle">@jaysongaddis</td>
+          <td>Couple Vulnerability Storytime</td>
+          <td>„Wir sind Relationship-Experten — und wir haben letzte Woche gestritten"</td>
+          <td>Er und Frau normalisieren Struggle on camera → hohe Kommentar-Rate durch Authentizität</td>
+          <td><span class="badge badge-paar">💑 Paar</span></td>
+        </tr>
+        <tr>
+          <td><div class="creator-name">Anna Rova</div></td>
+          <td class="creator-handle">@annarova</td>
+          <td>Feminine Polarity Reframe</td>
+          <td>„Das hält Frauen in der maskulinen Energie gefangen — ohne es zu merken"</td>
+          <td>Starke Hooks, klare feminine/maskuline Polarity-Frames, hohe Share-Rate bei identitätsbezogenen Reels</td>
+          <td><span class="badge badge-solo">👤 Solo</span></td>
+        </tr>
+        <tr>
+          <td><div class="creator-name">Esther Perel</div></td>
+          <td class="creator-handle">@estherperelofficial</td>
+          <td>Relationship Truth Statement</td>
+          <td>„Polarity braucht keine Rollen — sie braucht Differenz"</td>
+          <td>2M Follower, Authority + Provokation = Diskussion in den Kommentaren; Format: ein Satz → kurze Erklärung → Gegenfrage</td>
+          <td><span class="badge badge-solo">Solo/Paar</span></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div style="margin-top:28px;">
+      <div class="ref-card">
+        <h3>🏆 Eigene Top-Performer (nach dem Posten eintragen)</h3>
+        <p style="color:#aaa; font-style:italic; font-size:13px;">Wird nach Launch befüllt. Dann hier: Reel · Format · Views/Saves · Was funktioniert hat · Wiederholen?</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ========= BRAND VOICE ========= -->
+  <div id="tab-voice" class="tab-panel">
+    <div class="section-title">Brand Voice</div>
+    <div class="section-subtitle">Referenz für alle Reel-Skripte, Captions und Hooks.</div>
+
+    <div class="ref-card">
+      <h3>Brand auf einen Satz</h3>
+      <p>Ein Paar zeigt live, wie echte Verbindung entsteht — über Masculine ↔ Feminine Energy, Polarität und einfache Übungen, die jeder zu Hause nachmachen kann.</p>
+    </div>
+
+    <div class="ref-card">
+      <h3>Positionierung</h3>
+      <ul>
+        <li>Keine Theorie-Coaches, sondern ein Paar, das es <strong>vormacht</strong>.</li>
+        <li>Verbindung ist keine Technik, sondern Präsenz.</li>
+        <li>Spiritualität bleibt geerdet: fühlbar, alltagstauglich, ohne Eso-Floskeln.</li>
+      </ul>
+    </div>
+
+    <div class="ref-card">
+      <h3>Die zwei Stimmen</h3>
+      <div class="two-col">
+        <div class="voice-card">
+          <h4>Yves — grounded masculine</h4>
+          <ul>
+            <li>Ruhig, klar, present. Kurze Sätze.</li>
+            <li>Kein Erklär-Modus, kein Belehren.</li>
+            <li>„Ich halte den Raum" — nicht „Ich weiß es besser".</li>
+            <li>Verkörpert Struktur und Präsenz.</li>
+          </ul>
+          <div class="example">„Sie muss nicht stark sein, wenn ich nicht schwanke."</div>
+        </div>
+        <div class="voice-card">
+          <h4>Vanessa — feminine</h4>
+          <ul>
+            <li>Warm, fühlend, lebendig.</li>
+            <li>Darf weich, verletzlich und ehrlich sein.</li>
+            <li>Spricht aus Erfahrung und Gefühl.</li>
+            <li>Verkörpert Bewegung, Offenheit, Empfangen.</li>
+          </ul>
+          <div class="example">„Ich musste lernen, mich fallen zu lassen, ohne die Kontrolle zu brauchen."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ref-card">
+      <h3>Ton — Do's &amp; Don'ts</h3>
+      <div class="do-dont">
+        <div class="do-list">
+          <h4>✅ Do's</h4>
+          <ul>
+            <li>Direkt, warm, ehrlich. Per „du".</li>
+            <li>Ein Gedanke pro Reel.</li>
+            <li>Konkret und körperlich: was man fühlt, sieht, tut.</li>
+            <li>Einladend statt belehrend.</li>
+          </ul>
+        </div>
+        <div class="dont-list">
+          <h4>❌ Don'ts</h4>
+          <ul>
+            <li>Keine Eso-Floskeln (kein „High Vibe" ohne Substanz).</li>
+            <li>Keine Rollen-Klischees.</li>
+            <li>Kein Fachjargon-Dump.</li>
+            <li>Keine Schuld/Angst als Hook.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="ref-card">
+      <h3>Vokabular</h3>
+      <p><strong>Nutzen:</strong> Präsenz, Verbindung, Polarität, halten, fallen lassen, Nervensystem, geerdet, weich werden, Spannung (positiv), Raum halten, fühlen.</p>
+      <p style="margin-top:8px;"><strong>Vermeiden:</strong> „manifestieren" inflationär, „Vibes", „Energie" als Floskel, „toxisch" als Buzzword, „heile dein inneres Kind" als Stempel.</p>
+    </div>
+
+    <div class="ref-card">
+      <h3>CTA-Stil</h3>
+      <ul>
+        <li>Weich und einladend, nie pushy.</li>
+        <li>„Probiert das heute Abend — und schreibt uns, was passiert."</li>
+        <li>„Speicher dir das für später."</li>
+        <li>„Markier die Person, mit der du das machen willst."</li>
+      </ul>
+    </div>
+
+    <div class="ref-card">
+      <h3>Caption-Aufbau (Standard)</h3>
+      <ol style="padding-left:18px; font-size:14px; line-height:2;">
+        <li>Ein Satz, der den Hook vertieft oder umdreht.</li>
+        <li>1–2 Sätze Substanz (das Gefühl/die Einsicht).</li>
+        <li>Weicher CTA.</li>
+        <li>5–8 Hashtags, gemischt deutsch + Nische.</li>
+      </ol>
+    </div>
+  </div>
+
+
+  <!-- ========= BRIEF ========= -->
+  <div id="tab-brief" class="tab-panel">
+    <div class="section-title">Content-Strategie Brief</div>
+    <div class="section-subtitle">Arbeitsanweisung für den Content-Strategen. Bei jedem Lauf darauf verweisen.</div>
+
+    <div class="ref-card">
+      <h3>Rolle &amp; Ziel</h3>
+      <p>Content-Stratege für @vanessaspirit (Spirit-Coaching, Manifestation, feminine Energy, Mindset für Frauen). Das Power-Format ist <strong>Partner-Content</strong>: Yves und Vanessa gemeinsam im Bild — Masculine ↔ Feminine Energy, Polarität, relationale Embodiment-Übungen. Markt: deutschsprachig.</p>
+      <p style="margin-top:10px;">Ziel: Laufend abdrehbare Reel-Konzepte, die auf echten, viral laufenden Formaten basieren — adaptiert auf unsere Stimme, nie kopiert.</p>
+    </div>
+
+    <div class="ref-card">
+      <h3>Format-Prioritäten</h3>
+      <ol style="padding-left:18px; font-size:14px; line-height:2.2;">
+        <li><strong>Paar / Polarity (~60%):</strong> beide im Bild, Übung live demonstriert, Masculine vs. Feminine sichtbar, immer mit „was es auslöst".</li>
+        <li><strong>Solo Vanessa:</strong> Mindset, Manifestation, feminine Energy, Mama-Perspektive.</li>
+      </ol>
+    </div>
+
+    <div class="ref-card">
+      <h3>Ablauf pro Lauf</h3>
+      <ol style="padding-left:18px; font-size:14px; line-height:2.2;">
+        <li>Creator in der Nische recherchieren (US/englischsprachig, Paare, beide im Bild, Übung live).</li>
+        <li>Starke Referenzen in swipe-file.md eintragen.</li>
+        <li>Beste Formate in fertige Konzepte übersetzen — vollständiges Schema.</li>
+        <li>Konzepte in reel-backlog.md unten anhängen mit Status „Idee".</li>
+      </ol>
+    </div>
+
+    <div class="ref-card">
+      <h3>Schema pro Konzept</h3>
+      <ul style="padding-left:18px; font-size:14px; line-height:2.2;">
+        <li><strong>Hook</strong> — erste 1–2 Sek: Text + gesprochen</li>
+        <li><strong>Setup</strong> — wer macht/sagt was (bei Paar: Rolle Yves / Rolle Vanessa)</li>
+        <li><strong>Skript</strong> — Wort für Wort, max. 20–30 Sek</li>
+        <li><strong>Übung/Dynamik</strong> — was wir on camera tun + was es auslösen soll</li>
+        <li><strong>Visual</strong> — Shots, Setting, Nähe/Berührung, AI-Animation</li>
+        <li><strong>Audio</strong> — Trend-Sound-Typ oder Voiceover-Stil</li>
+        <li><strong>On-Screen-Text</strong> — jede Einblendung</li>
+        <li><strong>Caption</strong> — inkl. CTA</li>
+        <li><strong>Hashtags</strong> — 5–8, deutsch + Nische</li>
+      </ul>
+    </div>
+
+    <div class="ref-card">
+      <h3>Regeln</h3>
+      <ul style="padding-left:18px; font-size:14px; line-height:2.2;">
+        <li>Alles Deutsch, abdrehbar, keine Platzhalter, keine TODOs.</li>
+        <li>Ton strikt nach brand-voice.md.</li>
+        <li>Format/Mechanik adaptieren — Inhalt eigenständig, nichts 1:1 kopieren.</li>
+        <li>Pro Lauf 8–10 Konzepte, davon mind. 5 Paar-Reels.</li>
+        <li>Durchliefern, nicht nach Freigabe für Zwischenschritte fragen.</li>
+      </ul>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  function showTab(name) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  function toggleReel(header) {
+    const card = header.closest('.reel-card');
+    card.classList.toggle('open');
+  }
+
+  function filterReels(type, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.reel-card').forEach(card => {
+      if (type === 'alle') {
+        card.style.display = '';
+      } else if (type === 'paar') {
+        card.style.display = card.dataset.type === 'paar' ? '' : 'none';
+      } else if (type === 'solo') {
+        card.style.display = card.dataset.type === 'solo' ? '' : 'none';
+      } else if (type === 'idee') {
+        card.style.display = card.dataset.status === 'idee' ? '' : 'none';
+      }
+    });
+  }
+</script>
+</body>
+</html>
